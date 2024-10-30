@@ -1,15 +1,16 @@
-#attendance{
-    background-color: coral;
-}
-
-#requests{
-    background-color: cornflowerblue;
+.content{
+    background-color: lightslategray;
 }
 
 body{
-    background-color:silver;
+    background-color:whitesmoke;
 }
 
 .card{
     margin-bottom: 10%;
+}
+
+.top{
+    background-color:mediumpurple;
+    margin-bottom: 5%;
 }
