@@ -1,0 +1,36 @@
+.dashboard-title {
+    font-size: 2rem;
+}
+
+
+
+.status-badge {
+    font-size: 0.9em;
+    padding: 0.3em 0.8em;
+    border-radius: 12px;
+    color: white;
+  }
+  .status-success { background-color: #28a745; }
+  .status-open { background-color: #dc3545; }
+  .status-on-hold { background-color: #6f42c1; }
+  .status-checked { background-color: #17a2b8; }
+  .chart-card { height: 300px; }
+
+  .profile-pic {
+    width: 40px;
+    height: 40px;
+  }
+
+
+
+  .sales-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.sales-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
