@@ -1,0 +1,12 @@
+.card{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;;
+}
+
+.manage-card{
+    background-color: #0A1333;
+    color: white;
+}
+
+.db-status{
+    margin-right: 1px;
+}
