@@ -16,7 +16,9 @@
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
     </script>
+
     <script src='main.js'></script>
+
 </head>
 
 <body>
@@ -117,29 +119,31 @@
 
                         <section class="mx-2" style="width: 90%;">
                             <p class="mb-1"> Glasgow Shop </p>
-                            <div class="progress mb-4">
-                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress mb-4" style="height: 20px">
+                                <div class="progress-bar justify-content-center align-self-center" role="progressbar"
+                                    style="width: 25%; height: 20px;" aria-valuenow="25" aria-valuemin="0"
+                                    aria-valuemax="100"> 25 %
+                                </div>
                             </div>
                             <p class="mb-1"> Dundee Shop</p>
-                            <div class="progress mb-4">
-                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress mb-4" style="height: 20px">
+                                <div class="progress-bar" role="progressbar" style="width: 50%; height: 20px;"
+                                    aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"> 50% </div>
                             </div>
                             <p class="mb-1"> Edinburgh Shop </p>
-                            <div class="progress mb-4">
-                                <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress mb-4" style="height: 20px">
+                                <div class="progress-bar" role="progressbar" style="width: 75%; height: 20px;"
+                                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> 75% </div>
                             </div>
                             <p class="mb-1"> Aberdeen Shop</p>
-                            <div class="progress mb-4">
-                                <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress mb-4" style="height: 20px">
+                                <div class="progress-bar" role="progressbar" style="width: 60%; height: 20px;"
+                                    aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"> 60% </div>
                             </div>
                             <p class="mb-1"> Online Store</p>
-                            <div class="progress mb-4">
-                                <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100"
-                                    aria-valuemin="0" aria-valuemax="100"></div>
+                            <div class="progress mb-4" style="height: 20px">
+                                <div class="progress-bar" role="progressbar" style="width: 100%; height: 20px;"
+                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"> 100% </div>
                             </div>
                         </section>
 
@@ -206,127 +210,148 @@
         <div class="row">
             <div class="col py-3">
                 <div class="card text-center" style="box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
-                    <div class=" card-header">
+                    <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs">
                             <li class="nav-item">
-                                <a class="nav-link active" href="#">Daily Shift</a>
+                                <a class="nav-link active" id="DailyShiftTab">Daily Shift</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">All Staff</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled" href="#">Staff on leave </a>
+                                <a class="nav-link" id="StaffOnLeaveTab">Staff on Leave</a>
                             </li>
                         </ul>
                     </div>
-                    <div class="card-body d-flex flex-column align-items-center">
-                        <h5 class="card-title mb-5">Daily Shift</h5>
-                        <table class="table text-start">
-                            <thead>
-                                <tr>
-                                    <th scope="col"> </th>
-                                    <th scope="col">Staff Name</th>
-                                    <th scope="col">Staff Role </th>
-                                    <th scope="col">Shift pattern </th>
-                                    <th scope="col"> Attended </th>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title mb-5" id="CardTitle">Daily Shift</h5>
+                        <div id="CardContent">
+                            <table class="table text-start">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"> </th>
+                                        <th scope="col">Staff Name</th>
+                                        <th scope="col">Staff Role </th>
+                                        <th scope="col">Shift pattern </th>
+                                        <th scope="col"> Attended </th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row"> </th>
-                                    <td>James Steward</td>
-                                    <td>Barista</td>
-                                    <td> 10:00- 16:00</td>
-                                    <td style="color: rgb(82, 145, 0);"> Clocked in </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"> </th>
-                                    <td>James Steward</td>
-                                    <td>Barista</td>
-                                    <td> 10:00- 16:00</td>
-                                    <td style="color: rgb(82, 145, 0);"> Clocked in </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"> </th>
-                                    <td>James Steward</td>
-                                    <td>Marketing</td>
-                                    <td> 10:00- 16:00</td>
-                                    <td style="color: rgb(82, 145, 0);"> Clocked in </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"> </th>
-                                    <td>James Steward</td>
-                                    <td>Head Assistant</td>
-                                    <td> 10:00- 16:00</td>
-                                    <td style="color: rgb(82, 145, 0);"> Clocked in </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"> </th>
-                                    <td>James Steward</td>
-                                    <td>Barista</td>
-                                    <td> 10:00- 16:00</td>
-                                    <td style="color: rgb(0, 0, 139);"> Late</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"> </th>
-                                    <td>James Steward</td>
-                                    <td>Barista</td>
-                                    <td> 10:00- 16:00</td>
-                                    <td style="color: rgb(82, 145, 0);"> Clocked in </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"> </th>
-                                    <td>James Steward</td>
-                                    <td>Social Media</td>
-                                    <td> 10:00- 16:00</td>
-                                    <td style="color: rgb(145, 17, 0);"> Absent</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"> </th>
-                                    <td>James Steward</td>
-                                    <td>Marketing</td>
-                                    <td> 10:00- 16:00</td>
-                                    <td style="color: rgb(82, 145, 0);"> Clocked in </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"> </th>
-                                    <td>James Steward</td>
-                                    <td>Head Assistant</td>
-                                    <td> 10:00- 16:00</td>
-                                    <td style="color: rgb(82, 145, 0);"> Clocked in </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"> </th>
-                                    <td>James Steward</td>
-                                    <td>Barista</td>
-                                    <td> 10:00- 16:00</td>
-                                    <td style="color: rgb(145, 17, 0);"> Absent</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"> </th>
-                                    <td>James Steward</td>
-                                    <td>Head Assistant</td>
-                                    <td> 10:00- 16:00</td>
-                                    <td style="color: rgb(82, 145, 0);"> Clocked in </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"> </th>
-                                    <td>James Steward</td>
-                                    <td>Barista</td>
-                                    <td> 10:00- 16:00</td>
-                                    <td style="color: rgb(145, 17, 0);"> Absent</td>
-                                </tr>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row"> </th>
+                                        <td>James Steward</td>
+                                        <td>Barista</td>
+                                        <td> 10:00- 16:00</td>
+                                        <td style="color: rgb(82, 145, 0);"> Clocked in </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"> </th>
+                                        <td>James Steward</td>
+                                        <td>Barista</td>
+                                        <td> 10:00- 16:00</td>
+                                        <td style="color: rgb(82, 145, 0);"> Clocked in </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"> </th>
+                                        <td>James Steward</td>
+                                        <td>Marketing</td>
+                                        <td> 10:00- 16:00</td>
+                                        <td style="color: rgb(82, 145, 0);"> Clocked in </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"> </th>
+                                        <td>James Steward</td>
+                                        <td>Head Assistant</td>
+                                        <td> 10:00- 16:00</td>
+                                        <td style="color: rgb(82, 145, 0);"> Clocked in </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"> </th>
+                                        <td>James Steward</td>
+                                        <td>Barista</td>
+                                        <td> 10:00- 16:00</td>
+                                        <td style="color: rgb(0, 0, 139);"> Late</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"> </th>
+                                        <td>James Steward</td>
+                                        <td>Barista</td>
+                                        <td> 10:00- 16:00</td>
+                                        <td style="color: rgb(82, 145, 0);"> Clocked in </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"> </th>
+                                        <td>James Steward</td>
+                                        <td>Social Media</td>
+                                        <td> 10:00- 16:00</td>
+                                        <td style="color: rgb(145, 17, 0);"> Absent</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"> </th>
+                                        <td>James Steward</td>
+                                        <td>Marketing</td>
+                                        <td> 10:00- 16:00</td>
+                                        <td style="color: rgb(82, 145, 0);"> Clocked in </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"> </th>
+                                        <td>James Steward</td>
+                                        <td>Head Assistant</td>
+                                        <td> 10:00- 16:00</td>
+                                        <td style="color: rgb(82, 145, 0);"> Clocked in </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"> </th>
+                                        <td>James Steward</td>
+                                        <td>Barista</td>
+                                        <td> 10:00- 16:00</td>
+                                        <td style="color: rgb(145, 17, 0);"> Absent</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"> </th>
+                                        <td>James Steward</td>
+                                        <td>Head Assistant</td>
+                                        <td> 10:00- 16:00</td>
+                                        <td style="color: rgb(82, 145, 0);"> Clocked in </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row"> </th>
+                                        <td>James Steward</td>
+                                        <td>Barista</td>
+                                        <td> 10:00- 16:00</td>
+                                        <td style="color: rgb(145, 17, 0);"> Absent</td>
+                                    </tr>
 
-                            </tbody>
-                        </table>
-
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="container-fluid px-4">
+        <div class="row">
+            <div class="col">
+                <div class="card SeeAllButton" style="height: 100px; box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
+                    <div class="card-body d-flex flex-column justify-content-center align-items-center"
+                        style="height: 100%;">
+                        <h5 class="text-center"> See All Staff </h5>
 
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col">
+                <div class="card SeeAllButton" style="height: 100px; box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
+                    <div class="card-body d-flex flex-column justify-content-center align-items-center"
+                        style="height: 100%;">
+                        <h5 class="text-center"> See all suppliers </h5>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 
 
@@ -462,10 +487,10 @@
 
                 <div class="row py-3" style="height: 100%;">
                     <div class="col">
-                        <div class="card full-height-card" style="height:100%; box-shadow: 5px 5px 20px rgba(0, 0, 0,
+                        <div class="card full-height-card SeeAllButton" style="height:100%; box-shadow: 5px 5px 20px rgba(0, 0, 0,
                             0.2);">
                             <div class="card-body d-flex justify-content-center align-items-center card-content">
-                                <h5 class="card-title mb-0">Check all the products</h5>
+                                <h5 class="card-title mb-0"> Check all the products</h5>
                             </div>
                         </div>
                     </div>
@@ -479,6 +504,7 @@
 
 
 
+    <script src="managers.js"></script>
     <script>
 
 
@@ -504,6 +530,7 @@
                     chart.draw(data, options);
                 }
                     */
+
 
 
 
