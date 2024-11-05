@@ -14,15 +14,30 @@
 
 
 <body>
-    <div class="vh-100 d-flex justify-content-center align-items-center">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a>
+    <div class="bg-image"
+        style="background-image: url('https://picsum.photos/id/113/3168/1464'); height: 100vh">
+        <div class="vh-100 d-flex justify-content-center align-items-center">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Espresso Express</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Sign-in</h6>
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Staff ID</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="Enter staff ID">
+                            </div>
+                            <div class="form-group py-2">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1"
+                                    placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn btn-primary my-2">login</button>
+                        </form>
+                        <a href="#" class="card-link">Customer Page</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
