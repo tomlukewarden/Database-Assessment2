@@ -4,6 +4,11 @@
     border-width: 4px;
 }
 
+.SeeAllButton:hover {
+    transform: scale(1.01);
+    transition: transform 0.2s;
+}
+
 .overlay {
     position: absolute;
     top: 0;
