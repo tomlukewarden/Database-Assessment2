@@ -9,6 +9,11 @@ body{
 
 .card{
     margin-bottom: 10%;
+    min-width: 125px;
+}
+
+.card-group{
+    min-width: 250px;
 }
 
 .top{
