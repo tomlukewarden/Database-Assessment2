@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Glasgow Assistant Manager Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assistant-manager.css">
+  </head>
+
+  <body>
+    <!--nav-->
+    <nav class="navbar navbar-dark bg-dark fixed-top p-3 mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Espresso Express</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dashboard Menu</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Profile</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                Admin Tools
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="#">Requests <span class="badge text-bg-secondary">4</span> </a></li>
+                                <li><a class="dropdown-item" href="#">Users</a></li>
+                                <li><a class="dropdown-item" href="#">Products</a></li>
+                                <li><a class="dropdown-item" href="#">Stock</a></li>
+                                <li><a class="dropdown-item" href="#">Orders</a></li>
+                                <li><a class="dropdown-item" href="#">Reports</a></li>
+                                <li><a class="dropdown-item" href="#">Preview</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                            </ul>
+                        </li>
+                    <!--多加-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Assistant Manager</a>
+                    </li>
+                    
+                    </ul>
+                    <form class="d-flex mt-3" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!--內容-->
+    <main class="container my-5 pt-5">
+        <h1 class="dashboard-title">Glasgow Assistant Manager Dashboard</h1>
+    
+        <div class="row">
+            <!-- Weekly Transactions Section -->
+            <div class="col-md-8 mb-4 mt-3">
+                <div class="card p-4 shadow-sm">
+                    <h4 class="mb-4">Glasgow Weekly Transactions</h4>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h2>$2000</h2>
+                            <p class="text-muted">Target</p>
+                            <h3>$1500</h3>
+                            <p class="text-muted">Current Weekly Sales</p>
+                        </div>
+                        <div class="col-md-8">
+                            <p>Weekly Sales</p>
+                            <ul class="sales-list">
+                                <li>Monday <progress id="file-monday" value="60" max="100"></progress> <span id="monday-percent">60%</span></li>
+                                <li>Tuesday <progress id="file-tuesday" value="20" max="100"></progress> <span id="tuesday-percent">20%</span></li>
+                                <li>Wednesday <progress id="file-wednesday" value="30" max="100"></progress> <span id="wednesday-percent">30%</span></li>
+                                <li>Thursday <progress id="file-thursday" value="35" max="100"></progress> <span id="thursday-percent">35%</span></li>
+                                <li>Friday <progress id="file-friday" value="60" max="100"></progress> <span id="friday-percent">60%</span></li>
+                                <li>Saturday <progress id="file-saturday" value="80" max="100"></progress> <span id="saturday-percent">80%</span></li>
+                                <li>Sunday <progress id="file-sunday" value="75" max="100"></progress> <span id="sunday-percent">75%</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Manage Cards -->
+            <div class="col-md-4 mt-3">
+                <div class="row">
+                    <!-- Manage Staff Card -->
+                    <div class="col-12 mb-3">
+                        <div class="card">
+                            <div class="card-header">Manage Staff</div>
+                            <div class="card-body">
+                                <a href="#" class="btn btn-secondary">View List of Staffs</a>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Manage Product Card -->
+                    <div class="col-12 mb-3">
+                        <div class="card">
+                            <div class="card-header">Manage Product</div>
+                            <div class="card-body">
+                                <a href="#" class="btn btn-secondary">View List of Products</a>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Manage Stock Card -->
+                    <div class="col-12 mb-3">
+                        <div class="card">
+                            <div class="card-header">Manage Stock</div>
+                            <div class="card-body">
+                                <a href="#" class="btn btn-secondary">View List of Stocks</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+        <!--footer-->
+        <footer class="mt-0" style="width:100%; min-height: 60px; box-shadow: 10px 10px 50px rgba(252, 252, 252, 0.5); background-color: #050505;">
+            <div class="d-flex justify-content-between align-items-center text-light p-3">
+                <a href="#"
+                class="btn btn-outline-light fs-5" style="opacity: 0.8;">
+                Previous</a>
+                <a href="#"
+                class="btn btn-outline-light fs-5" style="opacity: 0.8;">
+                Home</a>
+            </div>
+        </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,9 +1,10 @@
 .content{
-    background-color: lightslategray;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    background-color: white;
 }
 
 body{
-    background-color:whitesmoke;
+    background-color:lightgray;
 }
 
 .card{
@@ -11,6 +12,6 @@ body{
 }
 
 .top{
-    background-color:mediumpurple;
+    background-color: rgb(136, 88, 175);
     margin-bottom: 5%;
 }
