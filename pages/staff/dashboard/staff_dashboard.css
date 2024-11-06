@@ -9,9 +9,27 @@ body{
 
 .card{
     margin-bottom: 10%;
+    min-width: 125px;
+}
+
+.card-group{
+    min-width: 250px;
 }
 
 .top{
     background-color: rgb(136, 88, 175);
     margin-bottom: 5%;
+}
+
+.accordion-body{
+    border-style:ridge;
+    border-color: black;
+    border-width: 1px;
+    margin: 10px;
+}
+
+.table{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
