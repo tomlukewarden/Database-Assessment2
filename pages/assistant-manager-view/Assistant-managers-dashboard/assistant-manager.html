@@ -71,7 +71,7 @@
       <h1 class="dashboard-title">Assistant Manager Dashboard</h1>
 
         <!-- Manage Cards -->
-        <div class="row mt-3">
+        <div class="row mt-5">
             <!-- Manage Staff Card -->
             <div class="col-md-4 mb-3">
                 <div class="card">
@@ -245,7 +245,6 @@
                             <p class="text-muted">Current Weekly Sales</p>
                         </div>
                         <div class="col-md-8">
-                            <p>Store Sales</p>
                             <canvas id="storeSalesChart" style="width:100%;max-width:600px"></canvas>
                         </div>
                     </div>
@@ -259,6 +258,7 @@
                 const storeSalesData = {
                     labels: ["Aberdeen", "Dundee", "Edinburgh", "Glasgow"],
                     datasets: [{
+                        label: "All Store Performance",
                         backgroundColor: ["#3A7CA5", "#D9DCD6", "#16425B", "#81C3D7"],
                         data: [55, 49, 44, 24],
                     }]
