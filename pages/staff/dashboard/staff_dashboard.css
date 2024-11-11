@@ -1,16 +1,42 @@
 .content{
-    background-color: lightslategray;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    background-color: white;
 }
 
 body{
-    background-color:whitesmoke;
+    background-color:lightgray;
 }
 
 .card{
     margin-bottom: 10%;
+    min-width: 125px;
+}
+
+.card-group{
+    min-width: 250px;
 }
 
 .top{
-    background-color:mediumpurple;
+    background-color: rgb(136, 88, 175);
     margin-bottom: 5%;
+}
+
+.accordion-body{
+    border-style:ridge;
+    border-color: black;
+    border-width: 1px;
+    margin: 10px;
+}
+
+.table{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#changebutton{
+    width: 100%;
+    height: 100px;
+    font-size: x-large;
+    font-weight: bold;
 }
