@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<a href="db.php">Link to DB.PHP file</a>
+<a href="db.php">Link to DB.PHP file <br></a>
 
 <?php 
 session_start();
@@ -27,7 +27,7 @@ echo "The number of views is ".$_SESSION['views'];
 <?php
 // Include the database connection
 $conn = mysqli_connect("localhost", "root", "", "espresso-express")
-$query = "SELECT * FROM Customer WHERE 1";
+$query = "SELECT * FROM Customer";
 $stmt = $mysql->prepare($query);
 $stmt->execute();
 $result = $stmt->fetchAll();
