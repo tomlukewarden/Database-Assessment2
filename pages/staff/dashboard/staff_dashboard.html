@@ -1,3 +1,11 @@
+<?php
+
+require_once("config/db.php");
+$query = "select * staff";
+$result = mysqli_query($con, $query);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -99,45 +107,45 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Employee Payslips
+                                Employee Payslips (Last 12 Months)
                             </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#payslips">
                             <div class="accordion-body">
-                                <a href="#">December Payslip</a>
+                                <a href="../dashboard/payslip_months/december_payslip.html" target="_blank">December Payslip</a>
                             </div>
                             <div class="accordion-body">
-                                <a href="#">November Payslip</a>
+                                <a href="../dashboard/payslip_months/november_payslip.html" target="_blank">November Payslip</a>
                             </div>
                             <div class="accordion-body">
-                                <a href="#">October Payslip</a>
+                                <a href="../dashboard/payslip_months/october_payslip.html" target="_blank">October Payslip</a>
                             </div>
                             <div class="accordion-body">
-                                <a href="#">September Payslip</a>
+                                <a href="../dashboard/payslip_months/september_payslip.html" target="_blank">September Payslip</a>
                             </div>
                             <div class="accordion-body">
-                                <a href="#">August Payslip</a>
+                                <a href="../dashboard/payslip_months/august_payslip.html" target="_blank">August Payslip</a>
                             </div>
                             <div class="accordion-body">
-                                <a href="#">July Payslip</a>
+                                <a href="../dashboard/payslip_months/july_payslip.html" target="_blank">July Payslip</a>
                             </div>
                             <div class="accordion-body">
-                                <a href="#">June Payslip</a>
+                                <a href="../dashboard/payslip_months/june_payslip.html" target="_blank">June Payslip</a>
                             </div>
                             <div class="accordion-body">
-                                <a href="#">May Payslip</a>
+                                <a href="../dashboard/payslip_months/may_payslip.html" target="_blank">May Payslip</a>
                             </div>
                             <div class="accordion-body">
-                                <a href="#">April Payslip</a>
+                                <a href="../dashboard/payslip_months/april_payslip.html" target="_blank">April Payslip</a>
                             </div>
                             <div class="accordion-body">
-                                <a href="#">March Payslip</a>
+                                <a href="../dashboard/payslip_months/march_payslip.html" target="_blank">March Payslip</a>
                             </div>
                             <div class="accordion-body">
-                                <a href="#">February Payslip</a>
+                                <a href="../dashboard/payslip_months/february_payslip.html" target="_blank">February Payslip</a>
                             </div>
                             <div class="accordion-body">
-                                <a href="#">January Payslip</a>
+                                <a href="../dashboard/payslip_months/january_payslip.html" target="_blank">January Payslip</a>
                             </div>
                         </div>
                     </div>
