@@ -1,9 +1,14 @@
-<?php 
-$host = "localhost"; 
-$username = "root"; 
-$password = ""; 
-$database = "espresso-express"; 
-$mysql = new PDO("host=".$host.";dbname=".$database, 
-$username, $password); 
-echo "DB linked Successfully! "; 
-?> 
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "espresso-express";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+echo "Connected successfully";
+?>
