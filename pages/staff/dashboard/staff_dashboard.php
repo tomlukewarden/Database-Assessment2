@@ -1,10 +1,3 @@
-<?php
-
-require_once("config/db.php");
-$query = "select * staff";
-$result = mysqli_query($con, $query);
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
