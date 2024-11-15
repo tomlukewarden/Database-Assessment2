@@ -1,7 +1,7 @@
 <!-- PHP gathers the username and password as session variables from the form, we can use these to compare what is stored in the database and determine who is logged in or if someone has access -->
 <?php
 
-include "config/db.php";
+include "../db.php";
 
 session_start();
 
@@ -23,8 +23,7 @@ $_SESSION["password"] = $_POST["password"];
     <!-- Bootstrap CSS Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Custome CSS Link -->
-    <link rel="stylesheet" href="login.css">
+
     <title>login</title>
 </head>
 
@@ -35,10 +34,13 @@ $_SESSION["password"] = $_POST["password"];
         style="background-image: url('https://picsum.photos/id/113/1700/1000'); height: 100vh">
         <div class="vh-100 d-flex justify-content-center align-items-center">
             <div class="col-md-3">
+
+            <!-- CARD -->
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Espresso Express</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Sign-in</h6>
+
                         <!-- Form currently does not redirect anywhere, setting the action to a destination cancels the storing of session variables -->
                         <form method="post" action="">
                             <div class="form-group">
@@ -51,7 +53,7 @@ $_SESSION["password"] = $_POST["password"];
                             </div>
                             <button id="id1" type="submit" value="submit" name="submit" class="btn btn-primary my-2">Login</button>
                         </form>
-                        <a href="#" class="card-link">Customer Page</a>
+                        <a href="../test.php" class="card-link">Customer Page</a>
                     </div>
                 </div>
             </div>
@@ -63,5 +65,7 @@ $_SESSION["password"] = $_POST["password"];
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+<!-- js to open new page if correct info inputted to form -->
 <script src="form.js"></script>
+
 </html>
