@@ -14,6 +14,8 @@
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_bag" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
     </script>
 
@@ -47,8 +49,10 @@
                                 data-bs-toggle="dropdown">Managers
                                 Tools</a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="../users/users.html">All Staff</a></li>
-                                <li><a class="dropdown-item" href="../transactions/transactions.html">Transactions</a>
+                                <li><a class="dropdown-item" href="../db-admin-view/users/users.html">All Staff</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="../db-admin-view/transactions/transactions.html">Transactions</a>
                                 </li>
                                 <li><a class="dropdown-item" href="#">Stock</a></li>
                                 <li><a class="dropdown-item" href="#">Orders</a></li>
@@ -71,7 +75,7 @@
 
     <div class="container-fluid mt-4 pt-5 px-4">
         <div class="row">
-            <div class="col self-align-center">
+            <div class="col self-align-center mt-4 ms-2">
                 <p> Welcome Back, George! </p>
 
             </div>
@@ -160,9 +164,15 @@
                 <div class="card" style="height: 500px; box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
                     <div class="card-body d-flex flex-column align-items-center" style="height: 100%;">
                         <h1 class="text-center"> Orders </h1>
-                        <p class="mb-4"> 54 New Orders | 14 In shop orders | 40 online orders </p>
+                        <p style="display: flex; align-items: flex-end;">
+                            <span class="material-symbols-outlined" style="line-height: 1;">
+                                shopping_bag
+                            </span>
+                            <a href="#" style="margin-left: 5px;">54 New orders</a>
+                        </p>
 
-                        <section class="mx-2" style="width: 90%;">
+
+                        <section class="mb-2" style="width: 90%;">
                             <p class="mb-1"> Glasgow Shop </p>
                             <div class="progress mb-4" style="height: 20px">
                                 <div class="progress-bar justify-content-center align-self-center" role="progressbar"
@@ -390,7 +400,7 @@
                 <div class="card SeeAllButton" style="height: 100px; box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
                     <div class="card-body d-flex flex-column justify-content-center align-items-center"
                         style="height: 100%;">
-                        <h5 class="text-center"> See all suppliers </h5>
+                        <h5 class="text-center"> See all products </h5>
                     </div>
                 </div>
 
@@ -401,9 +411,9 @@
 
 
 
-    <div class="container-fluid px-4 pb-4">
-        <div class="row full-height-row" style="height: 100%;">
-            <div class="col-md-8 py-3">
+    <div class="container-fluid px-4">
+        <div class="row" style="height: 100%;">
+            <div class="col py-3">
                 <div class="card full-height-card" style="box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);">
                     <div class="card-body d-flex flex-column">
                         <h3 class="text-start mb-3"> Best selling products</h3>
@@ -497,87 +507,56 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-            <div class="col-md-4 d-flex flex-column">
-                <div class="row">
-                    <div class="col py-3">
-                        <div class="card border-danger actionrequired"
-                            style="box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);">
-                            <img class="card-img-top p-2" src="https://picsum.photos/id/8/300/300" alt="Card image cap">
-                            <div class="card-body p-2">
-                                <h5 class="card-title mb-0">Product Title</h5>
-                                <p class="card-text fs-6"><em>idproduct</em></p>
-                            </div>
-                            <div class="card-footer text-center text-light border-danger bg-danger">Low in stock
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col py-3">
-                        <div class="card border-secondary actionrequired"
-                            style="box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
-                            <img class="card-img-top p-2" src="https://picsum.photos/id/8/300/300" alt="Card image cap">
-                            <div class="card-body p-2">
-                                <h5 class="card-title mb-0">Product Title</h5>
-                                <p class="card-text fs-6"><em>idproduct</em></p>
-                            </div>
-                            <div class="card-footer border-secondary bg-secondary text-center text-light">
-                                Out of stock
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row py-3" style="height: 100%;">
-                    <div class="col">
-                        <div class="card full-height-card SeeAllButton" style="height:100%; box-shadow: 5px 5px 20px rgba(0, 0, 0,
-                            0.2);">
-                            <div class="card-body d-flex justify-content-center align-items-center card-content">
-                                <h5 class="card-title mb-0"> Check all the products</h5>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
         </div>
 
 
+    </div>
+
+    <div class="container-fluid px-4">
+        <h3> Products state: </h3>
+        <div class="row">
+            <div class="col-3 py-3">
+                <div class="card border-danger actionrequired" style="box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);">
+                    <img class="card-img-top p-2" src="https://picsum.photos/id/8/300/300" alt="Card image cap">
+                    <div class="card-body p-2">
+                        <h5 class="card-title mb-0">Product Title</h5>
+                        <p class="card-text fs-6"><em>idproduct</em></p>
+                    </div>
+                    <div class="card-footer text-center text-light border-danger bg-danger">Low in stock
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 py-3">
+                <div class="card border-secondary actionrequired" style="box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
+                    <img class="card-img-top p-2" src="https://picsum.photos/id/8/300/300" alt="Card image cap">
+                    <div class="card-body p-2">
+                        <h5 class="card-title mb-0">Product Title</h5>
+                        <p class="card-text fs-6"><em>idproduct</em></p>
+                    </div>
+                    <div class="card-footer border-secondary bg-secondary text-center text-light">
+                        Out of stock
+                    </div>
+                </div>
+            </div>
+            <div class="col-3 py-3">
+                <div class="card border-secondary actionrequired" style="box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
+                    <img class="card-img-top p-2" src="https://picsum.photos/id/8/300/300" alt="Card image cap">
+                    <div class="card-body p-2">
+                        <h5 class="card-title mb-0">Product Title</h5>
+                        <p class="card-text fs-6"><em>idproduct</em></p>
+                    </div>
+                    <div class="card-footer border-secondary bg-secondary text-center text-light">
+                        Out of stock
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
 
     <script src="managers.js"></script>
     <script>
-
-
-        /*
-                google.charts.load('current', { 'packages': ['corechart'] });
-                google.charts.setOnLoadCallback(drawChart);
-        
-                function drawChart() {
-                    const data = google.visualization.arrayToDataTable([
-                        ['Contry', 'Mhl'],
-                        ['Italy', 54.8],
-                        ['France', 48.6],
-                        ['Spain', 44.4],
-                        ['USA', 23.9],
-                        ['Argentina', 14.5]
-                    ]);
-        
-                    const options = {
-                        title: 'World Wide Wine Production'
-                    };
-        
-                    const chart = new google.visualization.PieChart(document.getElementById('myChart'));
-                    chart.draw(data, options);
-                }
-                    */
-
-
-
 
 
         var newValues = [" Coffee", "Pastries", "Merch", "Beverages", "Coffee Beans"]; var otherValues = [55, 49, 44,
