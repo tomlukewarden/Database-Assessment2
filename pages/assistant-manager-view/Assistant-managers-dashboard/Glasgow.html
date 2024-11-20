@@ -13,7 +13,7 @@
     <!--nav-->
     <nav class="navbar navbar-dark bg-dark fixed-top p-3 mb-3">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Espresso Express</a>
+            <a class="navbar-brand" href="#">Espresso Express Assistant Manager</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
                 aria-label="Toggle navigation">
@@ -34,23 +34,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Profile</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Admin Tools
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="#">Requests <span class="badge text-bg-secondary">4</span> </a></li>
-                                <li><a class="dropdown-item" href="#">Users</a></li>
-                                <li><a class="dropdown-item" href="#">Products</a></li>
-                                <li><a class="dropdown-item" href="#">Stock</a></li>
-                                <li><a class="dropdown-item" href="#">Orders</a></li>
-                                <li><a class="dropdown-item" href="#">Reports</a></li>
-                                <li><a class="dropdown-item" href="#">Preview</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                            </ul>
-                        </li>
                     <!--多加-->
                     <li class="nav-item">
                         <a class="nav-link" href="#">Assistant Manager</a>
@@ -70,83 +53,91 @@
     <main class="container my-5 pt-5">
         <h1 class="dashboard-title">Glasgow Assistant Manager Dashboard</h1>
     
-        <div class="row">
-            <!-- Weekly Transactions Section -->
-            <div class="col-md-8 mb-4 mt-3">
-                <div class="card p-4 shadow-sm">
-                    <h4 class="mb-4">Glasgow Weekly Transactions</h4>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <h2>$2000</h2>
-                            <p class="text-muted">Target</p>
-                            <h3>$1500</h3>
-                            <p class="text-muted">Current Weekly Sales</p>
-                        </div>
-                        <div class="col-md-8">
-                            <p>Weekly Sales</p>
-                            <ul class="sales-list">
-                                <li>Monday <progress id="file-monday" value="60" max="100"></progress> <span id="monday-percent">60%</span></li>
-                                <li>Tuesday <progress id="file-tuesday" value="20" max="100"></progress> <span id="tuesday-percent">20%</span></li>
-                                <li>Wednesday <progress id="file-wednesday" value="30" max="100"></progress> <span id="wednesday-percent">30%</span></li>
-                                <li>Thursday <progress id="file-thursday" value="35" max="100"></progress> <span id="thursday-percent">35%</span></li>
-                                <li>Friday <progress id="file-friday" value="60" max="100"></progress> <span id="friday-percent">60%</span></li>
-                                <li>Saturday <progress id="file-saturday" value="80" max="100"></progress> <span id="saturday-percent">80%</span></li>
-                                <li>Sunday <progress id="file-sunday" value="75" max="100"></progress> <span id="sunday-percent">75%</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    
-            <!-- Manage Cards -->
-            <div class="col-md-4 mt-3">
-                <div class="row">
-                    <!-- Manage Staff Card -->
-                    <div class="col-12 mb-3">
-                        <div class="card">
-                            <div class="card-header">Manage Staff</div>
-                            <div class="card-body">
-                                <a href="#" class="btn btn-secondary">View List of Staffs</a>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <!-- Manage Product Card -->
-                    <div class="col-12 mb-3">
-                        <div class="card">
-                            <div class="card-header">Manage Product</div>
-                            <div class="card-body">
-                                <a href="#" class="btn btn-secondary">View List of Products</a>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <!-- Manage Stock Card -->
-                    <div class="col-12 mb-3">
-                        <div class="card">
-                            <div class="card-header">Manage Stock</div>
-                            <div class="card-body">
-                                <a href="#" class="btn btn-secondary">View List of Stocks</a>
-                            </div>
-                        </div>
-                    </div>
+        <div class="row" style="font-size: 1.5rem;"> <!-- 放大文字 -->
+            <div class="list-group-item d-flex align-items-center" style="padding: 1.5rem;"> <!-- 增加區塊間距 -->
+                <img src="https://media.tenor.com/LE7DIybEseAAAAAi/bunny.gif" 
+                    class="rounded-circle me-3 profile-pic" 
+                    alt="Aberdeen Assistant Manager" 
+                    style="width: 100px; height: 100px;"> <!-- 放大圖片 -->
+                <div>
+                    <strong>
+                        <a href="http://127.0.0.1:5501/pages/assistant-manager-view/Assistant-managers-dashboard/Aberdeen.html" 
+                           class="text-decoration-none text-dark"
+                           style="font-size: 2rem;">Natalie Greene</a> <!-- 放大文字 -->
+                    </strong>
                 </div>
             </div>
         </div>
-    </main>
+        
+            
 
-        <!--footer-->
-        <footer class="mt-0" style="width:100%; min-height: 60px; box-shadow: 10px 10px 50px rgba(252, 252, 252, 0.5); background-color: #050505;">
-            <div class="d-flex justify-content-between align-items-center text-light p-3">
-                <a href="#"
-                class="btn btn-outline-light fs-5" style="opacity: 0.8;">
-                Previous</a>
-                <a href="#"
-                class="btn btn-outline-light fs-5" style="opacity: 0.8;">
-                Home</a>
+            <div class="row equal-height">
+                <div class="row equal-height">
+                    <!-- Weekly Transactions Section -->
+                    <div class="col-md-6 mb-4 mt-3">
+                        <div class="card p-2 shadow-sm">
+                            <h4 class="mb-4">Performance Goals</h4>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h2>$2000</h2>
+                                    <p class="text-muted">Target</p>
+                                    <h3>$1020</h3>
+                                    <p class="text-muted">Current Weekly Sales</p>
+                                </div>
+                                <div class="col-md-8">
+                                    <p>Weekly Sales</p>
+                                    <ul class="sales-list">
+                                        <li>Monday <progress id="file-monday" value="60" max="100"></progress> <span id="monday-percent">60%</span></li>
+                                        <li>Tuesday <progress id="file-tuesday" value="20" max="100"></progress> <span id="tuesday-percent">20%</span></li>
+                                        <li>Wednesday <progress id="file-wednesday" value="30" max="100"></progress> <span id="wednesday-percent">30%</span></li>
+                                        <li>Thursday <progress id="file-thursday" value="35" max="100"></progress> <span id="thursday-percent">35%</span></li>
+                                        <li>Friday <progress id="file-friday" value="60" max="100"></progress> <span id="friday-percent">60%</span></li>
+                                        <li>Saturday <progress id="file-saturday" value="80" max="100"></progress> <span id="saturday-percent">80%</span></li>
+                                        <li>Sunday <progress id="file-sunday" value="75" max="100"></progress> <span id="sunday-percent">75%</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                    
+            <!-- Product Sales Chart Section -->
+            <div class="col-md-6 mt-3">
+            <div class="card p-4 shadow-sm">
+                <h4 class="mb-4">Product Sales Trends</h4>
+                <canvas id="productSalesChart"></canvas>
             </div>
-        </footer>
-
+            </div>
+                
+            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+            <script>
+                const ctx = document.getElementById('productSalesChart').getContext('2d');
+                const productSalesChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                    labels: ['Coffee', 'Pastries', 'Merch', 'Beverages', 'Coffee Beans'],
+                    datasets: [{
+                        data: [35, 25, 15, 10, 15],  // 設定每個產品類別的數據比例
+                        backgroundColor: ['#1E3D58', '#A2B9BC', '#D8CFC4', '#9BC4CB', '#682C91'],
+                        borderWidth: 1
+                    }]
+                    },
+                    options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                        position: 'top',
+                        },
+                        title: {
+                        display: true,
+                        text: 'Product Sales'
+                        }
+                    }
+                    }
+                });
+                </script>
+                </div>
+            </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   </body>
