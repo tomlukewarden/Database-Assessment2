@@ -11,9 +11,9 @@
 
   <body>
     <!--nav-->
-    <nav class="navbar navbar-dark bg-dark fixed-top p-3 mb-3">
+    <nav class="navbar navbar-dark bg-dark fixed-top p-3">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Espresso Express Assistant Manager</a>
+            <a class="navbar-brand" href="#">Espresso Express Dashboard</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
                 aria-label="Toggle navigation">
@@ -28,17 +28,21 @@
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown">Assistant Manager Tools</a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="../db-admin-view/users/users.html">All Staff</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="../db-admin-view/transactions/transactions.html">Transactions</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#">Stock</a></li>
+                                <li><a class="dropdown-item" href="#">Orders</a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Profile</a>
-                        </li>
-                    <!--多加-->
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Assistant Manager</a>
-                    </li>
-                    
                     </ul>
                     <form class="d-flex mt-3" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -327,7 +331,7 @@
                 <td>Edinburgh</td>
                 <td>Americano</td>
                 <td>£8.5</td>
-                <td><span class="status status-on-hold">On Hold</span></td>
+                <td><span class="status status-return">Return</span></td>
               </tr>
               <tr>
                 <td>#1234326</td>
@@ -335,7 +339,7 @@
                 <td>Glasgow</td>
                 <td>latte</td>
                 <td>£10</td>
-                <td><span class="status status-checked">Checked</span></td>
+                <td><span class="status status-success">Success</span></td>
               </tr>
               <tr>
                 <td>#1234327</td>
