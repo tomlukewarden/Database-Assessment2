@@ -37,7 +37,7 @@ include '../db.php';
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Admin Tools</a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="./requests.php">Requests <span class="badge text-bg-secondary">4</span></a></li>
+                                <li><a class="dropdown-item" href="./requests.php">Requests</a></li>
                                 <li><a class="dropdown-item" href="./users.php">Users</a></li>
                                 <li><a class="dropdown-item" href="transactions.php">Transactions</a></li>
                                 <li><a class="dropdown-item" href="#">Products</a></li>
