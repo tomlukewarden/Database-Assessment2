@@ -14,8 +14,7 @@
 <body>
     <!-- Navbar -->
     <?php include './components/navbar.php';
-    include './../utilities/db.php';
-    ?>
+     include 'db.php' ?>
 
     <main class="container-fluid my-5 pt-5">
         <!-- Page Title -->
