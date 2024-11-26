@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
-<?php session_start(); ?>
+<?php session_start(); 
+
+if (isset($_POST['Amend_order'])) {
+    header('Location: Customer_view-Products.php');
+}
+?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -57,67 +62,82 @@
     <!-- display basket -->
     <!-- BASKET -->
 
-                    <!-- ACCORDION FOR BASKET ITEMS -->
-                    <div class="accordion" id="accordion1">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Items to Checkout
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordion1">
-                                <div class="accordion-body">
-                                    <table class="table table-striped table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col-md">#</th>
-                                                <th scope="col-md">Product</th>
-                                                <th> </th>
-                                                <th scope="col-md">Price</th>
-                                                <th scope="col-md">Quantity</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                                $price_total = 0; //initialise basket total price to 0.
-                                                if (!empty($_SESSION['basket'])) {
-                                                    foreach($_SESSION['basket'] as $basket_item) {
-                                                        $item_total = $basket_item['price'] * $basket_item['quantity']; // total for this item
-                                                        $price_total += $item_total; // Add to total price
-                                                        echo "<tr>
-                                                            <td>" . $basket_item['product_name'] . "</td>";
-                                                        echo "<td class='text-capitalize'>" . $basket_item['product_name'] . "</td>";
-                                                        echo "<td><img src='https://picsum.photos/100' alt='placeholder'></td>
-                                                            <td>£" . $basket_item['price'] . ".00</td>";
-                                                        echo "<td>" . $basket_item['quantity'] . "</td>";
-                                                            
-                                                        echo "</tr>";
-                                                    }
-                                                    
-                                                }
-                                            ?>
-                                        </tbody>
-                                    </table>
+    <!-- ACCORDION FOR BASKET ITEMS -->
+    <div class="accordion" id="accordion1">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Items to Checkout
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordion1">
+                <div class="accordion-body">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col-md">#</th>
+                                <th scope="col-md">Product</th>
+                                <th> </th>
+                                <th scope="col-md">Price</th>
+                                <th scope="col-md">Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                $price_total = 0; //initialise basket total price to 0.
+                                if (!empty($_SESSION['basket'])) {
+                                    foreach($_SESSION['basket'] as $basket_item) {
+                                        $item_total = $basket_item['price'] * $basket_item['quantity']; // total for this item
+                                        $price_total += $item_total; // Add to total price
+                                        echo "<tr>
+                                            <td>" . $basket_item['product_name'] . "</td>";
+                                        echo "<td class='text-capitalize'>" . $basket_item['product_name'] . "</td>";
+                                        echo "<td><img src='https://picsum.photos/100' alt='placeholder'></td>
+                                            <td>£" . $basket_item['price'] . ".00</td>";
+                                        echo "<td>" . $basket_item['quantity'] . "</td>";
+                                            
+                                        echo "</tr>";
+                                    }
                                     
-                                    <p class="text-end"> <strong> Basket Total: £<?php echo $price_total; ?>.00 </strong></p>
-                                </div>
-                            </div>
-                        </div>
-                        <form method="post" class="d-flex justify-content-evenly mt-3">
-                            <button class="btn btn-secondary" type="submit" name="Amend Order">Amend Order</button>
-                            <button  class="btn btn-primary">Checkout</button>
-                        </form>
-                    </div>
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                    
+                    <p class="text-end"> <strong> Basket Total: £<?php echo $price_total; ?>.00 </strong></p>
+                </div>
+            </div>
+        </div>
+        
+        <form method="post" class="d-flex justify-content-evenly my-3">
+            <button class="btn btn-secondary" type="submit" name="Amend_order">Amend Order</button>
+        </form>
+    </div>
 
-<?php
-    if (isset($_POST['clear_basket'])) {
-        header('Location: Customer_view-Products.php');
-    }
-?>
-
-
-
+    <form>
+        <div class="form-group col-md-6 my-2">
+            <label for="inputAddress">House/Flat No.</label>
+            <input type="text" class="form-control" id="inputAddress" placeholder="eg. Flat 3R">
+        </div>
+        <div class="form-group col-md-6 my-2">
+            <label for="inputAddress2">Address</label>
+            <input type="text" class="form-control" id="inputAddress2" placeholder="eg. 12 Blackness Avenue">
+        </div>
+        <div class="form-row row">
+            <div class="form-group col-md-3 my-2">
+            <label for="inputCity">City</label>
+            <input type="text" class="form-control" id="inputCity">
+            </div>
+            <div class="form-group col-md-3 my-2">
+            <label for="inputPostCode">Post Code</label>
+            <input type="text" class="form-control" id="inputPostCode">
+            </div>
+        </div>
+        
+        </div>
+        <button type="submit" class="btn btn-primary my-3" name="submit_order">Submit Order</button>
+    </form>
 
     </main>
 
