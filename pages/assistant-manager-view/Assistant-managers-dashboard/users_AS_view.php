@@ -34,7 +34,7 @@ include 'db.php';
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item"><a class="nav-link active" href="assistant_manager_dashboard.php">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="assistant_manager_profile.php">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown">Assistant Manager Tools</a>
@@ -146,41 +146,7 @@ include 'db.php';
         </div>
 
 
-        <div class="container-fluid">
-            <h5>Suppliers</h5>
-            <div class="table-responsive">
-                <table class="table table-striped table-hover">
-                    <?php
-                    $supplierQuery = "SELECT * FROM Supplier";
-                    $supplierResult = $conn->query($supplierQuery);
-                    ?>
-                    <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Supplier ID</th>
-                            <th scope="col">Location</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <?php
-                        if ($supplierResult->num_rows > 0) {
-                            // Loop through and display each supplier
-                            while ($row = $supplierResult->fetch_assoc()) {
-                                echo "<tr>";
-                                echo "<td>{$row['supplier_name']}</td>";
-                                echo "<td>{$row['supplier_id']}</td>";
-                                echo "<td>{$row['location']}</td>";
-                                echo "</tr>";
-                            }
-                        } else {
-                            echo "<tr><td colspan='4'>No suppliers found</td></tr>";
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        
 
         </tbody>
         </table>
