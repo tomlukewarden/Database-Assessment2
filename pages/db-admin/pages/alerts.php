@@ -38,7 +38,7 @@ $result = $conn->query($query);
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Admin Tools</a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="./requests.php">Requests <span class="badge text-bg-secondary">4</span></a></li>
+                                <li><a class="dropdown-item" href="./requests.php">Requests</a></li>
                                 <li><a class="dropdown-item" href="./users.php">Users</a></li>
                                 <li><a class="dropdown-item" href="./transactions.php">Transactions</a></li>
                                 <li><a class="dropdown-item" href="#">Products</a></li>
@@ -64,8 +64,8 @@ $result = $conn->query($query);
 
     <!-- Alerts Table -->
     <div class="table-responsive mt-4">
-        <table class="table table-striped table-bordered">
-            <thead class="table-dark">
+        <table class="table">
+            <thead class="table-light">
                 <tr>
                     <th scope="col">Alert ID</th>
                     <th scope="col">Alert Type</th>
