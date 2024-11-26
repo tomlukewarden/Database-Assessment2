@@ -71,16 +71,11 @@ $_SESSION["password"] = $_POST["password"];
     $result = mysqli_query($conn, $sql);
 
     if ($result) {
-        echo "<h1>1---------------------------------------------------------------------</h1>";
-        // $found = FALSE;
         while ($row = mysqli_fetch_array($result)) {
             if ($_SESSION["username"] == $row['staff_id'] && $_SESSION["password"] == $row['passwords']){
-                // $found = TRUE;
-                echo "<h1>2------------------------------------------------------------------------------------------------------</h1>";
                 header('Location: profile.php');
             } else {
                 echo "<h1>Error with if statement</h1>";
-                
             }
         }
         
