@@ -37,7 +37,7 @@ include '../db.php';
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Admin Tools</a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="./requests.php">Requests <span class="badge text-bg-secondary">4</span></a></li>
+                                <li><a class="dropdown-item" href="./requests.php">Requests</a></li>
                                 <li><a class="dropdown-item" href="./users.php">Users</a></li>
                                 <li><a class="dropdown-item" href="transactions.php">Transactions</a></li>
                                 <li><a class="dropdown-item" href="#">Products</a></li>
@@ -72,14 +72,14 @@ include '../db.php';
         ?>
 
         <div class="card shadow-sm">
-            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            <div class="card-header d-flex justify-content-between align-items-center">
                 <span>Shop Transactions</span>
                 <button class="btn btn-sm btn-success">Add New Transaction</button>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-hover table-bordered align-middle">
-                        <thead class="table-dark">
+                        <thead class="table-light">
                             <tr>
                                 <th scope="col">Transaction ID</th>
                                 <th scope="col">Customer ID</th>
