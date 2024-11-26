@@ -64,8 +64,8 @@ $result = $conn->query($query);
 
     <!-- Alerts Table -->
     <div class="table-responsive mt-4">
-        <table class="table table-striped table-bordered">
-            <thead class="table-dark">
+        <table class="table">
+            <thead class="table-light">
                 <tr>
                     <th scope="col">Alert ID</th>
                     <th scope="col">Alert Type</th>

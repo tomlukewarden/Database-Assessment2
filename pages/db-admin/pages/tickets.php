@@ -72,13 +72,13 @@ include '../db.php';
             ?>
 
             <div class="card col">
-                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                <div class="card-header d-flex justify-content-between align-items-center">
                     <span>Ticket Management</span>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered align-middle">
-                            <thead class="table-dark">
+                            <thead class="table-light">
                                 <tr>
                                     <th scope="col">Ticket ID</th>
                                     <th scope="col">Issue</th>

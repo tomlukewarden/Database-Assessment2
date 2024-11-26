@@ -70,41 +70,12 @@ $result = $conn->query($query);
 $alert_count = $result->num_rows;
 ?>
 
-<div class="row my-4">
-        <div class="card border-danger">
-            <div class="card-header bg-danger text-white d-flex justify-content-between">
-                <h5 class="mb-0">Alerts <span class="badge bg-dark"><?php echo $alert_count; ?></span></h5>
-                <button class="btn btn-outline-light btn-sm" data-bs-toggle="collapse" data-bs-target="#alertsPanel">Toggle</button>
-            </div>
-            <div id="alertsPanel" class="collapse show">
-                <div class="card-body">
-                    <ul id="alertsList" class="list-group">
-                        <?php
-                        // Check if there are any results and loop through the fetched alerts
-                        if ($result->num_rows > 0) {
-                            while ($alert = $result->fetch_assoc()) {
-                                echo "<li class='list-group-item'>";
-                                echo "<strong>" . htmlspecialchars($alert['alert_type']) . ":</strong> ";
-                                echo htmlspecialchars($alert['alert_message']);
-                                echo "</li>";
-                            }
-                        } else {
-                            echo "<li class='list-group-item'>No alerts</li>";
-                        }
-                        ?>
-                    </ul>
-                    <a href="#" class="btn btn-danger mt-3">View All Alerts</a>
-                </div>
-            </div>
-    </div>
-</div>
-
 
         <!-- Tickets and Requests Section -->
         <div class="row my-4">
             <!-- Active Tickets -->
             <div class="col-lg-6">
-                <div class="card shadow-md bg-dark text-light border-secondary">
+                <div class="card shadow-md bg-light ">
                     <div class="card-body">
                         <?php
 
@@ -119,7 +90,7 @@ $alert_count = $result->num_rows;
                         <h5 class="card-title">Active Tickets</h5>
                         <p class="card-text">Most recent tickets:</p>
                         <table class="table table-striped table-bordered align-middle">
-                            <thead class="table-dark">
+                            <thead class="table-light">
                                 <tr>
                                     <th scope="col">Ticket ID</th>
                                     <th scope="col">Staff Name</th>
@@ -154,7 +125,7 @@ $alert_count = $result->num_rows;
 
             <!-- Requests from Management Staff -->
             <div class="col-sm-6">
-                <div class="card shadow-md bg-dark text-light border-secondary">
+                <div class="card shadow-md bg-light">
                     <div class="card-body">
                         <?php
 
@@ -171,7 +142,7 @@ $alert_count = $result->num_rows;
                         <h5 class="card-title">Requests from Management Staff</h5>
                         <p class="card-text">Most recent requests:</p>
                         <table class="table table-striped table-bordered align-middle">
-                            <thead class="table-dark">
+                            <thead class="table-light">
                                 <tr>
                                     <th scope="col">Request</th>
                                     <th scope="col">Manager</th>
@@ -216,85 +187,104 @@ $alert_count = $result->num_rows;
             </div>
 
         </div>
+<div class="container">
+        <div class="row my-4">
+        <div class="card col">
+            <?php
 
-        <div class="row my-4 text-center">
-                <!-- Manage Section -->
-                <div class="col-lg-9">
-                    <div class="row g-3">
-                        <div class="col-md-3">
-                            <div class="card manage shadow-lg">
-                                <div class="card-body">
-                                    <h5 class="card-title">Manage Users</h5>
-                                    <a href="../db-admin/pages/users.php" class="btn btn-secondary">View All Users</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card manage shadow-lg">
-                                <div class="card-body">
-                                    <h5 class="card-title">Manage Transactions</h5>
-                                    <a href="../db-admin/pages/transactions.php" class="btn btn-secondary mt-3">View All
-                                        Transactions</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card manage shadow-lg">
-                                <div class="card-body">
-                                    <h5 class="card-title">Manage Products</h5>
-                                    <a href="#" class="btn btn-secondary">View All
-                                        Products</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card manage shadow-lg">
-                                <div class="card-body">
-                                    <h5 class="card-title">Manage Orders</h5>
-                                    <a href="#" class="btn btn-secondary">View All Orders</a>
-                                </div>
-                            </div>
-                        </div>
+        $query = 'SELECT alert_id, alert_type, alert_message FROM Alerts WHERE status IN ("Open", "Acknowledged")';
+        $result = $conn->query($query);
+        ?>
+            <div class="card-header d-flex justify-content-between">
+                <h5 class="mb-0">Alerts <span class="badge bg-danger"><?php echo $alert_count; ?></span></h5>
+                <button class="btn btn-outline-light btn-sm" data-bs-toggle="collapse" data-bs-target="#alertsPanel">Toggle</button>
+            </div>
+            <div id="alertsPanel" class="collapse show">
+                <div class="card-body">
+                    <ul id="alertsList" class="list-group">
+                        <?php
+                        // Check if there are any results and loop through the fetched alerts
+                        if ($result->num_rows > 0) {
+                            while ($alert = $result->fetch_assoc()) {
+                                echo "<li class='list-group-item'>";
+                                echo "<strong>" . htmlspecialchars($alert['alert_type']) . ":</strong> ";
+                                echo htmlspecialchars($alert['alert_message']);
+                                echo "</li>";
+                            }
+                        } else {
+                            echo "<li class='list-group-item'>No alerts</li>";
+                        }
+                        ?>
+                    </ul>
+                    <a href="./pages/alerts.php" class="btn btn-danger mt-3">View All Alerts</a>
+                </div>
+            </div>
+    </div>
+</div>
+</div>
+        <?php
+
+$uptimeQuery = "SHOW GLOBAL STATUS LIKE 'Uptime'";
+$uptimeResult = mysqli_query($conn, $uptimeQuery);
+
+if ($uptimeResult) {
+    $row = mysqli_fetch_assoc($uptimeResult);
+    $uptime = $row['Value']; // Uptime in seconds
+} else {
+    echo "Error executing query: " . mysqli_error($conn);
+}
+mysqli_close($conn);
+?>
+
+<div class=" ml-5 row my-4 text-center">
+    <!-- Manage Section -->
+    <div class="col-lg-12">
+        <div class="row g-3">
+            <div class="col-md-2">
+                <div class="card manage shadow-lg">
+                    <div class="card-header">Manage Users</div>
+                    <div class="card-body">
+                        <a href="../db-admin/pages/users.php" class="btn btn-outline-primary">View All Users</a>
                     </div>
                 </div>
-                <!-- Database Status -->
-                <div class="row gap-4 mt-3 db-status shadow-md bg-dark p-3 rounded">
-                    <h3 class="text-light">Database Status</h3>
-                    <div class="col">
-                        <div class="card border-success">
-                            <div class="card-header">Database Uptime</div>
-                            <div class="card-body">
-                                <h5 class="card-title">99.9%</h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 99.9%;">99.9%
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card manage shadow-lg">
+                    <div class="card-header">Manage Transactions</div>
+                    <div class="card-body">
+                        <a href="../db-admin/pages/transactions.php" class="btn btn-outline-primary">View All Transactions</a>
                     </div>
-                    <div class="col">
-                        <div class="card border-info">
-                            <div class="card-header">Response Time</div>
-                            <div class="card-body">
-                                <h5 class="card-title">120ms</h5>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card manage shadow-lg">
+                    <div class="card-header">Manage Products</div>
+                    <div class="card-body">
+                        <a href="#" class="btn btn-outline-primary">View All Products</a>
                     </div>
-                    <div class="col">
-                        <div class="card border-danger">
-                            <div class="card-header">Storage Usage</div>
-                            <div class="card-body">
-                                <h5 class="card-title">75% Full</h5>
-                                <div class="progress">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 75%;">75%</div>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card manage shadow-lg">
+                    <div class="card-header">Manage Orders</div>
+                    <div class="card-body">
+                        <a href="#" class="btn btn-outline-primary">View All Orders</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card manage shadow-lg">
+                    <div class="card-header">Database Uptime (seconds)</div>
+                    <div class="card-body">
+                        <h5 class="card-title "><?php echo $uptime; ?> seconds</h5>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+
+
+</main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
