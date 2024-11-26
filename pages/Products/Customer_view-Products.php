@@ -5,6 +5,7 @@ session_start();
 // PHP FOR CLEARING THE BASKET:
 if (isset($_POST['clear_basket'])) {
     unset($_SESSION['basket']);
+    unset($_SESSION['product_ids_in_basket']); // keeps track of what product ids are in basket for inserting into transactions table.
 }
 if (isset($_POST['checkout'])){
     header('Location: Customer_view-CheckoutProducts.php');
@@ -66,11 +67,15 @@ if (isset($_POST['checkout'])){
     $_SESSION['basket'] = [];
     }
 
+    //$_SESSION['product_ids_in_basket'] = []; //empty list to store ids of whats in teh basket
+
     if (isset($_POST['add_to_basket'])) {
         $product_id = $_POST['product_id'];
         $product_name = $_POST['product_name'];
         $price = $_POST['price'];
-    
+        
+        $_SESSION['product_ids_in_basket'][] = $product_id; // add id of whats being added to the basket to session variable
+
         // Check if the product is already in the basket
         if (isset($_SESSION['basket'][$product_id])) {
             // Increment the quantity
