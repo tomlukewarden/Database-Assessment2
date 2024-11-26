@@ -67,8 +67,8 @@ session_start();
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item"><a class="nav-link" href="staff_dashboard.php">Staff Dashboard</a></li>
-                            <li class="" nav-item><a class="nav-link" href="staff_products.php">Products</a></li>
+                            <li class="nav-item"><a class="nav-link" href="staff/staff_dashboard.php">Staff Dashboard</a></li>
+                            <li class="" nav-item><a class="nav-link" href="staff/staff_products.php">Products</a></li>
                         </ul>
                     </div>
                 </div>
