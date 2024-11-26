@@ -42,7 +42,7 @@
                                 <li><a class="dropdown-item" href="../Products/Products-staffView.php">Stock</a></li>
                                 <li><a class="dropdown-item" href="#">Orders</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Reports</a></li>
+                                <li><a class="dropdown-item" href="#">Sales Reports</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -197,7 +197,7 @@ $alert_count = $result->num_rows;
         ?>
             <div class="card-header d-flex justify-content-between">
                 <h5 class="mb-0">Alerts <span class="badge bg-danger"><?php echo $alert_count; ?></span></h5>
-                <button class="btn btn-outline-light btn-sm" data-bs-toggle="collapse" data-bs-target="#alertsPanel">Toggle</button>
+                <button class="btn btn-outline-danger btn-sm" data-bs-toggle="collapse" data-bs-target="#alertsPanel">Toggle</button>
             </div>
             <div id="alertsPanel" class="collapse show">
                 <div class="card-body">
