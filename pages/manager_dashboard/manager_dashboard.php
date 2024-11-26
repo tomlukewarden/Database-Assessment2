@@ -20,6 +20,7 @@ session_start()
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=bedtime" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_bag" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
@@ -46,8 +47,8 @@ session_start()
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="manager_dashboard.php">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown">Managers
@@ -58,8 +59,6 @@ session_start()
                                 <li><a class="dropdown-item"
                                         href="../db-admin-view/transactions/transactions.html">Transactions</a>
                                 </li>
-                                <li><a class="dropdown-item" href="#">Stock</a></li>
-                                <li><a class="dropdown-item" href="#">Orders</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -208,44 +207,196 @@ session_start()
         <div class="row">
             <div class="col-md-7 py-3">
                 <div class="card" style="height: 500px; box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
-                    <div class="card-body d-flex flex-column align-items-center" style="height: 100%;">
-                        <h1 class="text-center"> Orders </h1>
-                        <p style="display: flex; align-items: flex-end;">
-                            <span class="material-symbols-outlined" style="line-height: 1;">
-                                shopping_bag
-                            </span>
-                            <a href="#" style="margin-left: 5px;">54 New orders</a>
-                        </p>
+                    <div class="card-body d-flex flex-column align-items-center justify-content-between" style="height: 100%;">
+                        <h1 class="text-center"> Store Transactions </h1>
 
 
                         <section class="mb-2" style="width: 90%;">
                             <p class="mb-1"> Glasgow Shop </p>
-                            <div class="progress mb-4" style="height: 20px">
-                                <div class="progress-bar justify-content-center align-self-center" role="progressbar"
-                                    style="width: 25%; height: 20px;" aria-valuenow="25" aria-valuemin="0"
-                                    aria-valuemax="100"> 25 %
-                                </div>
-                            </div>
+                            <?php
+                            $sql = "SELECT COUNT(*) AS total_online_orders 
+                                    FROM transactions t 
+                                    JOIN store s ON t.store_id = s.store_id 
+                                    WHERE s.store_id=3";
+
+                            $salessql = "SELECT COUNT(*) AS total_sales FROM transactions";
+
+                            $result = mysqli_query($conn, $sql); 
+                            $result1 = mysqli_query($conn, $salessql);
+
+                            if ($result && $result1) {
+                                $rowonline=mysqli_fetch_assoc($result);
+                                $onlineOrders = $rowonline['total_online_orders'];
+                                $rowsales=mysqli_fetch_assoc($result1);
+                                $totalSales = $rowsales['total_sales'];
+
+                                if ($totalSales > 0) { // Prevent division by zero
+                                    $percentage = ($onlineOrders / $totalSales) * 100;
+
+                                    echo '<div class="progress mb-4" style="height: 20px">
+                                            <div class="progress-bar" role="progressbar" 
+                                                style="width: ' . $percentage . '%; height: 20px;" 
+                                                aria-valuenow="' . $percentage . '" 
+                                                aria-valuemin="0" 
+                                                aria-valuemax="100">
+                                                ' . number_format($percentage) . '% 
+                                            </div>
+                                        </div>';
+                                } else {
+                                    echo "No sales data available.";
+                                }
+                            } 
+                            ?>
                             <p class="mb-1"> Dundee Shop</p>
-                            <div class="progress mb-4" style="height: 20px">
-                                <div class="progress-bar" role="progressbar" style="width: 50%; height: 20px;"
-                                    aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"> 50% </div>
-                            </div>
+
+                            <?php
+                            $sql = "SELECT COUNT(*) AS total_online_orders 
+                                    FROM transactions t 
+                                    JOIN store s ON t.store_id = s.store_id 
+                                    WHERE s.store_id=1";
+
+                            $salessql = "SELECT COUNT(*) AS total_sales FROM transactions";
+
+                            $result = mysqli_query($conn, $sql); 
+                            $result1 = mysqli_query($conn, $salessql);
+
+                            if ($result && $result1) {
+                                $rowonline=mysqli_fetch_assoc($result);
+                                $onlineOrders = $rowonline['total_online_orders'];
+                                $rowsales=mysqli_fetch_assoc($result1);
+                                $totalSales = $rowsales['total_sales'];
+
+                                if ($totalSales > 0) { // Prevent division by zero
+                                    $percentage = ($onlineOrders / $totalSales) * 100;
+
+                                    echo '<div class="progress mb-4" style="height: 20px">
+                                            <div class="progress-bar" role="progressbar" 
+                                                style="width: ' . $percentage . '%; height: 20px;" 
+                                                aria-valuenow="' . $percentage . '" 
+                                                aria-valuemin="0" 
+                                                aria-valuemax="100">
+                                                ' . number_format($percentage) . '% 
+                                            </div>
+                                        </div>';
+                                } else {
+                                    echo "No sales data available.";
+                                }
+                            } 
+                            ?>
+
+
                             <p class="mb-1"> Edinburgh Shop </p>
-                            <div class="progress mb-4" style="height: 20px">
-                                <div class="progress-bar" role="progressbar" style="width: 75%; height: 20px;"
-                                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> 75% </div>
-                            </div>
+                            <?php
+                            $sql = "SELECT COUNT(*) AS total_online_orders 
+                                    FROM transactions t 
+                                    JOIN store s ON t.store_id = s.store_id 
+                                    WHERE s.store_id=2";
+
+                            $salessql = "SELECT COUNT(*) AS total_sales FROM transactions";
+
+                            $result = mysqli_query($conn, $sql); 
+                            $result1 = mysqli_query($conn, $salessql);
+
+                            if ($result && $result1) {
+                                $rowonline=mysqli_fetch_assoc($result);
+                                $onlineOrders = $rowonline['total_online_orders'];
+                                $rowsales=mysqli_fetch_assoc($result1);
+                                $totalSales = $rowsales['total_sales'];
+
+                                if ($totalSales > 0) { // Prevent division by zero
+                                    $percentage = ($onlineOrders / $totalSales) * 100;
+
+                                    echo '<div class="progress mb-4" style="height: 20px">
+                                            <div class="progress-bar" role="progressbar" 
+                                                style="width: ' . $percentage . '%; height: 20px;" 
+                                                aria-valuenow="' . $percentage . '" 
+                                                aria-valuemin="0" 
+                                                aria-valuemax="100">
+                                                ' . number_format($percentage) . '% 
+                                            </div>
+                                        </div>';
+                                } else {
+                                    echo "No sales data available.";
+                                }
+                            } 
+                            ?>
+
+                            
                             <p class="mb-1"> Aberdeen Shop</p>
-                            <div class="progress mb-4" style="height: 20px">
-                                <div class="progress-bar" role="progressbar" style="width: 60%; height: 20px;"
-                                    aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"> 60% </div>
-                            </div>
+                            <?php
+                            $sql = "SELECT COUNT(*) AS total_online_orders 
+                                    FROM transactions t 
+                                    JOIN store s ON t.store_id = s.store_id 
+                                    WHERE s.store_id=4";
+
+                            $salessql = "SELECT COUNT(*) AS total_sales FROM transactions";
+
+                            $result = mysqli_query($conn, $sql); 
+                            $result1 = mysqli_query($conn, $salessql);
+
+                            if ($result && $result1) {
+                                $rowonline=mysqli_fetch_assoc($result);
+                                $onlineOrders = $rowonline['total_online_orders'];
+                                $rowsales=mysqli_fetch_assoc($result1);
+                                $totalSales = $rowsales['total_sales'];
+
+                                if ($totalSales > 0) { // Prevent division by zero
+                                    $percentage = ($onlineOrders / $totalSales) * 100;
+
+                                    echo '<div class="progress mb-4" style="height: 20px">
+                                            <div class="progress-bar" role="progressbar" 
+                                                style="width: ' . $percentage . '%; height: 20px;" 
+                                                aria-valuenow="' . $percentage . '" 
+                                                aria-valuemin="0" 
+                                                aria-valuemax="100">
+                                                ' . number_format($percentage) . '% 
+                                            </div>
+                                        </div>';
+                                } else {
+                                    echo "No sales data available.";
+                                }
+                            } 
+                            ?>
+
                             <p class="mb-1"> Online Store</p>
-                            <div class="progress mb-4" style="height: 20px">
-                                <div class="progress-bar" role="progressbar" style="width: 100%; height: 20px;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"> 100% </div>
-                            </div>
+
+                            <?php
+                            $sql = "SELECT COUNT(*) AS total_online_orders 
+                                    FROM transactions t 
+                                    JOIN store s ON t.store_id = s.store_id 
+                                    WHERE s.is_online = 1";
+
+                            $salessql = "SELECT COUNT(*) AS total_sales FROM transactions";
+
+                            $result = mysqli_query($conn, $sql); 
+                            $result1 = mysqli_query($conn, $salessql);
+
+                            if ($result && $result1) {
+                                $rowonline=mysqli_fetch_assoc($result);
+                                $onlineOrders = $rowonline['total_online_orders'];
+                                $rowsales=mysqli_fetch_assoc($result1);
+                                $totalSales = $rowsales['total_sales'];
+
+                                if ($totalSales > 0) { // Prevent division by zero
+                                    $percentage = ($onlineOrders / $totalSales) * 100;
+
+                                    echo '<div class="progress mb-4" style="height: 20px">
+                                            <div class="progress-bar" role="progressbar" 
+                                                style="width: ' . $percentage . '%; height: 20px;" 
+                                                aria-valuenow="' . $percentage . '" 
+                                                aria-valuemin="0" 
+                                                aria-valuemax="100">
+                                                ' . number_format($percentage) . '% 
+                                            </div>
+                                        </div>';
+                                } else {
+                                    echo "No sales data available.";
+                                }
+                            } 
+                            ?>
+
+
+                            
                         </section>
 
                     </div>
@@ -258,9 +409,43 @@ session_start()
                         <div class="card" style="height: 240px; box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
                             <div class="card-body d-flex flex-column justify-content-center align-items-center"
                                 style="height: 100%;">
-                                <p class="text-center"> Online visitors </p>
-                                <h1 class="text-center" style="font-size: 50px;"> 1200 </h1>
+
+                                <!--calculates nr of online customers -->
+                                <p class="text-center"> Online customers </p> 
+                                
+                            
+                                <?php
+                                /*
+                                    
+                                    <!--calculates nr of online visitors stored in a file to see how many turned into customers-->
+                                    //Change the above with <p class="text-center"> Online visitors </p> 
+
+
+                                    $countFile = 'count_visitors.txt';
+
+                                    if (file_exists($countFile)) {
+                                        $count = file_get_contents($countFile);
+                                        echo "<h1 class='text-center' style='font-size: 50px;'>".$count."</h1>";
+                                    } else {
+                                        echo "<h1 class='text-center' style='font-size: 50px;'>"."..."."</h1>";
+                                    }*/
+                        
+
+
+                                    //customers that are online
+
+                                    $sql = "SELECT COUNT(*) AS total_online_customers FROM customer WHERE is_online = 1;";  
+                                    $result = mysqli_query($conn, $sql); 
+                                    if($result) {
+                                        $row = mysqli_fetch_assoc($result);
+                                        echo "<h1 class='text-center' style='font-size: 50px;'>". $row['total_online_customers']. '</h1>';
+                                    }
+                                    
+                                ?>
+                                    
+                                
                             </div>
+                            
                         </div>
 
                     </div>
@@ -269,7 +454,16 @@ session_start()
                             <div class="card-body d-flex flex-column justify-content-center align-items-center"
                                 style="height: 100%;">
                                 <p class="text-center"> Online orders </p>
-                                <h1 class="text-center" style="font-size: 50px;"> 500 <h1>
+                                <!--calculates nr of online orders -->
+                                <?php
+                                    $sql = "SELECT COUNT(product_id) AS total_online_orders FROM transactions t JOIN store s ON t.store_id = s.store_id WHERE s.is_online = 1;";  
+                                    $result = mysqli_query($conn, $sql); 
+                                    if($result) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                        echo '<h1 class="text-center" style="font-size: 50px;">' . $row['total_online_orders'] . "</h1>";
+                                        }
+                                    }
+                                ?>
                             </div>
                         </div>
 
@@ -281,9 +475,16 @@ session_start()
                             <div class="card-body d-flex flex-column justify-content-center align-items-center"
                                 style="height: 100%;">
                                 <p class="text-center"> In shop customers </p>
-                                <h1 class="text-center" style="font-size: 50px;"> 70 </h1>
-
-
+                                <!--calculates nr of in shop customers -->
+                                <?php
+                                    $sql = "SELECT COUNT(product_id) AS total_in_shop_sales FROM transactions t JOIN store s ON t.store_id = s.store_id WHERE s.is_online = 0";  
+                                    $result = mysqli_query($conn, $sql); 
+                                    if($result) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                        echo '<h1 class="text-center" style="font-size: 50px;">' . $row['total_in_shop_sales'] . "</h1>";
+                                        }
+                                    }
+                                ?>
                             </div>
                         </div>
 
@@ -292,8 +493,17 @@ session_start()
                         <div class="card" style="height: 240px; box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
                             <div class="card-body d-flex flex-column justify-content-center align-items-center"
                                 style="height: 100%;">
-                                <p class="text-center"> Loyalty programs </p>
-                                <h1 class="text-center" style="font-size: 50px;"> 200 </h1>
+                                <p class="text-center"> Loyalty memberships </p>
+                                <!--calculates how many loyal customers -->
+                                <?php
+                                    $sql = "SELECT COUNT(loyalty_id) AS total_loyalty_memberships FROM loyalty";  
+                                    $result = mysqli_query($conn, $sql); 
+                                    if($result) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                        echo '<h1 class="text-center" style="font-size: 50px;">' . $row['total_loyalty_memberships'] . "</h1>";
+                                        }
+                                    }
+                                ?>
 
                             </div>
                         </div>
@@ -322,107 +532,29 @@ session_start()
                         </ul>
                     </div>
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title mb-5" id="CardTitle">Daily Shift</h5>
+                        <h5 class="card-title m-3" id="CardTitle"> Staff on Shift </h5>
                         <div id="CardContent">
-                            <table class="table text-start">
-                                <thead>
-                                    <tr>
-                                        <th scope="col"> </th>
-                                        <th scope="col">Staff Name</th>
-                                        <th scope="col">Staff Role </th>
-                                        <th scope="col">Shift pattern </th>
-                                        <th scope="col"> Attended </th>
+                            <?php
+                            $sqlClockedIn = "SELECT first_name, last_name, position FROM staff WHERE `clock_in/out` = 1";  
+                            $resultClockedIn = mysqli_query($conn, $sqlClockedIn); 
+                            
+                            if($resultClockedIn) {
+                                if(mysqli_num_rows($resultClockedIn) > 0){
+                                    echo '<table class="table text-start">';
+                                    echo "<thead><tr><th scope='col'> </th><th scope='col'>Staff Name</th><th scope='col'>Staff Role </th><th scope='col'> Attendance </th></tr></thead>";
+                                    echo "<tbody>";
+                                    while($row = mysqli_fetch_assoc($resultClockedIn)){
+                                        echo "<tr><th scope='row'> </th><td>" . $row['first_name'] . ' ' . $row['last_name'] . "</td><td>" . $row['position'] . "</td><td style='color: rgb(82, 145, 0);'>Clocked In</td></tr>";
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row"> </th>
-                                        <td>James Steward</td>
-                                        <td>Barista</td>
-                                        <td> 10:00- 16:00</td>
-                                        <td style="color: rgb(82, 145, 0);"> Clocked in </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"> </th>
-                                        <td>James Steward</td>
-                                        <td>Barista</td>
-                                        <td> 10:00- 16:00</td>
-                                        <td style="color: rgb(82, 145, 0);"> Clocked in </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"> </th>
-                                        <td>James Steward</td>
-                                        <td>Marketing</td>
-                                        <td> 10:00- 16:00</td>
-                                        <td style="color: rgb(82, 145, 0);"> Clocked in </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"> </th>
-                                        <td>James Steward</td>
-                                        <td>Head Assistant</td>
-                                        <td> 10:00- 16:00</td>
-                                        <td style="color: rgb(82, 145, 0);"> Clocked in </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"> </th>
-                                        <td>James Steward</td>
-                                        <td>Barista</td>
-                                        <td> 10:00- 16:00</td>
-                                        <td style="color: rgb(0, 0, 139);"> Late</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"> </th>
-                                        <td>James Steward</td>
-                                        <td>Barista</td>
-                                        <td> 10:00- 16:00</td>
-                                        <td style="color: rgb(82, 145, 0);"> Clocked in </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"> </th>
-                                        <td>James Steward</td>
-                                        <td>Social Media</td>
-                                        <td> 10:00- 16:00</td>
-                                        <td style="color: rgb(145, 17, 0);"> Absent</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"> </th>
-                                        <td>James Steward</td>
-                                        <td>Marketing</td>
-                                        <td> 10:00- 16:00</td>
-                                        <td style="color: rgb(82, 145, 0);"> Clocked in </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"> </th>
-                                        <td>James Steward</td>
-                                        <td>Head Assistant</td>
-                                        <td> 10:00- 16:00</td>
-                                        <td style="color: rgb(82, 145, 0);"> Clocked in </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"> </th>
-                                        <td>James Steward</td>
-                                        <td>Barista</td>
-                                        <td> 10:00- 16:00</td>
-                                        <td style="color: rgb(145, 17, 0);"> Absent</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"> </th>
-                                        <td>James Steward</td>
-                                        <td>Head Assistant</td>
-                                        <td> 10:00- 16:00</td>
-                                        <td style="color: rgb(82, 145, 0);"> Clocked in </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row"> </th>
-                                        <td>James Steward</td>
-                                        <td>Barista</td>
-                                        <td> 10:00- 16:00</td>
-                                        <td style="color: rgb(145, 17, 0);"> Absent</td>
-                                    </tr>
+                                    }  
+                                    echo "</tbody></table>";
 
-                                </tbody>
-                            </table>
+                                } else {
+                                echo '<p class="text-center m-4 text-secondary font-italic ">'."No staff on shift at the moment...". '</p>';
+                                }
+                            }
+
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -462,94 +594,26 @@ session_start()
             <div class="col py-3">
                 <div class="card full-height-card" style="box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);">
                     <div class="card-body d-flex flex-column">
-                        <h3 class="text-start mb-3"> Best selling products</h3>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col"> </th>
-                                    <th scope="col">Product Name</th>
-                                    <th scope="col">Customer </th>
-                                    <th scope="col">Rating </th>
-                                    <th scope="col">Review</th>
+                        <h3 class="text-start m-3"> Best selling products</h3>
+                        <?php
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row"> </th>
-                                    <td><img class="img" src="https://picsum.photos/id/8/20/20" alt="Card image cap">
-                                        Caffe Latte</td>
-                                    <td>James Steward</td>
-                                    <td style="color: rgb(255, 208, 0);">★★★★★</td>
-                                    <td>Best Coffee I ever had</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"> </th>
-                                    <td> <img class="img" src="https://picsum.photos/id/8/20/20" alt="Card image cap">
-                                        Caffe Latte</td>
-                                    <td>James Steward</td>
-                                    <td style="color: rgb(255, 208, 0);">★★★★★</td>
-                                    <td>Customers very friendly</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"> </th>
-                                    <td> <img class="img" src="https://picsum.photos/id/8/20/20" alt="Card image cap">
-                                        Caffe Latte</td>
-                                    <td>James Steward</td>
-                                    <td style="color: rgb(255, 208, 0);">★★★★★</td>
-                                    <td>nice coffee</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"> </th>
-                                    <td> <img class="img" src="https://picsum.photos/id/8/20/20" alt="Card image cap">
-                                        Caffe Latte</td>
-                                    <td>James Steward</td>
-                                    <td style="color: rgb(255, 208, 0);">★★★★★</td>
-                                    <td>will come again</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"> </th>
-                                    <td> <img class="img" src="https://picsum.photos/id/8/20/20" alt="Card image cap">
-                                        Caffe Latte</td>
-                                    <td>James Steward</td>
-                                    <td style="color: rgb(255, 208, 0);">★★★★☆</td>
-                                    <td>friendly staff</td>
-
-                                <tr>
-                                    <th scope="row"> </th>
-                                    <td> <img class="img" src="https://picsum.photos/id/8/20/20" alt="Card image cap">
-                                        Caffe Latte</td>
-                                    <td>James Steward</td>
-                                    <td style="color: rgb(255, 208, 0);">★★★★★</td>
-                                    <td>Customers very friendly</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"> </th>
-                                    <td> <img class="img" src="https://picsum.photos/id/8/20/20" alt="Card image cap">
-                                        Caffe Latte</td>
-                                    <td>James Steward</td>
-                                    <td style="color: rgb(255, 208, 0);">★★★★★</td>
-                                    <td>nice coffee</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"> </th>
-                                    <td> <img class="img" src="https://picsum.photos/id/8/20/20" alt="Card image cap">
-                                        Caffe Latte</td>
-                                    <td>James Steward</td>
-                                    <td style="color: rgb(255, 208, 0);">★★★★★</td>
-                                    <td>will come again</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row"> </th>
-                                    <td> <img class="img" src="https://picsum.photos/id/8/20/20" alt="Card image cap">
-                                        Caffe Latte</td>
-                                    <td>James Steward</td>
-                                    <td style="color: rgb(255, 208, 0);">★★★★☆</td>
-                                    <td>friendly staff</td>
-                                </tr>
-                                </tr>
-                            </tbody>
-                        </table>
+                        $sql = "SELECT p.product_name, COUNT(p.product_id) AS quantity FROM transactions t JOIN product p ON p.product_id = t.product_id GROUP BY p.product_id ORDER BY quantity DESC LIMIT 4";
+                        $result = mysqli_query($conn, $sql); 
+                        if($result) {
+                            if(mysqli_num_rows($result) > 0){
+                                echo '<table class="table">';
+                                echo "<thead><tr><th scope='col'></th><th scope='col'></th><th scope='col'>Product Name</th><th scope='col'> Quantity </th></tr></thead>";
+                                echo "<tbody>";
+                                 while ($row = mysqli_fetch_assoc($result)) {
+                                    echo "<tr><th scope='row'></th><td>" .'<img class="img" src="https://picsum.photos/id/8/20/20" alt="Card image cap">'."</td><td>". $row['product_name'] . "</td><td>" . $row['quantity']. " items" . "</td></tr>";
+                                }
+                                echo "</tbody></table>";
+                            } else {
+                                echo '<p class="text-center m-4 text-secondary font-italic ">'."No products bought yet...". '</p>';
+                                }
+                        } 
+                                            
+                        ?>
                     </div>
                 </div>
             </div>
@@ -558,49 +622,37 @@ session_start()
 
     </div>
 
-    <div class="container-fluid px-4">
-        <h3> Products state: </h3>
-        <div class="row">
-            <div class="col-3 py-3">
-                <div class="card border-danger actionrequired" style="box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);">
-                    <img class="card-img-top p-2" src="https://picsum.photos/id/8/300/300" alt="Card image cap">
-                    <div class="card-body p-2">
-                        <h5 class="card-title mb-0">Product Title</h5>
-                        <p class="card-text fs-6"><em>idproduct</em></p>
-                    </div>
-                    <div class="card-footer text-center text-light border-danger bg-danger">Low in stock
-                    </div>
-                </div>
-            </div>
-            <div class="col-3 py-3">
-                <div class="card border-secondary actionrequired" style="box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
-                    <img class="card-img-top p-2" src="https://picsum.photos/id/8/300/300" alt="Card image cap">
-                    <div class="card-body p-2">
-                        <h5 class="card-title mb-0">Product Title</h5>
-                        <p class="card-text fs-6"><em>idproduct</em></p>
-                    </div>
-                    <div class="card-footer border-secondary bg-secondary text-center text-light">
-                        Out of stock
-                    </div>
-                </div>
-            </div>
-            <div class="col-3 py-3">
-                <div class="card border-secondary actionrequired" style="box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
-                    <img class="card-img-top p-2" src="https://picsum.photos/id/8/300/300" alt="Card image cap">
-                    <div class="card-body p-2">
-                        <h5 class="card-title mb-0">Product Title</h5>
-                        <p class="card-text fs-6"><em>idproduct</em></p>
-                    </div>
-                    <div class="card-footer border-secondary bg-secondary text-center text-light">
-                        Out of stock
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="container-fluid px-4 mb-5">
+        <?php
+        $sqlLowInStock = "SELECT product_id, product_name, stock FROM product WHERE stock <= 5";  
+        $resultLowInStock = mysqli_query($conn, $sqlLowInStock); 
+        
+        if($resultLowInStock) {
+            echo '<h3> Products state: </h3>
+                    <div class="row">'; 
+                
+            while($row = mysqli_fetch_assoc($resultLowInStock)){
+                echo '<div class="col-2 py-3">
+                        <div class="card border-danger actionrequired" style="box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);">
+                            <img class="card-img-top p-2" src="https://picsum.photos/id/8/300/300" alt="Card image cap">
+                            <div class="card-body p-2">
+                                <h5 class="card-title mb-0">'. $row['product_name'] .'</h5>
+                                <p class="card-text fs-6"><em> #'. $row['product_id'] .'</em></p>
+                             </div>
+                            <div class="card-footer text-center text-light border-danger bg-danger">Low in stock
+                            </div>
+                        </div>
+                    </div>';
+            } 
+            echo '</div';
+        }
+
+        ?>
+
     </div>
 
 
-    <script src="manager_dashboard.js"></script>
+    <script src="manager_dashboard_php.js"></script>
     
 
 </body>
