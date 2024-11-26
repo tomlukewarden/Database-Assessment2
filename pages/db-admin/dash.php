@@ -13,7 +13,7 @@
 
 <body>
     <!-- Navbar -->
-    <?php include 'db.php' ?>
+    <?php include '../../config/db.php' ?>
     <nav class="navbar navbar-dark bg-dark fixed-top p-3">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Espresso Express Dashboard</a>

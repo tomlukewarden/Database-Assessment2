@@ -182,8 +182,7 @@ if (isset($_POST['checkout'])){
                         <?php 
 
                         // CONNECT TO DATABASE
-                        include 'db.php';
-
+                        include '../../../config/db.php'; 
                         // DEFAULT QUERY
                         $sql = "SELECT * FROM product";
 

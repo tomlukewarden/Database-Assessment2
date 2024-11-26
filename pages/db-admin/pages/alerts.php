@@ -10,7 +10,7 @@
 <body>
 
 <?php 
-include '../db.php'; 
+include '../../../config/db.php'; 
 
 // Fetch all alerts from the database
 $query = "SELECT alert_id, alert_type, alert_message, status, created_at, updated_at FROM Alerts";

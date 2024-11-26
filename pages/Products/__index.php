@@ -8,9 +8,11 @@
 </head>
 <body>
 
-<a href="db.php">Link to DB.PHP file <br></a>
+
 
 <?php 
+include '../../../config/db.php'; 
+
 session_start();
 // store session data
 if(isset($_SESSION['views'])){
