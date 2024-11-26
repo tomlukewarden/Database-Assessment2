@@ -37,7 +37,7 @@ include 'db.php';
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item"><a class="nav-link active" href="assistant_manager_dashboard.php">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="assistant_manager_profile.php">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown">Assistant Manager Tools</a>
