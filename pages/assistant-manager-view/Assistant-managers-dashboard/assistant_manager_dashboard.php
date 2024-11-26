@@ -1,3 +1,10 @@
+
+<?php 
+
+include '../config/db.php'; 
+session_start();
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,11 +14,65 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <link rel="stylesheet" href="./assistant-manager.css">
+    <style>
+    .dashboard-title {
+        font-size: 2rem;
+    }
+
+
+    .profile-pic {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+      }
+
+
+    .sales-list {
+        list-style: none;
+        padding-left: 0;
+    }
+    .sales-list li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+    }
+
+
+    /* Style for active tab */
+    .active-tab {
+        font-weight: bold;
+        color: #dc3545;
+        border-bottom: 2px solid #dc3545;
+      }
+
+      /* Custom table header style */
+      table thead {
+        background-color: #f8f9fa;
+        font-weight: bold;
+      }
+
+      /* Custom button-like status styles */
+      .status {
+        display: inline-block;
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.5rem;
+        font-size: 0.85rem;
+        color: #fff;
+        text-align: center;
+      }
+      .status-success { background-color: #28a745; }
+      .status-open { background-color: #fd7e14; }
+      .status-return { background-color: #6f42c1; }
+      .status-process { background-color: #ffc107; }
+      </style>
+
   </head>
 
   <body>
+
     <!--nav-->
-     <nav class="navbar navbar-dark bg-dark fixed-top p-3">
+    <nav class="navbar navbar-dark bg-dark fixed-top p-3">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Espresso Express Dashboard</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -57,6 +118,19 @@
     <main class="container my-5 pt-5">
       <h1 class="dashboard-title">Assistant Manager Dashboard</h1>
 
+      <?php
+        //get name
+        $sql = "SELECT first_name, last_name FROM staff WHERE staff_id = " . $_SESSION['username'];
+        $result = mysqli_query($conn, $sql);
+        if ($result) {
+
+            while ($row = mysqli_fetch_array($result))
+            {
+                echo "<p>Hello! " . $row['first_name'] . " " , $row['last_name'] , "</p>";
+            }
+        }                               
+        ?>
+
         <!-- Manage Cards -->
         <div class="row mt-5">
             <!-- Manage Staff Card -->
@@ -71,7 +145,7 @@
             <!-- Manage Stock Card -->
             <div class="col-md-3 mb-3">
                 <div class="card">
-                    <div class="card-header">Manage Products</div>
+                    <div class="card-header">Manage Stock</div>
                     <div class="card-body">
                         <a href="#" class="btn btn-secondary">View</a>
                     </div>

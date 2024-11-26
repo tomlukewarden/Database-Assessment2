@@ -1,9 +1,9 @@
 
 <?php 
 
-include '../db.php'; 
+include 'db.php'; 
 session_start();
-echo "asldfsdfhshdfhsdkghsdgskdghsd <br> <br>asdfsdfsdfsdf<br><br>sdfksgdfksjdf";
+echo "<br> <br> <br><br><br><br>";
 echo "session variable for user: " . $_SESSION["password"];
 ?>
 
@@ -52,7 +52,7 @@ echo "session variable for user: " . $_SESSION["password"];
     </nav>
 
 
-    <main class="container-fluid my-5 pt-5 coolor">
+    <main class="container-fluid my-5 pt-5 ">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -68,10 +68,7 @@ echo "session variable for user: " . $_SESSION["password"];
                         
                                         while ($row = mysqli_fetch_array($result))
                                         {
-                                            echo "<tr>";
-                                            echo "<td>" . $row['first_name'] . "</td>";
-                                            echo "<td>" . $row['last_name'] . "</td>";
-                                            echo "</tr>";
+                                            echo "<p>" . $row['first_name'] . " " . $row['last_name'] . "</p>";
                                         }
                                     }
 
