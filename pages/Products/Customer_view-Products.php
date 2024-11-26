@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html>
-<?php session_start(); ?>
+<?php 
+session_start(); 
+// PHP FOR CLEARING THE BASKET:
+if (isset($_POST['clear_basket'])) {
+    unset($_SESSION['basket']);
+}
+if (isset($_POST['checkout'])){
+    header('Location: Customer_view-CheckoutProducts.php');
+}
+?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -75,21 +84,6 @@
             ];
         }
     }
-
-    if (isset($_POST['clear_basket'])) {
-        unset($_SESSION['basket']);
-    }
-
-    // PHP FOR CLEARING THE BASKET:
-
-
-
-
-
-
-
-
-
     ?>
 
 
@@ -151,7 +145,7 @@
                         </div>
                         <form method="post" class="d-flex justify-content-evenly mt-3">
                             <button class="btn btn-secondary" type="submit" name="clear_basket">Clear Basket</button>
-                            <button  class="btn btn-primary">Checkout</button>
+                            <button  class="btn btn-primary" type="submit" name="checkout">Checkout</button>
                         </form>
                     </div>
 
