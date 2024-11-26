@@ -13,7 +13,7 @@
 <body>
 <?php 
 include '../components/navbar.php';
-include '../db.php'; 
+include '../../../config/db.php';  
 ?>
 
     <main class="mt-5 pt-4">

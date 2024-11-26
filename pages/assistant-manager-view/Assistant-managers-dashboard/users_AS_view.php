@@ -12,14 +12,16 @@
 
 <body>
 <?php 
-include '../../../config/db.php'; 
+include 'db.php'; 
 ?>
 
+<!--nav-->
 <nav class="navbar navbar-dark bg-dark fixed-top p-3">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Espresso Express Dashboard</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
@@ -31,19 +33,20 @@ include '../../../config/db.php';
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item"><a class="nav-link active" href="../dash.php">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../../login/profile.php">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="assistant_manager_dashboard.php">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="assistant_manager_profile.php">Profile</a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Admin Tools</a>
+                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown">Assistant Manager Tools</a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="./requests.php">Requests</a></li>
-                                <li><a class="dropdown-item" href="users.php">Users</a></li>
-                                <li><a class="dropdown-item" href="./transactions.php">Transactions</a></li>
-                                <li><a class="dropdown-item" href="#">Products</a></li>
-                                <li><a class="dropdown-item" href="../../Products/Products-staffView.php">Stock</a></li>
-                                <li><a class="dropdown-item" href="#">Orders</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Reports</a></li>
+                                <li><a class="dropdown-item" href="users_AS_view.php">All Staff</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="transactions_AS_view.php">Transactions</a>
+                                </li>
+                                <li><a class="dropdown-item" href="products_AS_view.php">Product</a></li>
+                                <li><a class="dropdown-item" href="suppliers_AS_view.php">Suppliers</a></li>
+                                
                             </ul>
                         </li>
                     </ul>
@@ -182,48 +185,6 @@ include '../../../config/db.php';
         </tbody>
         </table>
         </div>
-        </div>
-
-        <div class="container-fluid">
-            <h5>AllCustomers</h5>
-            <?php
-            $customerQuery = 'SELECT * FROM Customer';
-            $customerResult = $conn->query($customerQuery);
-            ?>
-            <div class="table-responsive">
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Loyalty Customer</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-if ($customerResult->num_rows > 0) {
-    // Loop through and display each customer
-    while ($row = $customerResult->fetch_assoc()) {
-        echo "<tr>";
-        echo "<td>{$row['first_name']} {$row['last_name']}</td>";
-        echo "<td>{$row['email']}</td>";
-        echo "<td>";
-        if ($row['loyalty_id'] != 0) {
-            echo "Yes";
-        } else {
-            echo "No";
-        }
-        echo "</td>";
-        echo "</tr>";
-    }
-} else {
-    echo "<tr><td colspan='3'>No customers found</td></tr>";
-}
-?>
-
-                    </tbody>
-                </table>
-            </div>
         </div>
 
 

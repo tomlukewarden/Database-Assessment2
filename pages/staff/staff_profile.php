@@ -1,9 +1,9 @@
 
 <?php 
 
-include '../../../config/db.php'; 
+include '../../../config/db.php';  
 session_start();
-echo "<br> <br> <br><br><br><br>";
+echo "asldfsdfhshdfhsdkghsdgskdghsd <br> <br>asdfsdfsdfsdf<br><br>sdfksgdfksjdf";
 echo "session variable for user: " . $_SESSION["password"];
 ?>
 
@@ -23,7 +23,7 @@ echo "session variable for user: " . $_SESSION["password"];
 <body class="coolor">
     <nav class="navbar navbar-dark bg-dark fixed-top p-3">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Espresso Express Profile</a>
+            <a class="navbar-brand" href="#">Espresso Express Staff</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
                 aria-label="Toggle navigation">
@@ -38,21 +38,17 @@ echo "session variable for user: " . $_SESSION["password"];
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
-                        <li class="" nav-item><a class="nav-link" href="#">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="staff_profile.php">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="staff_dashboard.php">Staff Dashboard</a></li>
+                        <li class="" nav-item><a class="nav-link" href="staff_products.php">Products</a></li>
                     </ul>
-                    <form class="d-flex mt-3" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-success" type="submit">Search</button>
-                    </form>
                 </div>
             </div>
         </div>
     </nav>
 
 
-    <main class="container-fluid my-5 pt-5 ">
+    <main class="container-fluid my-5 pt-5 coolor">
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -68,11 +64,12 @@ echo "session variable for user: " . $_SESSION["password"];
                         
                                         while ($row = mysqli_fetch_array($result))
                                         {
-                                            echo "<p>" . $row['first_name'] . " " . $row['last_name'] . "</p>";
+                                            echo "<tr>";
+                                            echo "<td>" . $row['first_name'] . "</td>";
+                                            echo "<td>" . $row['last_name'] . "</td>";
+                                            echo "</tr>";
                                         }
                                     }
-
-
                                 ?>
                             </ul>
                         </div>

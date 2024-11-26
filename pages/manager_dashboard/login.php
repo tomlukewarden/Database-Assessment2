@@ -1,8 +1,8 @@
 <!-- PHP gathers the username and password as session variables from the form, we can use these to compare what is stored in the database and determine who is logged in or if someone has access -->
 <?php
 
-include '../../../config/db.php'; 
-// comment to test commit.
+include "db.php";
+
 session_start();
 
 if (isset($_POST['submit'])) {  
@@ -66,24 +66,6 @@ $_SESSION["password"] = $_POST["password"];
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
 <!-- js to open new page if correct info inputted to form -->
-<?php
-    $sql = "SELECT staff_id, passwords FROM staff ";
-    $result = mysqli_query($conn, $sql);
-
-    if ($result) {
-        while ($row = mysqli_fetch_array($result)) {
-            if ($_SESSION["username"] == $row['staff_id'] && $_SESSION["password"] == $row['passwords']){
-                header('Location: profile.php');
-            } else {
-                echo "<h1>Error with if statement</h1>";
-            }
-        }
-        
-        // if ($found == FALSE) {
-            // session_unset();
-
-        // }    
-    }
-?>
+<script src="form.js"></script>
 
 </html>

@@ -1,6 +1,6 @@
 <?php
 
-include "db.php";
+include '../../../config/db.php'; 
 session_start()     
 ?>
 
@@ -54,10 +54,10 @@ session_start()
                                 data-bs-toggle="dropdown">Managers
                                 Tools</a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="../db-admin-view/users/users.html">All Staff</a>
+                                <li><a class="dropdown-item" href="manager_view_users.php">All Staff</a>
                                 </li>
                                 <li><a class="dropdown-item"
-                                        href="../db-admin-view/transactions/transactions.html">Transactions</a>
+                                        href="transactions.php">Transactions</a>
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider">
@@ -195,7 +195,7 @@ session_start()
                 <div class="card" style="height: 450px; box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
                     <div class="card-body d-flex flex-column justify-content-center align-items-center"
                         style="height: 100%;">
-                        <p class="text-center">Monthly Analytics</p>
+                        <p class="text-center">2024 Monthly Analytics</p>
                         <canvas id="graph" style="width: 100%; max-width:700px;"></canvas>
                     </div>
                 </div>
@@ -208,7 +208,7 @@ session_start()
             <div class="col-md-7 py-3">
                 <div class="card" style="height: 500px; box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
                     <div class="card-body d-flex flex-column align-items-center justify-content-between" style="height: 100%;">
-                        <h1 class="text-center"> Store Transactions </h1>
+                        <h1 class="text-center mt-4"> Store Transactions </h1>
 
 
                         <section class="mb-2" style="width: 90%;">
@@ -564,23 +564,28 @@ session_start()
     <div class="container-fluid px-4">
         <div class="row">
             <div class="col">
-                <div class="card SeeAllButton" style="height: 100px; box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
-                    <div class="card-body d-flex flex-column justify-content-center align-items-center"
-                        style="height: 100%;">
-                        <h5 class="text-center"> See All Staff </h5>
-
-
+                
+                <a href="manager_view_users.php" class="text-decoration-none">
+                    <div class="card SeeAllButton" 
+                        style="height: 100px; box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2); cursor: pointer;">
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center"
+                            style="height: 100%;"> 
+                            <h5 class="text-center"> See All Staff </h5>
+                        </div>
                     </div>
-                </div>
+                </a>
+                
 
             </div>
             <div class="col">
-                <div class="card SeeAllButton" style="height: 100px; box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
-                    <div class="card-body d-flex flex-column justify-content-center align-items-center"
-                        style="height: 100%;">
-                        <h5 class="text-center"> See all products </h5>
+                <a href="Products-staffView.php" class="text-decoration-none">
+                    <div class="card SeeAllButton" style="height: 100px; box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center"
+                            style="height: 100%;">
+                            <h5 class="text-center"> See all products </h5> 
+                        </div>
                     </div>
-                </div>
+                </a>
 
             </div>
         </div>
@@ -652,7 +657,7 @@ session_start()
     </div>
 
 
-    <script src="manager_dashboard_php.js"></script>
+    <script src="manager_dashboard.js"></script>
     
 
 </body>

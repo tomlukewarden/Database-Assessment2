@@ -1,7 +1,7 @@
 
 <?php 
 
-include '../../../config/db.php'; 
+include 'db.php'; 
 session_start();
 echo "<br> <br> <br><br><br><br>";
 echo "session variable for user: " . $_SESSION["password"];
@@ -23,7 +23,7 @@ echo "session variable for user: " . $_SESSION["password"];
 <body class="coolor">
     <nav class="navbar navbar-dark bg-dark fixed-top p-3">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Espresso Express Profile</a>
+            <a class="navbar-brand" href="#">Espresso Express Dashboard</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
                 aria-label="Toggle navigation">
@@ -32,15 +32,31 @@ echo "session variable for user: " . $_SESSION["password"];
             <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
                 aria-labelledby="offcanvasDarkNavbarLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Navigation Menu</h5>
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dashboard Menu</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
                         aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
-                        <li class="" nav-item><a class="nav-link" href="#">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="manager_dashboard.php">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown">Managers
+                                Tools</a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="manager_view_users.php">All Staff</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="transactions.php">Transactions</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Preview</a></li>
+
+                            </ul>
+                        </li>
                     </ul>
                     <form class="d-flex mt-3" role="search">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
