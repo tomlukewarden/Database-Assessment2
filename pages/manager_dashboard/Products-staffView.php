@@ -18,9 +18,9 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
-    <nav class="navbar navbar-dark bg-dark fixed-top p-3 mb-3">
+    <nav class="navbar navbar-dark bg-dark fixed-top p-3">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Espresso Express</a>
+            <a class="navbar-brand" href="#">Espresso Express Dashboard</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
                 aria-label="Toggle navigation">
@@ -35,11 +35,24 @@
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Profile</a>
+                        <li class="nav-item"><a class="nav-link active" href="manager_dashboard.php">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown">Managers
+                                Tools</a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="manager_view_users.php">All Staff</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="transactions.php">Transactions</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Preview</a></li>
+
+                            </ul>
                         </li>
                     </ul>
                     <form class="d-flex mt-3" role="search">
@@ -48,7 +61,6 @@
                     </form>
                 </div>
             </div>
-        </div>
         </div>
     </nav>
 

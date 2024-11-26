@@ -19,7 +19,8 @@ include 'db.php';
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Espresso Express Dashboard</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
@@ -31,19 +32,23 @@ include 'db.php';
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item"><a class="nav-link active" href="../dash.php">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../../login/profile.php">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="manager_dashboard.php">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Admin Tools</a>
+                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown">Managers
+                                Tools</a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="./requests.php">Requests</a></li>
-                                <li><a class="dropdown-item" href="users.php">Users</a></li>
-                                <li><a class="dropdown-item" href="./transactions.php">Transactions</a></li>
-                                <li><a class="dropdown-item" href="#">Products</a></li>
-                                <li><a class="dropdown-item" href="../../Products/Products-staffView.php">Stock</a></li>
-                                <li><a class="dropdown-item" href="#">Orders</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Reports</a></li>
+                                <li><a class="dropdown-item" href="manager_view_users.php">All Staff</a>
+                                </li>
+                                <li><a class="dropdown-item"
+                                        href="transactions.php">Transactions</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Preview</a></li>
+
                             </ul>
                         </li>
                     </ul>
