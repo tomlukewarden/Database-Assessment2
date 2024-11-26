@@ -24,7 +24,37 @@ session_start();
     <header>
         <nav class="navbar navbar-dark bg-dark p-3">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Espresso Express Staff</a>
+                <?php
+                    $manager = FALSE;
+                    $assistant = FALSE;
+                    $staff = FALSE;
+                    
+                    for($x = 1; $x <= 5; $x++ ){
+                        if($_SESSION['username'] == $x){
+                            $manager = True
+                        }
+                    }
+
+                    for($x = 6; $x <= 10; $x++ ){
+                        if($_SESSION['username'] == $x){
+                            $assistant = True
+                        }
+                    }
+
+                    for($x = 11; $x <= 50; $x++ ){
+                        if($_SESSION['username'] == $x){
+                            $staff = True
+                        }
+                    }
+                    if($manager == TRUE){
+                        echo "<a class='navbar-brand' href='#'>Espresso Express Manager</a>"
+                    }elseif($assistant == TRUE){
+                        echo "<a class='navbar-brand' href='#'>Espresso Express Assistant Manager</a>"
+                    }elseif($staff == TRUE){
+                        echo "<a class='navbar-brand' href='#'>Espresso Express Staff</a>"
+                    }
+                ?>
+                <a class='navbar-brand' href='#'>Espresso Express Staff</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
