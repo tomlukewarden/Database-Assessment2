@@ -200,6 +200,18 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             const months = [];
             const totalSold = [];
+            const currentmonth = 11; //we are currently in november
+
+            for (let i = 1; i < currentmonth; i++) { //only display the months until the current month
+                const found = data.find(item => item.month == i);
+                if (found) {
+                    months.push(month_names[i]);
+                    totalSold.push(found.total);
+                } else {
+                    months.push(month_names[i]);
+                    totalSold.push(0);
+                }
+            }
 
             for (let i = 1; i <= 11; i++) { //11 because we are in november now in 2024
                 const found = data.find(item => item.month == i);
