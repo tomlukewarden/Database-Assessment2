@@ -16,49 +16,63 @@ session_start();
     <link rel="stylesheet" href="./assistant-manager.css">
     <style>
     .dashboard-title {
-    font-size: 2rem;
-}
+        font-size: 2rem;
+    }
 
 
-.profile-pic {
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-  }
+    .profile-pic {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+      }
 
 
-.sales-list {
-    list-style: none;
-    padding-left: 0;
-}
-.sales-list li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
-}
+    .sales-list {
+        list-style: none;
+        padding-left: 0;
+    }
+    .sales-list li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+    }
 
 
- /* Style for active tab */
- .active-tab {
-    font-weight: bold;
-    color: #dc3545;
-    border-bottom: 2px solid #dc3545;
-  }
+    /* Style for active tab */
+    .active-tab {
+        font-weight: bold;
+        color: #dc3545;
+        border-bottom: 2px solid #dc3545;
+      }
 
-  /* Custom table header style */
-  table thead {
-    background-color: #f8f9fa;
-    font-weight: bold;
-  }
-  </style>
+      /* Custom table header style */
+      table thead {
+        background-color: #f8f9fa;
+        font-weight: bold;
+      }
+
+      /* Custom button-like status styles */
+      .status {
+        display: inline-block;
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.5rem;
+        font-size: 0.85rem;
+        color: #fff;
+        text-align: center;
+      }
+      .status-success { background-color: #28a745; }
+      .status-open { background-color: #fd7e14; }
+      .status-return { background-color: #6f42c1; }
+      .status-process { background-color: #ffc107; }
+      </style>
 
   </head>
 
   <body>
 
-     <!--nav-->
-     <nav class="navbar navbar-dark bg-dark fixed-top p-3">
+    <!--nav-->
+    <nav class="navbar navbar-dark bg-dark fixed-top p-3">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Espresso Express Dashboard</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
@@ -174,7 +188,7 @@ session_start();
                 const productSalesChart = new Chart(ctx, {
                   type: 'doughnut',
                   data: {
-                    labels: ['Coffee', 'Pastries', 'Merch', 'Beverages', 'Coffee Beans'],
+                    labels: ['americano blend', 'green', 'coffee tin', 'hot chocolate', 'croissants'],
                     datasets: [{
                       data: [35, 25, 15, 10, 15],  // 設定每個產品類別的數據比例
                       backgroundColor: ['#1E3D58', '#A2B9BC', '#D8CFC4', '#9BC4CB', '#682C91'],
@@ -370,43 +384,43 @@ session_start();
             </thead>
             <tbody id="orderTableBody">
               <tr>
-                <td>#1234323</td>
-                <td>Helal Uddin</td>
-                <td>Dundee</td>
-                <td>beans</td>
-                <td>£49.99</td>
+                <td>#25</td>
+                <td>Kamillah</td>
+                <td>Glasgow</td>
+                <td>coffee tin</td>
+                <td>£3</td>
                 <td><span class="status status-success">Success</span></td>
               </tr>
               <tr>
-                <td>#1234324</td>
-                <td>Helal Uddin</td>
+                <td>#24</td>
+                <td>Ezri</td>
                 <td>Glasgow</td>
-                <td>espresso</td>
-                <td>£5.99</td>
+                <td>americano blend</td>
+                <td>£5</td>
                 <td><span class="status status-open">Open</span></td>
               </tr>
               <tr>
-                <td>#1234325</td>
-                <td>Helal Uddin</td>
-                <td>Edinburgh</td>
-                <td>Americano</td>
-                <td>£8.5</td>
-                <td><span class="status status-on-hold">On Hold</span></td>
-              </tr>
-              <tr>
-                <td>#1234326</td>
-                <td>Helal Uddin</td>
+                <td>#23</td>
+                <td>Dallon</td>
                 <td>Glasgow</td>
-                <td>latte</td>
-                <td>£10</td>
-                <td><span class="status status-checked">Checked</span></td>
+                <td>coffee tin</td>
+                <td>£3</td>
+                <td><span class="status status-return">Return</span></td>
               </tr>
               <tr>
-                <td>#1234327</td>
-                <td>Helal Uddin</td>
+                <td>#22</td>
+                <td>Dita</td>
+                <td>Glasgow</td>
+                <td>green</td>
+                <td>£3</td>
+                <td><span class="status status-success">Success</span></td>
+              </tr>
+              <tr>
+                <td>#21</td>
+                <td>Vivi</td>
                 <td>Aberdeen</td>
-                <td>chocolate cake</td>
-                <td>£30</td>
+                <td>americano blend</td>
+                <td>£5</td>
                 <td><span class="status status-process">Process</span></td>
               </tr>
             </tbody>
@@ -425,28 +439,28 @@ session_start();
             </thead>
             <tbody id="staffTableBody">
               <tr>
-                <td>Jack Williams</td>
+                <td>Liam Caldwell</td>
                 <td>Barista</td>
                 <td><span class="status status-open">Clock in</span></td>
               </tr>
               <tr>
-                <td>Jack Williams</td>
-                <td>Finance</td>
+                <td>Isobel Bennet</td>
+                <td>Barista</td>
                 <td><span class="status status-open">Late</span></td>
 
               </tr>
               <tr>
-                <td>Jack Williams</td>
+                <td>Ian Crow</td>
                 <td>Barista</td>
                 <td><span class="status status-open">take leave</span></td>
               </tr>
               <tr>
-                <td>Jack Williams</td>
-                <td>Marketing</td>
+                <td>Sam Samuel</td>
+                <td>Barista</td>
                 <td><span class="status status-open">Clock in</span></td>
               </tr>
               <tr>
-                <td>Jack Williams</td>
+                <td>Mags Stewart</td>
                 <td>Barista</td>
                 <td><span class="status status-open">Clock out</span></td>
               </tr>
