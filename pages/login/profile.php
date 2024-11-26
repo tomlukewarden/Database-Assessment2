@@ -1,7 +1,7 @@
 
 <?php 
 
-include 'db.php'; 
+include '../../../config/db.php'; 
 session_start();
 echo "<br> <br> <br><br><br><br>";
 echo "session variable for user: " . $_SESSION["password"];

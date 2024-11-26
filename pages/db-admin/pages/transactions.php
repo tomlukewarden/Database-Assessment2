@@ -13,7 +13,7 @@
 <body>
 
 <?php 
-include '../db.php'; 
+include '../../../config/db.php'; 
 ?>
 
 <nav class="navbar navbar-dark bg-dark fixed-top p-3">
