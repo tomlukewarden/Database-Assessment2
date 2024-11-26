@@ -42,10 +42,6 @@ echo "session variable for user: " . $_SESSION["password"];
                         <li class="nav-item"><a class="nav-link" href="staff_dashboard.php">Staff Dashboard</a></li>
                         <li class="" nav-item><a class="nav-link" href="staff_products.php">Products</a></li>
                     </ul>
-                    <form class="d-flex mt-3" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-success" type="submit">Search</button>
-                    </form>
                 </div>
             </div>
         </div>
