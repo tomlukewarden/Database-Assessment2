@@ -19,13 +19,11 @@ session_start();
         font-size: 2rem;
     }
 
-
     .profile-pic {
         width: 40px;
         height: 40px;
         object-fit: cover;
       }
-
 
     .sales-list {
         list-style: none;
@@ -37,7 +35,6 @@ session_start();
         gap: 10px;
         margin-bottom: 8px;
     }
-
 
     /* Style for active tab */
     .active-tab {
@@ -95,13 +92,14 @@ session_start();
                             <a class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown">Assistant Manager Tools</a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="../db-admin-view/users/users.html">All Staff</a>
+                                <li><a class="dropdown-item" href="users_AS_view.php">All Staff</a>
                                 </li>
                                 <li><a class="dropdown-item"
-                                        href="../db-admin-view/transactions/transactions.html">Transactions</a>
+                                        href="transactions_AS_view.php">Transactions</a>
                                 </li>
-                                <li><a class="dropdown-item" href="#">Stock</a></li>
-                                <li><a class="dropdown-item" href="#">Orders</a></li>
+                                <li><a class="dropdown-item" href="products_AS_view.php">Product</a></li>
+                                <li><a class="dropdown-item" href="suppliers_AS_view.php">Suppliers</a></li>
+                                
                             </ul>
                         </li>
                     </ul>
@@ -138,16 +136,16 @@ session_start();
                 <div class="card">
                     <div class="card-header">Manage Staff</div>
                     <div class="card-body">
-                        <a href="#" class="btn btn-secondary">View</a>
+                        <a href="users_AS_view.php" class="btn btn-secondary">View</a>
                     </div>
                 </div>
             </div>
             <!-- Manage Stock Card -->
             <div class="col-md-3 mb-3">
                 <div class="card">
-                    <div class="card-header">Manage Stock</div>
+                    <div class="card-header">Manage Products</div>
                     <div class="card-body">
-                        <a href="#" class="btn btn-secondary">View</a>
+                        <a href="products_AS_view.php" class="btn btn-secondary">View</a>
                     </div>
                 </div>
             </div>
@@ -156,17 +154,17 @@ session_start();
                 <div class="card">
                     <div class="card-header">Manage Suppliers</div>
                     <div class="card-body">
-                        <a href="#" class="btn btn-secondary">View</a>
+                        <a href="suppliers_AS_view.php" class="btn btn-secondary">View</a>
                     </div>
                 </div>
             </div>
             <!-- Manage Order Card -->
             <div class="col-md-3 mb-3">
                 <div class="card">
-                    <div class="card-header">Manage Order & Transaction</div>
-                    <div class="card-body d-flex justify-content-around">
-                        <a href="#" class="btn btn-secondary ">Order</a>
-                        <a href="#" class="btn btn-secondary ">Transaction</a>
+                    <div class="card-header">Manage Transaction</div>
+                    <div class="card-body">
+                        
+                        <a href="transactions_AS_view.php" class="btn btn-secondary ">Transaction</a>
                     </div>
                 </div>
             </div>
