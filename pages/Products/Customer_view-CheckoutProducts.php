@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html>
-<?php session_start(); 
+<?php 
+session_start(); 
 
 if (isset($_POST['Amend_order'])) {
     header('Location: Customer_view-Products.php');
 }
+if (isset($_POST['submit_order'])) {
+    header('Location: Customer_view-OrderReceipt.php');
+}
+
+
 ?>
 <head>
     <meta charset="utf-8">
@@ -105,9 +111,10 @@ if (isset($_POST['Amend_order'])) {
                         </tbody>
                     </table>
                     
-                    <p class="text-end"> <strong> Basket Total: £<?php echo $price_total; ?>.00 </strong></p>
+                    
                 </div>
             </div>
+            <p class="text-end mx-5"> <strong> Order Total: £<?php echo $price_total; ?>.00 </strong></p>
         </div>
         
         <form method="post" class="d-flex justify-content-evenly my-3">
@@ -115,30 +122,100 @@ if (isset($_POST['Amend_order'])) {
         </form>
     </div>
 
-    <form>
+    <form class="position-relative" style="left: 25%" method="POST">
+        <h3> Address </h3>
+        <div class="form-group col-md-6 my-2">
+            <label for="inputName">Full Name</label>
+            <input type="text" class="form-control" id="inputName" placeholder="" name="name">
+        </div>
         <div class="form-group col-md-6 my-2">
             <label for="inputAddress">House/Flat No.</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="eg. Flat 3R">
+            <input type="text" class="form-control" id="inputAddress" placeholder="eg. Flat 3R" name="address1">
         </div>
         <div class="form-group col-md-6 my-2">
             <label for="inputAddress2">Address</label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="eg. 12 Blackness Avenue">
+            <input type="text" class="form-control" id="inputAddress2" placeholder="eg. 12 Blackness Avenue" name="address2">
         </div>
         <div class="form-row row">
             <div class="form-group col-md-3 my-2">
-            <label for="inputCity">City</label>
-            <input type="text" class="form-control" id="inputCity">
+                <label for="inputCity">City</label>
+                <input type="text" class="form-control" id="inputCity" name="city">
             </div>
             <div class="form-group col-md-3 my-2">
-            <label for="inputPostCode">Post Code</label>
-            <input type="text" class="form-control" id="inputPostCode">
+                <label for="inputPostCode">Post Code</label>
+                <input type="text" class="form-control" id="inputPostCode" name="post_code">
             </div>
         </div>
         
+        <h3> Payment </h3>
+        <div class="form-row row">
+            <div class="form-group col-md-3 my-2">
+                <label for="inputNameOnCard">Name on Card</label>
+                <input type="text" class="form-control" id="inputNameOnCard">
+            </div>
+            <div class="form-group col-md-3 my-2">
+                <label for="inputCardNumber">Card Number</label>
+                <input type="text" class="form-control" id="inputCardNumber">
+            </div>
+        </div>
+        <div class="form-row row">
+            <div class="form-group col-md-2 my-2">
+                <label for="inputExpiryDate">Expiry Date</label>
+                <input type="text" class="form-control" id="inputExpiryDate">
+            </div>
+            <div class="form-group col-md-2 my-2">
+                <label for="inputCVV">CVV</label>
+                <input type="text" class="form-control" id="inputCVV">
+            </div>
+        </div>
         </div>
         <button type="submit" class="btn btn-primary my-3" name="submit_order">Submit Order</button>
     </form>
 
+
+    <?php
+    include 'db.php';
+    
+    if (isset($_POST['submit_order'])) {
+        echo "Form Submitted!!";
+        // Concatenate all address fields into a single string
+        $address = $_POST['address1'] . ", " . $_POST['address2'] . ", " . $_POST['city'] . ", " . $_POST['post_code'];
+        echo "Address: " . $address . "<br>";
+
+        $bought_product_ids = implode('', $_SESSION['product_ids_in_basket']);
+        echo $bought_product_ids;
+        // if (!empty($_SESSION['basket'])) {
+        //     foreach($_SESSION['basket'] as $product_id => $basket_item) {
+        //         $product_ids[] = $basket_item['product_id'];
+        //     }
+        // }
+
+        // set SQL query for use later (implode function converts the array into string)
+        //$sql = "INSERT INTO transactions (transaction_id, product_id, customer_id, store_id, date, NAME, address) VALUES (1, '". $bought_product_ids ."', ". $_SESSION['username'] .", 5, '2025-01-01', ". $_POST['name'] .", '". $address ." '   )";
+
+        //$sql = "INSERT INTO transactions (transaction_id, product_id, customer_id, store_id, date, NAME, address) VALUES (1, ". $bought_product_ids . ", " . $_POST['name'] . ", 5,  CURDATE() , , " . $address . ")";
+        
+        for ($i = 0; $i < count($_SESSION['product_ids_in_basket']); $i++) {
+            // do insert query for each item bought (as these are used as foreign keys, so entire list cannot be inserted
+            echo "The current number is: " . $_SESSION['product_ids_in_basket'][$i] . "<br>";
+            $sql = "INSERT INTO transactions (transaction_id, product_id, customer_id, store_id, date, NAME, address) VALUES ('' , '" . $_SESSION['product_ids_in_basket'][$i] . "'  ,1 ,1 , CURDATE() , '" . $_POST['name'] . "','" . $address . "' )";
+            mysqli_query($conn, $sql);
+        }
+        
+        
+        
+        
+        
+        //$sql = "INSERT INTO transactions (transaction_id, product_id, customer_id, store_id, date, NAME, address) VALUES ('' , 1  ,1 ,1 , CURDATE() , '" . $_POST['name'] . "','" . $address . "' )";
+        
+    }
+
+
+
+
+    
+    
+    ?>
     </main>
 
     <footer class="container-fluid bg-dark position-relative">
