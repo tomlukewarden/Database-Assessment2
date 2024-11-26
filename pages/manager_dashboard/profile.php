@@ -45,10 +45,10 @@ echo "session variable for user: " . $_SESSION["password"];
                                 data-bs-toggle="dropdown">Managers
                                 Tools</a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="../db-admin-view/users/users.html">All Staff</a>
+                                <li><a class="dropdown-item" href="manager_view_users.php">All Staff</a>
                                 </li>
                                 <li><a class="dropdown-item"
-                                        href="../db-admin-view/transactions/transactions.html">Transactions</a>
+                                        href="transactions.php">Transactions</a>
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider">
