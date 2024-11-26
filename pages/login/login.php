@@ -2,7 +2,7 @@
 <?php
 
 include "db.php";
-
+// comment to test commit.
 session_start();
 
 if (isset($_POST['submit'])) {  
