@@ -49,7 +49,6 @@ if($_SESSION['type'] != 'assistant'){
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item"><a class="nav-link" href="assistant_manager_dashboard.php">Assistant Manager Dashboard</a></li>
-                        <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown">Assistant Manager Tools</a>
@@ -81,69 +80,95 @@ if($_SESSION['type'] != 'assistant'){
 
             <!-- FILTER PRODUCTS/ SEARCH FUNCTION -->
             <div class="container-fluid">
-
+            <form name="table_properties" method="post" action="">
+                    <label for="sort">Sort By:</label>
+                        <!-- DROPDOWN FOR SORTING THE TABLE -->
+                        <select class="btn btn-secondary" name="sort" id="sort">
+                            <option value="sort_id_asc">Supplier ID Asc</option>
+                            <option value="sort_id_desc">Supplier ID Desc</option>
+                            <option value="sort_price_asc">Name Asc</option>
+                            <option value="sort_price_desc">Name Desc</option>
+                            <option value="sort_name_asc">Location Asc</option>
+                            <option value="sort_name_desc">Location Desc</option>
+                        </select> 
+                    <button class="btn btn-secondary mx-3" type="submit">Sort</button>
+                </form>
             </div>
 
             <!-- TABLE OF PRODUCTS -->
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th scope="col-md">#</th>
+                        <th scope="col-md">Supplier ID</th>
                         <th scope="col-md">Supplier Name</th>
-                        <th scope="col-md">Supplier Description</th>
-                        <th scope="col-md">Logo</th>
+                        <th scope="col-md">Supplier Location</th>
+                        <th scope="col-md">Product ID</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th>1</th>
-                        <td>Supplier 1</td>
-                        <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero porro minus dignissimos,
-                            atque earum praesentium quam officia quibusdam ullam tempora ducimus veritatis consectetur
-                            illum sit omnis, doloribus soluta debitis laudantium?</td>
-                        <td><img src="https://picsum.photos/200" alt="placeholder"></td>
-                        <td>
-                            <ol>Products:
-                                <li>Product 1</li>
-                                <li>Product 2</li>
-                            </ol>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>coffee 2</td>
-                        <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias repellendus aut
-                            voluptatibus atque! Tempore obcaecati, architecto accusamus explicabo aspernatur minus
-                            voluptatibus velit maxime necessitatibus odio quisquam ipsum ratione veritatis debitis?</td>
-                        <td><img src="https://picsum.photos/200" alt="placeholder"></td>
-                        <td>Supplier:
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>coffee 3</td>
-                        <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta sequi nam aut neque fugit
-                            incidunt, cupiditate reiciendis officia, corrupti rerum nesciunt quis nihil omnis veritatis
-                            facilis quidem quibusdam, quaerat ab.</td>
-                        <td><img src="https://picsum.photos/200" alt="placeholder"></td>
-                        <td>Supplier:
-                        </td>
-                    </tr>
+                        <?php
+
+                            // DEFAULT QUERY
+                            $sql = "SELECT * FROM supplier";
+
+                            // RUN WHEN FORM IS SUBMITTED
+                            if (isset($_POST['sort'])) {
+                                $sortOption = $_POST['sort'];
+
+                                //SET QUERY BASED ON WHAT IS SUBMITTED IN FORM.
+                                switch ($sortOption) {
+                                    case 'sort_id_asc':
+                                        $sql = "SELECT * FROM supplier ORDER BY supplier_id ASC";
+                                        break;
+                                    case 'sort_id_desc':
+                                        $sql = "SELECT * FROM supplier ORDER BY supplier_id DESC";
+                                        break;
+                                    case 'sort_price_asc':
+                                        $sql = "SELECT * FROM supplier ORDER BY supplier_name ASC";
+                                        break;
+                                    case 'sort_price_desc':
+                                        $sql = "SELECT * FROM supplier ORDER BY supplier_name DESC";
+                                        break;
+                                    case 'sort_name_asc':
+                                        $sql = "SELECT * FROM supplier ORDER BY location ASC";
+                                        break;
+                                    case 'sort_name_desc':
+                                        $sql = "SELECT * FROM supplier ORDER BY location DESC";
+                                        break;
+                                    default:
+                                        $sql = "SELECT * FROM supplier";
+                                        break;
+                                }
+                            }
+
+                            $result = mysqli_query($conn, $sql);
+
+                            if ($result) {
+                                // DISPLAY SORTED TABLE
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo "<tr>";
+                                    echo "<td>" . $row['supplier_id'] . "</td>";
+                                    echo "<td>" . $row['supplier_name'] . "</td>";
+                                    echo "<td>" .$row['location'] . "</td>";
+                                    echo "<td>" .$row['product_id'] . "</td>";
+                                    echo "</tr>";
+                                }
+                            } else {
+                                // ERROR MSG
+                                echo "<tr><td>Error: " . mysqli_error($conn) . "</td></tr>";
+                            }
+                        ?>
+
+
                 </tbody>
             </table>
 
     </main>
 
-    <footer class="container-fluid bg-dark position-relative">
+    <footer class="container-fluid bg-dark position-absolute bottom-0">
         <br>
         <p class="text-light position-absolute start-50 top-50 translate-middle">&copy; Espresso Express</p>
         <br>
-        <!-- <div class="icons container-fluid">
-        <a href="https://github.com/UniversityOfDundee-Computing/cw1-web-development-project-sca" target="_blank"><i
-                class="fa-brands fa-github-square translate-middle h3 mx-3"></i></a>
-        <a href="https://en.wikipedia.org/wiki/RollerCoaster_Tycoon" target="_blank"><i
-                class="fa-brands fa-wikipedia-w translate-middle h3 mx-3"></i></a>
-    </div> -->
     </footer>
 
 </body>
