@@ -91,7 +91,7 @@ $_SESSION["password"] = $_POST["password"];
             }
         
         if ($_SESSION['username'] == 'admin' && $_SESSION['password'] == 'admin') {
-            header('Location: ../db-admin/dash.php');
+            header('Location: ../welcome_page.php');
             $_SESSION["type"] = 'admin';
         }
 ?>

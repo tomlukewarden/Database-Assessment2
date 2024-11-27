@@ -63,11 +63,14 @@ session_start();
                                     }elseif($_SESSION['type'] == 'assistant'){
                                         echo'<li class="nav-item"><a class="nav-link" href="assistant-manager-view/Assistant-manager-dashboard/assistant_manager_dashboard.php">Assistant Manager Dashboard</a></li>';
                                     }elseif($_SESSION['type'] == 'admin'){
-                                        echo '<a class="navbar-brand" href="/db-admin/pages/dash.php">Admin Dashboard</a>';
+                                        echo '<a class="navbar-brand" href="../pages/db-admin/dash.php">Admin Dashboard</a>';
                                     }elseif($_SESSION['type'] != 'loyal'){
-                                        echo '<a class="navbar-brand" href="/staff/staff_dashboard.php">Staff Dashboard</a>';
+                                        echo '<a class="navbar-brand" href="../pages/staff/staff_dashboard.php">Staff Dashboard</a>';
                                     }
-                        
+                                    
+                                    if($_SESSION['type'] == 'barista'){
+                                        echo '<a class="dropdown-item" href="../pages/assistant-manager-view/Assistant-manager-dashboard/products_AS_view.php">Product</a>'
+                                    }
                                 ?>
                                 <?php
                                     if($_SESSION['type'] != 'loyal' and $_SESSION['type'] != 'barista'){
