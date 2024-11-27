@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "espresso-express";
+$dbname = "espresso-express2";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);

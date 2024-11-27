@@ -14,11 +14,16 @@
 
 <?php 
 include 'db.php'; 
+
+// Limits access unless a manager is logged in.
+if($_SESSION['type'] != 'manager'){
+    header('Location: ../welcome_page.php');
+}
 ?>
 
 <nav class="navbar navbar-dark bg-dark fixed-top p-3">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Espresso Express Dashboard</a>
+            <a class="navbar-brand" href="#">Espresso Express Dashboard Manager</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
                 aria-label="Toggle navigation">
@@ -89,6 +94,9 @@ include 'db.php';
                                 <th scope="col">Transaction ID</th>
                                 <th scope="col">Customer ID</th>
                                 <th scope="col">Product ID</th>
+                                <th scope="col">Transaction Date</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Address</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -99,6 +107,9 @@ include 'db.php';
                                     echo "<td>{$row['transaction_id']}</td>";
                                     echo "<td>{$row['customer_id']}</td>";
                                     echo "<td>{$row['product_id']}</td>";
+                                    echo "<td>{$row['transaction_date']}</td>";
+                                    echo "<td>{$row['name']}</td>";
+                                    echo "<td>{$row['address']}</td>";
                                     echo "</tr>";
                                 }
                             } else {

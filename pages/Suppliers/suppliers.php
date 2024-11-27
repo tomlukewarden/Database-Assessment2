@@ -1,16 +1,3 @@
-
-<?php 
-
-include '../../../config/db.php'; 
-session_start();
-
-// Limits access unless an assistant manager is logged in.
-if($_SESSION['type'] != 'assistant'){
-    header('Location: ../../welcome_page.php');
-}
-
-?>
-
 <!DOCTYPE html>
 <html>
 
@@ -30,10 +17,9 @@ if($_SESSION['type'] != 'assistant'){
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
-        <!--nav-->
-        <nav class="navbar navbar-dark bg-dark fixed-top p-3">
+    <nav class="navbar navbar-dark bg-dark fixed-top p-3 mb-3">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Espresso Express Dashboard Assistant Manager</a>
+            <a class="navbar-brand" href="#">Espresso Express</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
                 aria-label="Toggle navigation">
@@ -48,24 +34,20 @@ if($_SESSION['type'] != 'assistant'){
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item"><a class="nav-link" href="assistant_manager_dashboard.php">Assistant Manager Dashboard</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown">Assistant Manager Tools</a>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="users_AS_view.php">All Staff</a>
-                                </li>
-                                <li><a class="dropdown-item"
-                                        href="transactions_AS_view.php">Transactions</a>
-                                </li>
-                                <li><a class="dropdown-item" href="products_AS_view.php">Product</a></li>
-                                <li><a class="dropdown-item active" href="suppliers_AS_view.php">Suppliers</a></li>
-                                
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Profile</a>
                         </li>
                     </ul>
+                    <form class="d-flex mt-3" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-success" type="submit">Search</button>
+                    </form>
                 </div>
             </div>
+        </div>
         </div>
     </nav>
 
@@ -107,6 +89,9 @@ if($_SESSION['type'] != 'assistant'){
                 </thead>
                 <tbody>
                         <?php
+
+                                // CONNECT TO DATABASE
+                            include '../login/db.php';
 
                             // DEFAULT QUERY
                             $sql = "SELECT * FROM supplier";

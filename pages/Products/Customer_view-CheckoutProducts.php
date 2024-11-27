@@ -177,13 +177,10 @@ if (isset($_POST['submit_order'])) {
     include 'db.php';
     
     if (isset($_POST['submit_order'])) {
-        echo "Form Submitted!!";
         // Concatenate all address fields into a single string
         $address = $_POST['address1'] . ", " . $_POST['address2'] . ", " . $_POST['city'] . ", " . $_POST['post_code'];
-        echo "Address: " . $address . "<br>";
 
         $bought_product_ids = implode('', $_SESSION['product_ids_in_basket']);
-        echo $bought_product_ids;
         // if (!empty($_SESSION['basket'])) {
         //     foreach($_SESSION['basket'] as $product_id => $basket_item) {
         //         $product_ids[] = $basket_item['product_id'];
@@ -198,7 +195,7 @@ if (isset($_POST['submit_order'])) {
         for ($i = 0; $i < count($_SESSION['product_ids_in_basket']); $i++) {
             // do insert query for each item bought (as these are used as foreign keys, so entire list cannot be inserted
             echo "The current number is: " . $_SESSION['product_ids_in_basket'][$i] . "<br>";
-            $sql = "INSERT INTO transactions (transaction_id, product_id, customer_id, store_id, date, NAME, address) VALUES ('' , '" . $_SESSION['product_ids_in_basket'][$i] . "'  ,1 ,1 , CURDATE() , '" . $_POST['name'] . "','" . $address . "' )";
+            $sql = "INSERT INTO transactions (transaction_id, product_id, customer_id, store_id, transaction_date, name, address) VALUES ('' , '" . $_SESSION['product_ids_in_basket'][$i] . "'  ,1 ,1 , CURDATE() , '" . $_POST['name'] . "','" . $address . "' )";
             mysqli_query($conn, $sql);
         }
         

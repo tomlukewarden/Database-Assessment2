@@ -1,6 +1,13 @@
 
 <?php 
-include 'db.php'; 
+include '../../../config/db.php'; 
+session_start();
+
+// Limits access unless an assistant manager is logged in.
+if($_SESSION['type'] != 'assistant'){
+    header('Location: ../../welcome_page.php');
+}
+
 ?>
 
 
@@ -21,7 +28,7 @@ include 'db.php';
    <!--nav-->
    <nav class="navbar navbar-dark bg-dark fixed-top p-3">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Espresso Express Dashboard</a>
+            <a class="navbar-brand" href="#">Espresso Express Dashboard Assistant Manager</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
                 aria-label="Toggle navigation">
@@ -36,15 +43,14 @@ include 'db.php';
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item"><a class="nav-link active" href="assistant_manager_dashboard.php">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="assistant_manager_dashboard.php">Assistant Manager Dashboard</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown">Assistant Manager Tools</a>
                             <ul class="dropdown-menu dropdown-menu-dark">
                                 <li><a class="dropdown-item" href="users_AS_view.php">All Staff</a>
                                 </li>
-                                <li><a class="dropdown-item"
+                                <li><a class="dropdown-item active"
                                         href="transactions_AS_view.php">Transactions</a>
                                 </li>
                                 <li><a class="dropdown-item" href="products_AS_view.php">Product</a></li>
@@ -53,10 +59,6 @@ include 'db.php';
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex mt-3" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-success" type="submit">Search</button>
-                    </form>
                 </div>
             </div>
         </div>
@@ -66,7 +68,6 @@ include 'db.php';
     <div class="container-fluid">
         <header class="d-flex align-items-center mb-4">
             <h1 class="h2">Transactions</h1>
-            <p class="ms-3 text-muted">Overview of recent transactions and sales.</p>
         </header>
 
         <?php
@@ -79,7 +80,6 @@ include 'db.php';
         <div class="card shadow-sm">
             <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
                 <span>Shop Transactions</span>
-                <button class="btn btn-sm btn-success">Add New Transaction</button>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -89,6 +89,9 @@ include 'db.php';
                                 <th scope="col">Transaction ID</th>
                                 <th scope="col">Customer ID</th>
                                 <th scope="col">Product ID</th>
+                                <th scope="col">Transaction Date</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Address</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -99,6 +102,9 @@ include 'db.php';
                                     echo "<td>{$row['transaction_id']}</td>";
                                     echo "<td>{$row['customer_id']}</td>";
                                     echo "<td>{$row['product_id']}</td>";
+                                    echo "<td>{$row['transaction_date']}</td>";
+                                    echo "<td>{$row['name']}</td>";
+                                    echo "<td>{$row['address']}</td>";
                                     echo "</tr>";
                                 }
                             } else {

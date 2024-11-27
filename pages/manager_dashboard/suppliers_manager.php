@@ -5,8 +5,8 @@ include '../../../config/db.php';
 session_start();
 
 // Limits access unless an assistant manager is logged in.
-if($_SESSION['type'] != 'assistant'){
-    header('Location: ../../welcome_page.php');
+if($_SESSION['type'] != 'manager'){
+    header('Location: ../welcome_page.php');
 }
 
 ?>
@@ -33,7 +33,7 @@ if($_SESSION['type'] != 'assistant'){
         <!--nav-->
         <nav class="navbar navbar-dark bg-dark fixed-top p-3">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Espresso Express Dashboard Assistant Manager</a>
+            <a class="navbar-brand" href="#">Espresso Express Manager</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
                 aria-label="Toggle navigation">
@@ -42,25 +42,23 @@ if($_SESSION['type'] != 'assistant'){
             <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
                 aria-labelledby="offcanvasDarkNavbarLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dashboard Menu</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-                        aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item"><a class="nav-link" href="assistant_manager_dashboard.php">Assistant Manager Dashboard</a></li>
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item"><a class="nav-link active" href="manager_dashboard.php">Manager Dashboard</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown">Assistant Manager Tools</a>
+                                data-bs-toggle="dropdown">Manager Tools</a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="users_AS_view.php">All Staff</a>
+                                <li>
+                                    <a class="dropdown-item active" href="manager_view_users.php">All Staff</a>
                                 </li>
-                                <li><a class="dropdown-item"
-                                        href="transactions_AS_view.php">Transactions</a>
+                                <li>
+                                    <a class="dropdown-item" href="transactions.php">Transactions</a>
                                 </li>
-                                <li><a class="dropdown-item" href="products_AS_view.php">Product</a></li>
-                                <li><a class="dropdown-item active" href="suppliers_AS_view.php">Suppliers</a></li>
-                                
+                                <li>
+                                    <a class="dropdown-item" href="product_manager.php">Products</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="suppliers_manager.php">Suppliers</a></li>
+                                </li>
                             </ul>
                         </li>
                     </ul>

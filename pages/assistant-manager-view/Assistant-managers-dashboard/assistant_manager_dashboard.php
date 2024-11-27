@@ -1,8 +1,13 @@
 
 <?php 
 
-include 'db.php'; 
+include '../../../config/db.php'; 
 session_start();
+
+// Limits access unless an assistant manager is logged in.
+if($_SESSION['type'] != 'assistant'){
+  header('Location: ../../welcome_page.php');
+}
 ?>
 
 <!doctype html>
@@ -13,56 +18,7 @@ session_start();
     <title>Assistant Manager Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <link rel="stylesheet" href="./assistant-manager.css">
-    <style>
-    .dashboard-title {
-        font-size: 2rem;
-    }
-
-    .profile-pic {
-        width: 40px;
-        height: 40px;
-        object-fit: cover;
-      }
-
-    .sales-list {
-        list-style: none;
-        padding-left: 0;
-    }
-    .sales-list li {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 8px;
-    }
-
-    /* Style for active tab */
-    .active-tab {
-        font-weight: bold;
-        color: #dc3545;
-        border-bottom: 2px solid #dc3545;
-      }
-
-      /* Custom table header style */
-      table thead {
-        background-color: #f8f9fa;
-        font-weight: bold;
-      }
-
-      /* Custom button-like status styles */
-      .status {
-        display: inline-block;
-        padding: 0.2rem 0.5rem;
-        border-radius: 0.5rem;
-        font-size: 0.85rem;
-        color: #fff;
-        text-align: center;
-      }
-      .status-success { background-color: #28a745; }
-      .status-open { background-color: #fd7e14; }
-      .status-return { background-color: #6f42c1; }
-      .status-process { background-color: #ffc107; }
-      </style>
+    <link rel="stylesheet" href="assistant-manager.css">
 
   </head>
 
@@ -71,7 +27,7 @@ session_start();
     <!--nav-->
     <nav class="navbar navbar-dark bg-dark fixed-top p-3">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Espresso Express Dashboard</a>
+            <a class="navbar-brand" href="#">Espresso Express Dashboard Assistant Manager</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
                 aria-label="Toggle navigation">
@@ -86,8 +42,7 @@ session_start();
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item"><a class="nav-link active" href="assistant_manager_dashboard.php">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="assistant_manager_dashboard.php">Assistant Manager Dashboard</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown">Assistant Manager Tools</a>
@@ -99,14 +54,10 @@ session_start();
                                 </li>
                                 <li><a class="dropdown-item" href="products_AS_view.php">Product</a></li>
                                 <li><a class="dropdown-item" href="suppliers_AS_view.php">Suppliers</a></li>
-                                
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex mt-3" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-success" type="submit">Search</button>
-                    </form>
+
                 </div>
             </div>
         </div>
