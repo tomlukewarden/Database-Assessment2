@@ -1,8 +1,14 @@
 
 <?php 
 
-include 'db.php'; 
+include '../../../config/db.php'; 
 session_start();
+
+// Limits access unless an assistant manager is logged in.
+if($_SESSION['type'] != 'assistant'){
+    header('Location: ../../welcome_page.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -24,10 +30,10 @@ session_start();
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
-       <!--nav-->
-       <nav class="navbar navbar-dark bg-dark fixed-top p-3">
+        <!--nav-->
+        <nav class="navbar navbar-dark bg-dark fixed-top p-3">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Espresso Express Dashboard</a>
+            <a class="navbar-brand" href="#">Espresso Express Dashboard Assistant Manager</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
                 aria-label="Toggle navigation">
@@ -42,7 +48,7 @@ session_start();
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item"><a class="nav-link active" href="assistant_manager_dashboard.php">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="assistant_manager_dashboard.php">Assistant Manager Dashboard</a></li>
                         <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button"
@@ -54,15 +60,11 @@ session_start();
                                         href="transactions_AS_view.php">Transactions</a>
                                 </li>
                                 <li><a class="dropdown-item" href="products_AS_view.php">Product</a></li>
-                                <li><a class="dropdown-item" href="suppliers_AS_view.php">Suppliers</a></li>
+                                <li><a class="dropdown-item active" href="suppliers_AS_view.php">Suppliers</a></li>
                                 
                             </ul>
                         </li>
                     </ul>
-                    <form class="d-flex mt-3" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-success" type="submit">Search</button>
-                    </form>
                 </div>
             </div>
         </div>
