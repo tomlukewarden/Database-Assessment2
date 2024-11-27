@@ -70,7 +70,7 @@ session_start();
                             <div class="offcanvas-body">
                                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                                 <li class="nav-item"><a class="nav-link" href="staff/staff_dashboard.php">Staff Dashboard</a></li>
-                                <li class="nav-item" ><a class="nav-link" href="staff/staff_products.php">Products</a></li>'
+                                <li class="nav-item" ><a class="nav-link" href="staff/staff_products.php">Products</a></li>';
                     }
                   .  if ($_SESSION['type'] == 'manager') {
                              echo '<li class="nav-item dropdown">
