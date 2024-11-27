@@ -59,9 +59,9 @@ session_start();
 
                                 <?php
                                     if($_SESSION['type'] == 'manager'){
-                                        echo'<li class="nav-item"><a class="nav-link" href="manager_dashboard/manager_dashboard.php">Manager Dashboard</a></li>';
+                                        echo'<li class="nav-item"><a class="nav-link" href="../pages/manager_dashboard/manager_dashboard.php">Manager Dashboard</a></li>';
                                     }elseif($_SESSION['type'] == 'assistant'){
-                                        echo'<li class="nav-item"><a class="nav-link" href="assistant-manager-view/Assistant-manager-dashboard/assistant_manager_dashboard.php">Assistant Manager Dashboard</a></li>';
+                                        echo'<li class="nav-item"><a class="nav-link" href="../pages/assistant-manager-view/Assistant-manager-dashboard/assistant_manager_dashboard.php">Assistant Manager Dashboard</a></li>';
                                     }elseif($_SESSION['type'] == 'admin'){
                                         echo '<a class="navbar-brand" href="../pages/db-admin/dash.php">Admin Dashboard</a>';
                                     }elseif($_SESSION['type'] != 'loyal'){
@@ -79,16 +79,16 @@ session_start();
                                         data-bs-toggle="dropdown">Tools</a>
                                     <ul class="dropdown-menu dropdown-menu-dark">
                                         <li>
-                                            <a class="dropdown-item active" href="assistant-manager-view/Assistant-manager-dashboard/users_AS_view.php">All Staff</a>
+                                            <a class="dropdown-item active" href="../pages/assistant-manager-view/Assistant-manager-dashboard/users_AS_view.php">All Staff</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="assistant-manager-view/Assistant-manager-dashboard/transactions_AS_view.php">Transactions</a>
+                                            <a class="dropdown-item" href="../pages/assistant-manager-view/Assistant-manager-dashboard/transactions_AS_view.php">Transactions</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="assistant-manager-view/Assistant-manager-dashboard/products_AS_view.php">Product</a>
+                                            <a class="dropdown-item" href="../pages/assistant-manager-view/Assistant-manager-dashboard/products_AS_view.php">Product</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="assistant-manager-view/Assistant-manager-dashboard/suppliers_AS_view.php">Suppliers</a>
+                                            <a class="dropdown-item" href="../pages/assistant-manager-view/Assistant-manager-dashboard/suppliers_AS_view.php">Suppliers</a>
                                         </li>
                                     </ul>
                                 </li>
