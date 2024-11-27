@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
@@ -76,7 +77,7 @@ include '../../../config/db.php';
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
+                    <?php
                         if ($managerResult->num_rows > 0) {
                             // Loop through and display each staff member
                             while ($row = $managerResult->fetch_assoc()) {
@@ -86,17 +87,50 @@ include '../../../config/db.php';
                                 echo "<td>{$row['staff_id']}</td>";
                                 echo "<td>{$row['store_id']}</td>";
                                 echo "<td>{$row['salary']}</td>";
-                                echo "<td><button type='button' class='btn btn-primary'>Edit</button></td>";
+                                echo "<td><button type='button' class='btn btn-primary edit-button'>Edit</button></td>";
+                                
                                 echo "</tr>";
                             }
                         } else {
                             echo "<tr><td colspan='5'>No staff members found</td></tr>";
                         }
                         ?>
+        <div id="editModal" class="modal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="editModalLabel">Edit Staff Member</h5>
+            <button type="button" id="closeButton" class="btn-close" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form id="editForm">
+                <input type="hidden" id="staffId" name="staff_id">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name:</label>
+                    <input type="text" id="name" name="name" class="form-control" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="position" class="form-label">Position:</label>
+                    <input type="text" id="position" name="position" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="storeId" class="form-label">Store ID:</label>
+                    <input type="text" id="storeId" name="store_id" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="salary" class="form-label">Salary:</label>
+                    <input type="number" id="salary" name="salary" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</div>
                     </tbody>
                 </table>
             </div>
         </div>
+
+
 
 
         <div class="container-fluid">
@@ -229,6 +263,7 @@ if ($customerResult->num_rows > 0) {
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../script.js"></script>
 </body>
 
 </html>
