@@ -5,7 +5,7 @@ include '../../../config/db.php';
 session_start();
 
 // Limits access unless an assistant manager is logged in.
-if($_SESSION['type'] != 'assistant'){
+if($_SESSION['type'] != 'assistant' $_SESSION['type'] != 'manager'){
     header('Location: ../../welcome_page.php');
 }
 
@@ -33,7 +33,7 @@ if($_SESSION['type'] != 'assistant'){
         <!--nav-->
         <nav class="navbar navbar-dark bg-dark fixed-top p-3">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Espresso Express Dashboard Assistant Manager</a>
+            <a class="navbar-brand" href="#">Espresso Express Assistant Manager</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
                 aria-label="Toggle navigation">
