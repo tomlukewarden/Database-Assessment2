@@ -57,7 +57,7 @@ session_start();
                     }
                     if ($_SESSION['type'] == 'barista' or $_SESSION['type'] == 'manager' or $_SESSION['type'] == 'assistant'){
                 
-                       echo'<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    echo'<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                             data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
@@ -72,8 +72,8 @@ session_start();
                                 <li class="nav-item"><a class="nav-link" href="staff/staff_dashboard.php">Staff Dashboard</a></li>
                                 <li class="nav-item" ><a class="nav-link" href="staff/staff_products.php">Products</a></li>';
                     }
-                  .  if ($_SESSION['type'] == 'manager') {
-                             echo '<li class="nav-item dropdown">
+                    if ($_SESSION['type'] == 'manager') {
+                            echo '<li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown">Managers
                                     Tools</a>
