@@ -1,7 +1,12 @@
 <?php
 
-include '../../../config/db.php'; 
-session_start()     
+include '../../config/db.php'; 
+session_start();
+
+// Limits access unless a manager is logged in.
+if($_SESSION['type'] != 'manager'){
+    header('Location: ../../welcome_page.php');
+}   
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +37,7 @@ session_start()
 
     <nav class="navbar navbar-dark bg-dark fixed-top p-3">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Espresso Express Dashboard</a>
+            <a class="navbar-brand" href="#">Espresso Express Manager</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
                 aria-label="Toggle navigation">
@@ -47,8 +52,7 @@ session_start()
                 </div>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item"><a class="nav-link active" href="manager_dashboard.php">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="manager_dashboard.php">Manager Dashboard</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown">Managers
@@ -59,10 +63,6 @@ session_start()
                                 <li><a class="dropdown-item"
                                         href="transactions.php">Transactions</a>
                                 </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Preview</a></li>
 
                             </ul>
                         </li>

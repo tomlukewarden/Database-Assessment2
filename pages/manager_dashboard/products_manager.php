@@ -1,12 +1,11 @@
 <?php
+include '../../config/db.php'; 
 session_start();
 
 // Limits access unless a manager is logged in.
 if($_SESSION['type'] != 'manager'){
-    header('Location: ../welcome_page.php');
-}
-
-include '../../config/db.php';
+    header('Location: ../../welcome_page.php');
+} 
 ?>
 
 <!DOCTYPE html>
