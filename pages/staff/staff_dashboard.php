@@ -62,26 +62,82 @@ if (isset($_POST['submit'])) {
     <header>
         <nav class="navbar navbar-dark bg-dark p-3">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Espresso Express Staff</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
-                    aria-labelledby="offcanvasDarkNavbarLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item"><a class="nav-link active" href="staff_dashboard.php">Staff Dashboard</a></li>
-                            <li class="nav-item"><a class="nav-link" href="staff_products.php">Products</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
+                <?php
+                    if($_SESSION['type'] == 'manager'){
+                        echo '<a class="navbar-brand" href="#">Espresso Express Manager</a>';
+                    }elseif($_SESSION['type'] == 'assistant'){
+                        echo '<a class="navbar-brand" href="#">Espresso Express Assistant Manager</a>';
+                    }elseif($_SESSION['type'] == 'admin'){
+                        echo '<a class="navbar-brand" href="#">Espresso Admin</a>';
+                    }elseif($_SESSION['type'] == 'loyal'){
+                        echo '<a class="navbar-brand" href="#">Espresso Express Customer</a>';
+                    }elseif($_SESSION['type'] == 'barista'){
+                        echo '<a class="navbar-brand" href="#">Espresso Express Staff</a>';
+                    }
+
+                    if($_SESSION['type'] != 'loyal'){
+                        echo'<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                        aria-labelledby="offcanvasDarkNavbarLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">';
+                    }
+                ?>
+
+                                <?php
+                                    if($_SESSION['type'] == 'manager'){
+                                        echo'<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/manager_dashboard/manager_dashboard.php">Manager Dashboard</a></li>';
+                                    }elseif($_SESSION['type'] == 'assistant'){
+                                        echo'<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/assistant_manager_dashboard.php">Assistant Manager Dashboard</a></li>';
+                                    }elseif($_SESSION['type'] == 'admin'){
+                                        echo '<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/db-admin/dash.php">Admin Dashboard</a></li>';
+                                    }
+                                    if($_SESSION['type'] != 'loyal' && $_SESSION['type'] != 'admin' ){
+                                        echo '<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/staff/staff_dashboard.php">Staff Dashboard</a></li>';
+                                    }
+                                    
+                                    if($_SESSION['type'] == 'barista'){
+                                        echo '<li class="nav-item"><a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/products_AS_view.php">Product</a></li>';
+                                    }
+
+                                ?>
+                                <?php
+                                    if($_SESSION['type'] != 'loyal' and $_SESSION['type'] != 'barista'){
+                                        echo'<li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-bs-toggle="dropdown">Tools</a>
+                                    <ul class="dropdown-menu dropdown-menu-dark">
+                                        <li>
+                                            <a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/users_AS_view.php">All Staff</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/transactions_AS_view.php">Transactions</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/products_AS_view.php">Product</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/suppliers_AS_view.php">Suppliers</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>';
+                                    }
+                                ?>
+                
+</div>
+</nav>
     </header>
     <br>
     <main class="container-fluid">

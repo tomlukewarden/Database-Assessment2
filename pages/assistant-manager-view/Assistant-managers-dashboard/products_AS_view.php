@@ -5,7 +5,7 @@ include '../../../config/db.php';
 session_start();
 
 // Limits access unless an assistant manager is logged in.
-if($_SESSION['type'] != 'assistant' or $_SESSION['type'] != 'manager'){
+if($_SESSION['type'] == 'loyal'){
     header('Location: ../../welcome_page.php');
 }
 ?>
@@ -23,51 +23,87 @@ if($_SESSION['type'] != 'assistant' or $_SESSION['type'] != 'manager'){
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="dash.css">
 </head>
-
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+<header>
+        <nav class="navbar navbar-dark bg-dark p-3">
+            <div class="container-fluid">
+                <?php
+                    if($_SESSION['type'] == 'manager'){
+                        echo '<a class="navbar-brand" href="#">Espresso Express Manager</a>';
+                    }elseif($_SESSION['type'] == 'assistant'){
+                        echo '<a class="navbar-brand" href="#">Espresso Express Assistant Manager</a>';
+                    }elseif($_SESSION['type'] == 'admin'){
+                        echo '<a class="navbar-brand" href="#">Espresso Admin</a>';
+                    }elseif($_SESSION['type'] == 'loyal'){
+                        echo '<a class="navbar-brand" href="#">Espresso Express Customer</a>';
+                    }elseif($_SESSION['type'] == 'barista'){
+                        echo '<a class="navbar-brand" href="#">Espresso Express Staff</a>';
+                    }
 
-       <!--nav-->
-       <nav class="navbar navbar-dark bg-dark fixed-top p-3">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Espresso Express Assistant Manager</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
-                aria-labelledby="offcanvasDarkNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dashboard Menu</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-                        aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item"><a class="nav-link" href="assistant_manager_dashboard.php">Assistant Manager Dashboard</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown">Assistant Manager Tools</a>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="users_AS_view.php">All Staff</a>
+                    if($_SESSION['type'] != 'loyal'){
+                        echo'<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                        aria-labelledby="offcanvasDarkNavbarLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">';
+                    }
+                ?>
+
+                                <?php
+                                    if($_SESSION['type'] == 'manager'){
+                                        echo'<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/manager_dashboard/manager_dashboard.php">Manager Dashboard</a></li>';
+                                    }elseif($_SESSION['type'] == 'assistant'){
+                                        echo'<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/assistant_manager_dashboard.php">Assistant Manager Dashboard</a></li>';
+                                    }elseif($_SESSION['type'] == 'admin'){
+                                        echo '<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/db-admin/dash.php">Admin Dashboard</a></li>';
+                                    }
+                                    if($_SESSION['type'] != 'loyal' && $_SESSION['type'] != 'admin' ){
+                                        echo '<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/staff/staff_dashboard.php">Staff Dashboard</a></li>';
+                                    }
+                                    
+                                    if($_SESSION['type'] == 'barista'){
+                                        echo '<li class="nav-item"><a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/products_AS_view.php">Product</a></li>';
+                                    }
+
+                                ?>
+                                <?php
+                                    if($_SESSION['type'] != 'loyal' and $_SESSION['type'] != 'barista'){
+                                        echo'<li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" role="button"
+                                        data-bs-toggle="dropdown">Tools</a>
+                                    <ul class="dropdown-menu dropdown-menu-dark">
+                                        <li>
+                                            <a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/users_AS_view.php">All Staff</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/transactions_AS_view.php">Transactions</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/products_AS_view.php">Product</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/suppliers_AS_view.php">Suppliers</a>
+                                        </li>
+                                    </ul>
                                 </li>
-                                <li><a class="dropdown-item"
-                                        href="transactions_AS_view.php">Transactions</a>
-                                </li>
-                                <li><a class="dropdown-item active" href="products_AS_view.php">Product</a></li>
-                                <li><a class="dropdown-item" href="suppliers_AS_view.php">Suppliers</a></li>
-                                
                             </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
-
+                        </div>
+                    </div>';
+                                    }
+                                ?>
+                
+</div>
+</nav>
+    </header>
 
     
     <!-- MAIN CONTENT -->

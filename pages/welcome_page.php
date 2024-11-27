@@ -57,18 +57,18 @@ session_start();
 
                                 <?php
                                     if($_SESSION['type'] == 'manager'){
-                                        echo'<li class="nav-item"><a class="nav-link" href="../pages/manager_dashboard/manager_dashboard.php">Manager Dashboard</a></li>';
+                                        echo'<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/manager_dashboard/manager_dashboard.php">Manager Dashboard</a></li>';
                                     }elseif($_SESSION['type'] == 'assistant'){
-                                        echo'<li class="nav-item"><a class="nav-link" href="../pages/assistant-manager-view/Assistant-manager-dashboard/assistant_manager_dashboard.php">Assistant Manager Dashboard</a></li>';
+                                        echo'<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/assistant_manager_dashboard.php">Assistant Manager Dashboard</a></li>';
                                     }elseif($_SESSION['type'] == 'admin'){
-                                        echo '<li class="nav-item"><a class="nav-link" href="../pages/db-admin/dash.php">Admin Dashboard</a></li>';
+                                        echo '<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/db-admin/dash.php">Admin Dashboard</a></li>';
                                     }
                                     if($_SESSION['type'] != 'loyal' && $_SESSION['type'] != 'admin' ){
-                                        echo '<li class="nav-item"><a class="nav-link" href="../pages/staff/staff_dashboard.php">Staff Dashboard</a></li>';
+                                        echo '<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/staff/staff_dashboard.php">Staff Dashboard</a></li>';
                                     }
                                     
                                     if($_SESSION['type'] == 'barista'){
-                                        echo '<li class="nav-item"><a class="dropdown-item" href="../pages/assistant-manager-view/Assistant-manager-dashboard/products_AS_view.php">Product</a></li>';
+                                        echo '<li class="nav-item"><a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/products_AS_view.php">Product</a></li>';
                                     }
 
                                 ?>
@@ -79,16 +79,16 @@ session_start();
                                         data-bs-toggle="dropdown">Tools</a>
                                     <ul class="dropdown-menu dropdown-menu-dark">
                                         <li>
-                                            <a class="dropdown-item" href="localhost/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/users_AS_view.php">All Staff</a>
+                                            <a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/users_AS_view.php">All Staff</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="assistant-manager-view/Assistant-manager-dashboard/transactions_AS_view.php">Transactions</a>
+                                            <a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/transactions_AS_view.php">Transactions</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="assistant-manager-view/Assistant-manager-dashboard/products_AS_view.php">Product</a>
+                                            <a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/products_AS_view.php">Product</a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item" href="assistant-manager-view/Assistant-manager-dashboard/suppliers_AS_view.php">Suppliers</a>
+                                            <a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/suppliers_AS_view.php">Suppliers</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -100,8 +100,6 @@ session_start();
                 
 </div>
 </nav>
-            </div>
-        </nav>
     </header>
     <br>
     <main class="container-fluid">
