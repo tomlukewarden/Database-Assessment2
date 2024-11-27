@@ -45,7 +45,6 @@ if (isset($_POST['continue_shopping'])) {
                 <h6 class="card-subtitle m-3 text-muted">Thank you for your order.</h6>
                 <form action="" method="post">
                     <button class="btn btn-primary m-3" type="submit" name="logout">Return to Homepage </button>
-                    <!-- NEED TO ADD REDIRECT PHP TO THE HOMEPAGE AND DESTROY SESSION VARIABLES WHEN CLICKED -->
                     <button class="btn btn-primary m-3" type="submit" name="continue_shopping">Continue Shopping </button>
                 </form>
             </div>

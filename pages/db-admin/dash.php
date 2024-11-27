@@ -1,6 +1,12 @@
 <?php 
 include '../../config/db.php';
 
+session_start();
+
+if (isset($_POST['logout'])) {
+    session_destroy();
+    header('Location: /espresso-express/Database-Assessment2/pages/login/login.php');
+}
 
 if($_SESSION['type'] != 'admin' or is_null($_SESSION['type'])){
     header('Location: /espresso-express/Database-Assessment2/pages/welcome_page.php');
@@ -72,7 +78,7 @@ if($_SESSION['type'] != 'admin' or is_null($_SESSION['type'])){
                                     }
                                     
                                     if($_SESSION['type'] == 'barista'){
-                                        echo '<li class="nav-item"><a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/products_AS_view.php">Product</a></li>';
+                                        echo '<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/products_AS_view.php">Product</a></li>';
                                     }
 
                                 ?>
@@ -96,10 +102,14 @@ if($_SESSION['type'] != 'admin' or is_null($_SESSION['type'])){
                                         </li>
                                     </ul>
                                 </li>
-                            </ul>
+                            </ul>';
+                        }
+
+                        echo '<form action="" method="post">
+                                        <button class="btn btn-primary m-3" type="submit" name="logout">Logout</button>
+                                        </form>
                         </div>
                     </div>';
-                                    }
                                 ?>
                 
 </div>
@@ -287,7 +297,7 @@ if ($uptimeResult) {
 mysqli_close($conn);
 ?>
 
-<div class=" ml-5 row my-4 text-center">
+<div class=" ml-5 row my-4 text-center ">
     <!-- Manage Section -->
     <div class="col-lg-12">
         <div class="row g-3">
@@ -295,7 +305,7 @@ mysqli_close($conn);
                 <div class="card manage shadow-lg">
                     <div class="card-header">Manage Users</div>
                     <div class="card-body">
-                        <a href="../db-admin/pages/users.php" class="btn btn-outline-primary">View All Users</a>
+                        <a href="../assistant-manager-view/Assistant-managers-dashboard/users_AS_view.php" class="btn btn-outline-primary">View All Users</a>
                     </div>
                 </div>
             </div>
@@ -303,7 +313,7 @@ mysqli_close($conn);
                 <div class="card manage shadow-lg">
                     <div class="card-header">Manage Transactions</div>
                     <div class="card-body">
-                        <a href="../db-admin/pages/transactions.php" class="btn btn-outline-primary">View All Transactions</a>
+                        <a href="../assistant-manager-view/Assistant-managers-dashboard/transactions_AS_view.php" class="btn btn-outline-primary">View All Transactions</a>
                     </div>
                 </div>
             </div>
@@ -311,15 +321,7 @@ mysqli_close($conn);
                 <div class="card manage shadow-lg">
                     <div class="card-header">Manage Products</div>
                     <div class="card-body">
-                        <a href="#" class="btn btn-outline-primary">View All Products</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <div class="card manage shadow-lg">
-                    <div class="card-header">Manage Orders</div>
-                    <div class="card-body">
-                        <a href="#" class="btn btn-outline-primary">View All Orders</a>
+                        <a href="../assistant-manager-view/Assistant-managers-dashboard/products_AS_view.php" class="btn btn-outline-primary">View All Products</a>
                     </div>
                 </div>
             </div>

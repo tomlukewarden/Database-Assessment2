@@ -4,6 +4,11 @@
 include '../../../config/db.php'; 
 session_start();
 
+if (isset($_POST['logout'])) {
+    session_destroy();
+    header('Location: /espresso-express/Database-Assessment2/pages/login/login.php');
+}
+
 // Limits access unless an assistant manager is logged in.
 // Limits access unless an assistant manager is logged in.
 if($_SESSION['type'] == 'loyal' or is_null($_SESSION['type']) or $_SESSION['type'] == 'barista'){
@@ -78,7 +83,7 @@ if($_SESSION['type'] == 'loyal' or is_null($_SESSION['type']) or $_SESSION['type
                                     }
                                     
                                     if($_SESSION['type'] == 'barista'){
-                                        echo '<li class="nav-item"><a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/products_AS_view.php">Product</a></li>';
+                                        echo '<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/products_AS_view.php">Product</a></li>';
                                     }
 
                                 ?>
@@ -102,10 +107,14 @@ if($_SESSION['type'] == 'loyal' or is_null($_SESSION['type']) or $_SESSION['type
                                         </li>
                                     </ul>
                                 </li>
-                            </ul>
+                            </ul>';
+                        }
+
+                        echo '<form action="" method="post">
+                                        <button class="btn btn-primary m-3" type="submit" name="logout">Logout</button>
+                                        </form>
                         </div>
                     </div>';
-                                    }
                                 ?>
                 
 </div>

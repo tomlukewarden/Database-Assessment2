@@ -1,7 +1,11 @@
 <?php
 
 include '../../../config/db.php'; 
-session_start()
+session_start();
+
+if(is_null($_SESSION['type'])){
+    header('Location: ../../welcome_page.php');
+}
 
 ?>
 
@@ -100,10 +104,10 @@ session_start()
                     
                         while ($row = mysqli_fetch_array($result))
                         {   
-                            echo "<tr>"
-                            echo "<th>Payments</th>"
-                            echo "<td></td>"
-                            echo "</tr>"
+                            echo "<tr>";
+                            echo "<th>Payments</th>";
+                            echo "<td></td>";
+                            echo "</tr>";
                             echo "<tr>";
                             echo "<th>Regular pay:</th>";
                             echo "<td>£" . $row['regular_pay'] . "</td>";
@@ -134,10 +138,10 @@ session_start()
                     
                         while ($row = mysqli_fetch_array($result))
                         {   
-                            echo "<tr>"
-                            echo "<th>Deductions</th>"
-                            echo "<td></td>"
-                            echo "</tr>"
+                            echo "<tr>";
+                            echo "<th>Deductions</th>";
+                            echo "<td></td>";
+                            echo "</tr>";
                             echo "<tr>";
                             echo "<th>Tax:</th>";
                             echo "<td>£" . $row['tax'] . "</td>";

@@ -3,9 +3,15 @@
 include '../../config/db.php'; 
 session_start();
 
-if($_SESSION['type'] == 'loyal' or is_null($_SESSION['type'])){
-    header('Location: ../../welcome_page.php');
+if (isset($_POST['logout'])) {
+    session_destroy();
+    header('Location: /espresso-express/Database-Assessment2/pages/login/login.php');
 }
+
+if($_SESSION['type'] == 'loyal' or is_null($_SESSION['type'])){
+    header('Location: ../welcome_page.php');
+}
+
 
 
 $sql = "SELECT clock FROM staff WHERE staff_id = " . $_SESSION['username'];
@@ -14,29 +20,20 @@ $result = mysqli_query($conn, $sql);
 while($row = mysqli_fetch_array($result)){
     if ($row["clock"] == 0) {
         $_SESSION["onshift"] = 0;
-        echo "hello";
-        echo $row["clock"];
     } else{
         $_SESSION["onshift"] = 1;
-        echo "Bye";
     }
 }
 
-
-echo $_SESSION["onshift"];
-
 if (isset($_POST['submit'])) {
-    echo "post successfull";
     if ($_SESSION["onshift"] == 0) {  
         $query = "UPDATE staff SET clock = 1 WHERE staff_id = " . $_SESSION['username'];
         mysqli_query($conn, $query);
         $_SESSION["onshift"] = 1;
-        echo "a";
     } elseif ($_SESSION["onshift"] == 1) {
         $query = "UPDATE staff SET clock = 0 WHERE staff_id = " . $_SESSION['username'];
         mysqli_query($conn, $query);
         $_SESSION["onshift"] = 0;
-        echo "b";
     }
 }
 
@@ -54,7 +51,7 @@ if (isset($_POST['submit'])) {
     <!-- Bootstrap CSS Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Custome CSS Link -->
-     <link rel="stylesheet" href="staff_dashboard.css">
+    <link rel="stylesheet" href="staff_dashboard.css">
     <title>Staff Dashboard</title>
 </head>
 <body>
@@ -109,7 +106,7 @@ if (isset($_POST['submit'])) {
                                     }
                                     
                                     if($_SESSION['type'] == 'barista'){
-                                        echo '<li class="nav-item"><a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/products_AS_view.php">Product</a></li>';
+                                        echo '<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/products_AS_view.php">Product</a></li>';
                                     }
 
                                 ?>
@@ -133,10 +130,14 @@ if (isset($_POST['submit'])) {
                                         </li>
                                     </ul>
                                 </li>
-                            </ul>
+                            </ul>';
+                        }
+
+                        echo '<form action="" method="post">
+                                        <button class="btn btn-primary m-3" type="submit" name="logout">Logout</button>
+                                        </form>
                         </div>
                     </div>';
-                                    }
                                 ?>
                 
 </div>
