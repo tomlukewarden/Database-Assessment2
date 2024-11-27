@@ -1,7 +1,7 @@
 
 <?php 
 
-include '../../../config/db.php'; 
+include '../../config/db.php'; 
 session_start();
 
 // Limits access unless an assistant manager is logged in.

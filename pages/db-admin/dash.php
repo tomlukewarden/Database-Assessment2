@@ -35,11 +35,10 @@
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Admin Tools</a>
                             <ul class="dropdown-menu dropdown-menu-dark">
                                 <li><a class="dropdown-item" href="pages/requests.php">Requests</a></li>
-                                <li><a class="dropdown-item" href="pages/users.php">Users</a></li>
-                                <li><a class="dropdown-item" href="pages/transactions.php">Transactions</a></li>
-                                <li><a class="dropdown-item" href="#">Products</a></li>
-                                <li><a class="dropdown-item" href="../Products/Products-staffView.php">Stock</a></li>
-                                <li><a class="dropdown-item" href="#">Orders</a></li>
+                                <li><a class="dropdown-item" href="pages/tickets.php">Tickets</a></li>
+                                <li><a class="dropdown-item" href="../../assistant-manager-view/Assistant-managers-dashboard/users_AS_view.php">Users</a></li>
+                                <li><a class="dropdown-item" href="../../pages/assistant-manager-view/Assistant-managers-dashboard/transactions_AS_view.php">Transactions</a></li>
+                                <li><a class="dropdown-item" href="../../pages/assistant-manager-view/Assistant-managers-dashboard/products_AS_view.php">Products</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="#">Sales Reports</a></li>
                             </ul>
