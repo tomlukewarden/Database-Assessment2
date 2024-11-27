@@ -4,9 +4,9 @@ include '../../config/db.php';
 session_start();
 
 // Limits access unless a manager is logged in.
-if($_SESSION['type'] != 'manager'){
+if($_SESSION['type'] != 'manager' or is_null($_SESSION['type'])){
     header('Location: ../../welcome_page.php');
-}   
+}
 ?>
 
 <!DOCTYPE html>

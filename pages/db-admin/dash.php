@@ -1,3 +1,14 @@
+<?php 
+include '../../config/db.php';
+
+
+if($_SESSION['type'] != 'admin' or is_null($_SESSION['type'])){
+    header('Location: /espresso-express/Database-Assessment2/pages/welcome_page.php');
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +24,7 @@
 
 <body>
     <!-- Navbar -->
-    <?php include '../../config/db.php' ?>
+    
     <header>
         <nav class="navbar navbar-dark bg-dark p-3">
             <div class="container-fluid">

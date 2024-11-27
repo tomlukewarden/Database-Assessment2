@@ -5,8 +5,8 @@ include '../../../config/db.php';
 session_start();
 
 // Limits access unless an assistant manager is logged in.
-if($_SESSION['type'] == 'loyal'){
-    header('Location: ../../welcome_page.php');
+if($_SESSION['type'] == 'loyal' or is_null($_SESSION['type'])){
+    header('Location: /espresso-express/Database-Assessment2/pages/welcome_page.php');
 }
 ?>
 
@@ -20,10 +20,10 @@ if($_SESSION['type'] == 'loyal'){
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="dash.css">
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
+
 <header>
         <nav class="navbar navbar-dark bg-dark p-3">
             <div class="container-fluid">
@@ -59,10 +59,10 @@ if($_SESSION['type'] == 'loyal'){
                 ?>
 
                                 <?php
-                                    if($_SESSION['type'] == 'manager'){
-                                        echo'<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/manager_dashboard/manager_dashboard.php">Manager Dashboard</a></li>';
+                                    if ($_SESSION['type'] == 'manager'){
+                                        echo '<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/manager_dashboard/manager_dashboard.php">Manager Dashboard</a></li>';
                                     }elseif($_SESSION['type'] == 'assistant'){
-                                        echo'<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/assistant_manager_dashboard.php">Assistant Manager Dashboard</a></li>';
+                                        echo '<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/assistant_manager_dashboard.php">Assistant Manager Dashboard</a></li>';
                                     }elseif($_SESSION['type'] == 'admin'){
                                         echo '<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/db-admin/dash.php">Admin Dashboard</a></li>';
                                     }
@@ -107,7 +107,7 @@ if($_SESSION['type'] == 'loyal'){
 
     
     <!-- MAIN CONTENT -->
-    <main class="container my-5 pt-5">
+<main class="container my-5 pt-5">
 
         
             <!--products -->
@@ -217,7 +217,9 @@ if($_SESSION['type'] == 'loyal'){
         <p class="text-light position-absolute start-50 top-50 translate-middle">&copy; Espresso Express</p>
         <br>
     </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -3,6 +3,9 @@
 include '../../config/db.php'; 
 session_start();
 
+if($_SESSION['type'] == 'loyal' or is_null($_SESSION['type'])){
+    header('Location: ../../welcome_page.php');
+}
 
 
 $sql = "SELECT clock FROM staff WHERE staff_id = " . $_SESSION['username'];

@@ -5,7 +5,7 @@ include '../../../config/db.php';
 session_start();
 
 // Limits access unless an assistant manager is logged in.
-if($_SESSION['type'] != 'assistant'){
+if($_SESSION['type'] != 'assistant' or $_SESSION['type'] != 'admin'){
   header('Location: ../../welcome_page.php');
 }
 ?>

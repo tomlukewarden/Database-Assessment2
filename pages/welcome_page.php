@@ -3,6 +3,9 @@
 include "../config/db.php";
 session_start();
 
+if(is_null($_SESSION['type'])){
+    header('Location: /espresso-express/Database-Assessment2/pages/login/login.php');
+}
 ?>
 
 <!DOCTYPE html>

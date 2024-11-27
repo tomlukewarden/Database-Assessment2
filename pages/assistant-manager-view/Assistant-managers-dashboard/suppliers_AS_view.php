@@ -5,8 +5,9 @@ include '../../../config/db.php';
 session_start();
 
 // Limits access unless an assistant manager is logged in.
-if($_SESSION['type'] != 'assistant' $_SESSION['type'] != 'manager'){
-    header('Location: ../../welcome_page.php');
+// Limits access unless an assistant manager is logged in.
+if($_SESSION['type'] == 'loyal' or is_null($_SESSION['type']) or $_SESSION['type'] == 'barista'){
+    header('Location: /espresso-express/Database-Assessment2/pages/welcome_page.php');
 }
 
 ?>
