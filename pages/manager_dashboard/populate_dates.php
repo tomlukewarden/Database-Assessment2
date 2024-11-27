@@ -1,5 +1,11 @@
 <?php
-include "db.php"; 
+include '../../config/db.php'; 
+session_start();
+
+// Limits access unless a manager is logged in.
+if($_SESSION['type'] != 'manager'){
+    header('Location: ../../welcome_page.php');
+} 
 
 // Loop through each month of the year 2024
 for ($month = 1; $month <= 11; $month++) {
