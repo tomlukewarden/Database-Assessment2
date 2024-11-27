@@ -26,9 +26,9 @@ if($_SESSION['type'] != 'assistant' and $_SESSION['type'] != 'manager' and $_SES
         <div class="container-fluid">
             <?php
             if($_SESSION['type'] == 'manager'){
-                echo '<a class="navbar-brand" href="#">Espresso Express Assistant Manager</a>';
-            }elseif($_SESSION['type'] == 'assistant'){
                 echo '<a class="navbar-brand" href="#">Espresso Express Manager</a>';
+            }elseif($_SESSION['type'] == 'assistant'){
+                echo '<a class="navbar-brand" href="#">Espresso Express Assistant Manager</a>';
             }elseif($_SESSION['type'] == 'admin'){
                 echo '<a class="navbar-brand" href="#">Espresso Admin</a>';
             }elseif($_SESSION['type'] == 'loyal'){
