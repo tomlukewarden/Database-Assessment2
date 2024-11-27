@@ -40,7 +40,6 @@ $_SESSION["password"] = $_POST["password"];
                     <div class="card-body">
                         <h5 class="card-title">Espresso Express</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Sign-in</h6>
-
                         <!-- Form currently does not redirect anywhere, setting the action to a destination cancels the storing of session variables -->
                         <form method="post" action="">
                             <div class="form-group">
@@ -53,7 +52,6 @@ $_SESSION["password"] = $_POST["password"];
                             </div>
                             <button id="id1" type="submit" value="submit" name="submit" class="btn btn-primary my-2">Login</button>
                         </form>
-                        <a href="../test.php" class="card-link">Customer Page</a>
                     </div>
                 </div>
             </div>
@@ -67,12 +65,7 @@ $_SESSION["password"] = $_POST["password"];
     crossorigin="anonymous"></script>
 <!-- js to open new page if correct info inputted to form -->
 <?php
-
-    $logged_in = FALSE;
-
-    
-
-        $sql = "SELECT staff_id, passwords, position FROM staff ";
+        $sql = "SELECT staff_id, passwords, position FROM staff";
         $result = mysqli_query($conn, $sql);
 
         if ($result) {
@@ -80,8 +73,6 @@ $_SESSION["password"] = $_POST["password"];
                 if ($_SESSION["username"] == $row['staff_id'] && $_SESSION["password"] == $row['passwords']){
                     header('Location: ../welcome_page.php');
                     $_SESSION["type"] = $row['position'];
-                } else {
-                    // console.log();
                 }
             }   
             }
@@ -95,11 +86,14 @@ $_SESSION["password"] = $_POST["password"];
                     header('Location: ../welcome_page.php');
                     $_SESSION["type"] = 'loyal';
 
-                } else {
-                    // console.log();
                 }
             }   
             }
+        
+        if ($_SESSION['username'] == 'admin' && $_SESSION['password'] == 'admin') {
+            header('Location: ../db-admin/dash.php');
+            $_SESSION["type"] = 'admin';
+        }
 ?>
 
 </html>

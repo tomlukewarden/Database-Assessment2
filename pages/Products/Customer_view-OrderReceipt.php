@@ -5,7 +5,7 @@ session_start();
 
 if (isset($_POST['logout'])) {
     session_destroy();
-    header('Location: ../login/login.php');
+    header('Location: ../../homepage.php');
 }
 if (isset($_POST['continue_shopping'])) {
     session_unset();
