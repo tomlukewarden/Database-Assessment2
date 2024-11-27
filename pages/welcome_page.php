@@ -83,13 +83,13 @@ session_start();
                                     <li><a class="dropdown-item"
                                             href="transactions.php">Transactions</a>
                                     </li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
                                 </ul>
                                 </li>
                                 </ul>
                                 </div>';
+                    }
+                    if ($_SESSION['type'] == 'assistant'){
+                        
                     }
                 ?>
                             
