@@ -44,7 +44,7 @@ $_SESSION["password"] = $_POST["password"];
                         <!-- Form currently does not redirect anywhere, setting the action to a destination cancels the storing of session variables -->
                         <form method="post" action="">
                             <div class="form-group">
-                                <label for="id">Staff ID</label>
+                                <label for="id">ID</label>
                                 <input type="text" class="form-control" id="id" placeholder="Enter staff ID" name="username">
                             </div>
                             <div class="form-group py-2">
@@ -67,23 +67,39 @@ $_SESSION["password"] = $_POST["password"];
     crossorigin="anonymous"></script>
 <!-- js to open new page if correct info inputted to form -->
 <?php
-    $sql = "SELECT staff_id, passwords FROM staff ";
-    $result = mysqli_query($conn, $sql);
 
-    if ($result) {
-        while ($row = mysqli_fetch_array($result)) {
-            if ($_SESSION["username"] == $row['staff_id'] && $_SESSION["password"] == $row['passwords']){
-                header('Location: profile.php');
-            } else {
-                echo "<h1>Error with if statement</h1>";
+    $logged_in = FALSE;
+
+    
+
+        $sql = "SELECT staff_id, passwords, position FROM staff ";
+        $result = mysqli_query($conn, $sql);
+
+        if ($result) {
+            while ($row = mysqli_fetch_array($result)) {
+                if ($_SESSION["username"] == $row['staff_id'] && $_SESSION["password"] == $row['passwords']){
+                    header('Location: ../welcome_page.php');
+                    $_SESSION["type"] = $row['position'];
+                } else {
+                    // console.log();
+                }
+            }   
             }
-        }
-        
-        // if ($found == FALSE) {
-            // session_unset();
+    
+        $sql = "SELECT loyalty_id, passwords FROM loyalty ";
+        $result = mysqli_query($conn, $sql);
 
-        // }    
-    }
+        if ($result) {
+            while ($row = mysqli_fetch_array($result)) {
+                if ($_SESSION["username"] == $row['loyalty_id'] && $_SESSION["password"] == $row['passwords']){
+                    header('Location: ../welcome_page.php');
+                    $_SESSION["type"] = 'loyal';
+
+                } else {
+                    // console.log();
+                }
+            }   
+            }
 ?>
 
 </html>
