@@ -13,7 +13,7 @@ session_start();
     <!-- Bootstrap CSS Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Custome CSS Link -->
-     <link rel="stylesheet" href="welcome_page.css">
+    <link rel="stylesheet" href="welcome_page.css">
     <title>Staff Dashboard</title>
 </head>
 <body>
@@ -25,33 +25,33 @@ session_start();
         <nav class="navbar navbar-dark bg-dark p-3">
             <div class="container-fluid">
                 <?php
-                    $manager = FALSE;
-                    $assistant = FALSE;
-                    $staff = FALSE;
+                    // $manager = FALSE;
+                    // $assistant = FALSE;
+                    // $staff = FALSE;
                     
-                    for($x = 1; $x <= 5; $x++ ){
-                        if($_SESSION['username'] == $x){
-                            $manager = True
-                        }
-                    }
+                    // for($x = 1; $x <= 5; $x++ ){
+                    //     if($_SESSION['username'] == $x){
+                    //         $manager = True;
+                    //     }
+                    // }
 
-                    for($x = 6; $x <= 10; $x++ ){
-                        if($_SESSION['username'] == $x){
-                            $assistant = True
-                        }
-                    }
+                    // for($x = 6; $x <= 10; $x++ ){
+                    //     if($_SESSION['username'] == $x){
+                    //         $assistant = True;
+                    //     }
+                    // }
 
-                    for($x = 11; $x <= 50; $x++ ){
-                        if($_SESSION['username'] == $x){
-                            $staff = True
-                        }
-                    }
-                    if($manager == TRUE){
-                        echo "<a class='navbar-brand' href='#'>Espresso Express Manager</a>"
-                    }elseif($assistant == TRUE){
-                        echo "<a class='navbar-brand' href='#'>Espresso Express Assistant Manager</a>"
-                    }elseif($staff == TRUE){
-                        echo "<a class='navbar-brand' href='#'>Espresso Express Staff</a>"
+                    // for($x = 11; $x <= 50; $x++ ){
+                    //     if($_SESSION['username'] == $x){
+                    //         $staff = True;
+                    //     }
+                    // }
+                    if($_SESSION['type'] == 'manager'){
+                        echo "<a class='navbar-brand' href='#'>Espresso Express Manager</a>";
+                    }elseif($_SESSION['type'] == 'assistant'){
+                        echo "<a class='navbar-brand' href='#'>Espresso Express Assistant Manager</a>";
+                    }elseif($_SESSION['type'] == 'barista'){
+                        echo "<a class='navbar-brand' href='#'>Espresso Express Staff</a>";
                     }
                 ?>
                 
@@ -67,8 +67,35 @@ session_start();
                     </div>
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                            <li class="nav-item"><a class="nav-link" href="staff/staff_dashboard.php">Staff Dashboard</a></li>
-                            <li class="" nav-item><a class="nav-link" href="staff/staff_products.php">Products</a></li>
+                            <!-- change these for  -->
+                            <?php
+                                if ($_SESSION['type'] == 'barista' or $_SESSION['type'] == 'manager' or $_SESSION['type'] == 'assistant'){
+                                    echo "<li class='nav-item'><a class='nav-link' href='staff/staff_dashboard.php'>Staff Dashboard</a></li>";
+                                    echo "<li class='nav-item' ><a class='nav-link' href='staff/staff_products.php'>Products</a></li>";
+                                }
+                                if ($_SESSION['type'] == 'manager') {
+                                    echo '<li class="nav-item"><a class="nav-link active" href="manager_dashboard.php">Home</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="profile.php">Profile</a></li>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                            data-bs-toggle="dropdown">Managers
+                                            Tools</a>
+                                        <ul class="dropdown-menu dropdown-menu-dark">
+                                            <li><a class="dropdown-item" href="manager_view_users.php">All Staff</a>
+                                            </li>
+                                            <li><a class="dropdown-item"
+                                                    href="transactions.php">Transactions</a>
+                                            </li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                        <li><a class="dropdown-item" href="#">Preview</a></li>
+                                        </ul>
+                                        </li>
+                                        </ul>';
+                                }
+                            ?>
+                            
                         </ul>
                     </div>
                 </div>
@@ -92,13 +119,25 @@ session_start();
             <div class="col-4 text-center">
                 <?php
                     //get name
-                    $sql = "SELECT first_name, last_name FROM staff WHERE staff_id = " . $_SESSION['username'];
-                    $result = mysqli_query($conn, $sql);
-                    if ($result) {
+                    if ($_SESSION['type'] == 'barista' or $_SESSION['type'] == 'manager' or $_SESSION['type'] == 'assistant'){
+                        $sql = "SELECT first_name, last_name FROM staff WHERE staff_id = " . $_SESSION['username'];
+                        $result = mysqli_query($conn, $sql);
+                        if ($result) {
 
-                        while ($row = mysqli_fetch_array($result))
-                        {
-                            echo "<h2>" . $row['first_name'] . " " . $row['last_name'] . "</h2>";
+                            while ($row = mysqli_fetch_array($result))
+                            {
+                                echo "<h2>" . $row['first_name'] . " " . $row['last_name'] . "</h2>";
+                            }
+                        }
+                    } elseif ($_SESSION['type'] == 'loyal'){
+                        $sql = "SELECT first_name, last_name FROM loyalty WHERE loyalty_id = " . $_SESSION['username'];
+                        $result = mysqli_query($conn, $sql);
+                        if ($result) {
+
+                            while ($row = mysqli_fetch_array($result))
+                            {
+                                echo "<h2>" . $row['first_name'] . " " . $row['last_name'] . "</h2>";
+                            }
                         }
                     }
                 ?>
