@@ -174,7 +174,7 @@ if (isset($_POST['submit_order'])) {
 
 
     <?php
-    include 'db.php';
+    include '../../config/db.php';
     
     if (isset($_POST['submit_order'])) {
         // Concatenate all address fields into a single string

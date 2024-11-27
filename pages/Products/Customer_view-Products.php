@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <?php 
+// CONNECT TO DATABASE
+include '../../config/db.php';
 session_start(); 
 // PHP FOR CLEARING THE BASKET:
 if (isset($_POST['clear_basket'])) {
@@ -186,8 +188,7 @@ if (isset($_POST['checkout'])){
 
                         <?php 
 
-                        // CONNECT TO DATABASE
-                        include '../../../config/db.php'; 
+                         
                         // DEFAULT QUERY
                         $sql = "SELECT * FROM product";
 
