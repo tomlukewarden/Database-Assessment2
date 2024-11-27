@@ -1,7 +1,7 @@
 <!-- PHP gathers the username and password as session variables from the form, we can use these to compare what is stored in the database and determine who is logged in or if someone has access -->
 <?php
 
-include '../../../config/db.php'; 
+include '../../config/db.php'; 
 // comment to test commit.
 session_start();
 

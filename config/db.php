@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "tom";
-$password = "express123";
+$username = "root";
+$password = "";
 $dbname = "espresso-express";
 
 // Create connection
