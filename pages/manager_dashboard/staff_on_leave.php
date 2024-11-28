@@ -1,10 +1,17 @@
 <?php
+
 include '../../config/db.php'; 
+session_start();
+
+if($_SESSION['type'] != 'manager'){
+    header('Location: ../../welcome_page.php');
+}   
+
 $staff = [];
 
 
 #will change it to the annual leave when the table is updated
-$sqlOnLeave = "SELECT staff_id, first_name, last_name, position FROM staff WHERE `on_leave` = 1";
+$sqlOnLeave = "SELECT staff_id, first_name, last_name, position FROM staff WHERE on_leave = 1";
 $resultOnLeave = mysqli_query($conn, $sqlOnLeave);
 
 if ($resultOnLeave) {

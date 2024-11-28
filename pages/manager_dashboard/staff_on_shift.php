@@ -1,9 +1,15 @@
 <?php
+
 include '../../config/db.php'; 
+session_start();
+
+if($_SESSION['type'] != 'manager'){
+    header('Location: ../../welcome_page.php');
+}   
 
 $staff = [];
 
-$sqlClockedIn = "SELECT staff_id, first_name, last_name, position FROM staff WHERE `clock_in/out` = 1";  
+$sqlClockedIn = "SELECT staff_id, first_name, last_name, position FROM staff WHERE clock = 1";  
 $resultClockedIn = mysqli_query($conn, $sqlClockedIn);
 
 if ($resultClockedIn) {

@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const title = document.getElementById("CardTitle");
-    const content = document.getElementById("CardContent");
+
     const cardswithinfo = document.getElementsByClassName("SeeAllButton");
 
 
@@ -16,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
             cardswithinfo[i].style.backgroundColor = cardcolor;
         });
 
-        addEventListener("click", function () {
+        cardswithinfo[i].addEventListener("click", function () {
             cardswithinfo[i].style.backgroundColor = cardcolor;
         });
 
@@ -213,16 +212,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
 
-            for (let i = 1; i <= 11; i++) { //11 because we are in november now in 2024
-                const found = data.find(item => item.month == i);
-                if (found) {
-                    months.push(month_names[i]);
-                    totalSold.push(found.total);
-                } else {
-                    months.push(month_names[i]);
-                    totalSold.push(0);
-                }
-            }
 
             const xValues = months; const yValues = totalSold;
 

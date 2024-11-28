@@ -1,6 +1,11 @@
 <?php
 
 include '../../config/db.php'; 
+session_start();
+
+if($_SESSION['type'] != 'manager'){
+    header('Location: ../../welcome_page.php');
+}   
 
 $transactions = [];
 
