@@ -3,15 +3,10 @@
 include '../../config/db.php'; 
 session_start();
 
-if (isset($_POST['logout'])) {
-    session_destroy();
-    header('Location: /espresso-express/Database-Assessment2/pages/login/login.php');
-}
-
 // Limits access unless a manager is logged in.
-if($_SESSION['type'] != 'manager' or is_null($_SESSION['type'])){
-    header('Location: ../welcome_page.php');
-}
+if($_SESSION['type'] != 'manager'){
+    header('Location: ../../welcome_page.php');
+}   
 ?>
 
 <!DOCTYPE html>
@@ -28,102 +23,58 @@ if($_SESSION['type'] != 'manager' or is_null($_SESSION['type'])){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=bedtime" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_bag" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
     </script>
+    <script src="manager_dashboard.js"></script>
 
 </head>
 
 <body>
-<!-- VLADA!! we have updated the navbar to work on every page. pls dont change it :) -->
-<header>
-        <nav class="navbar navbar-dark bg-dark p-3">
-            <div class="container-fluid">
-                <?php
-                    if($_SESSION['type'] == 'manager'){
-                        echo '<a class="navbar-brand" href="#">Espresso Express Manager</a>';
-                    }elseif($_SESSION['type'] == 'assistant'){
-                        echo '<a class="navbar-brand" href="#">Espresso Express Assistant Manager</a>';
-                    }elseif($_SESSION['type'] == 'admin'){
-                        echo '<a class="navbar-brand" href="#">Espresso Admin</a>';
-                    }elseif($_SESSION['type'] == 'loyal'){
-                        echo '<a class="navbar-brand" href="#">Espresso Express Customer</a>';
-                    }elseif($_SESSION['type'] == 'barista'){
-                        echo '<a class="navbar-brand" href="#">Espresso Express Staff</a>';
-                    }
 
-                    if($_SESSION['type'] != 'loyal'){
-                        echo'<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
-                        aria-labelledby="offcanvasDarkNavbarLabel">
-                        <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
-                                aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body">
-                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">';
-                    }
-                ?>
-
-                                <?php
-                                    if($_SESSION['type'] == 'manager'){
-                                        echo'<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/manager_dashboard/manager_dashboard.php">Manager Dashboard</a></li>';
-                                    }elseif($_SESSION['type'] == 'assistant'){
-                                        echo'<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/assistant_manager_dashboard.php">Assistant Manager Dashboard</a></li>';
-                                    }elseif($_SESSION['type'] == 'admin'){
-                                        echo '<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/db-admin/dash.php">Admin Dashboard</a></li>';
-                                    }
-                                    if($_SESSION['type'] != 'loyal' && $_SESSION['type'] != 'admin' ){
-                                        echo '<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/staff/staff_dashboard.php">Staff Dashboard</a></li>';
-                                    }
-                                    
-                                    if($_SESSION['type'] == 'barista'){
-                                        echo '<li class="nav-item"><a class="nav-link" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/products_AS_view.php">Product</a></li>';
-                                    }
-
-                                ?>
-                                <?php
-                                    if($_SESSION['type'] != 'loyal' and $_SESSION['type'] != 'barista'){
-                                        echo'<li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button"
-                                        data-bs-toggle="dropdown">Tools</a>
-                                    <ul class="dropdown-menu dropdown-menu-dark">
-                                        <li>
-                                            <a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/users_AS_view.php">All Staff</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/transactions_AS_view.php">Transactions</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/products_AS_view.php">Product</a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item" href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/suppliers_AS_view.php">Suppliers</a>
-                                        </li>
-                                    </ul>
+    <nav class="navbar navbar-dark bg-dark fixed-top p-3">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Espresso Express Manager</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+                aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dashboard Menu</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item"><a class="nav-link active" href="manager_dashboard.php">Manager Dashboard</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown">Managers
+                                Tools</a>
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="manager_view_users.php">All Staff</a>
                                 </li>
-                            </ul>';
-                        }
+                                <li><a class="dropdown-item"
+                                        href="transactions.php">Transactions</a>
+                                </li>
 
-                        echo '<form action="" method="post">
-                                        <button class="btn btn-primary m-3" type="submit" name="logout">Logout</button>
-                                        </form>
-                        </div>
-                    </div>';
-                                ?>
-                
-</div>
-</nav>
-    </header>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex mt-3" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <div class="container-fluid mt-4 pt-5 px-4">
         <div class="row">
@@ -192,8 +143,8 @@ if($_SESSION['type'] != 'manager' or is_null($_SESSION['type'])){
                         style="height:120px; background-color: rgb(136, 88, 175); box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
                         <h2> Attendance </h2>
                         <?php
-                            $sqlClocckedIn = "SELECT COUNT(*) AS clocked_in_staff FROM staff WHERE `clock_in/out` = 1 ";  
-                            $resultClockedIn = mysqli_query($conn, $sql); 
+                            $sqlClockedIn = "SELECT COUNT(*) AS clocked_in_staff FROM staff WHERE clock = 1 ";  
+                            $resultClockedIn = mysqli_query($conn, $sqlClockedIn); 
 
                             $sqlTotalStaff = "SELECT COUNT(*) AS total_staff FROM staff";  
                             $resultTotalStaff = mysqli_query($conn, $sqlTotalStaff); 
@@ -584,7 +535,7 @@ if($_SESSION['type'] != 'manager' or is_null($_SESSION['type'])){
                         <h5 class="card-title m-3" id="CardTitle"> Staff on Shift </h5>
                         <div id="CardContent">
                             <?php
-                            $sqlClockedIn = "SELECT first_name, last_name, position FROM staff WHERE `clock_in/out` = 1";  
+                            $sqlClockedIn = "SELECT first_name, last_name, position FROM staff WHERE clock = 1";  
                             $resultClockedIn = mysqli_query($conn, $sqlClockedIn); 
                             
                             if($resultClockedIn) {
@@ -682,23 +633,25 @@ if($_SESSION['type'] != 'manager' or is_null($_SESSION['type'])){
         $resultLowInStock = mysqli_query($conn, $sqlLowInStock); 
         
         if($resultLowInStock) {
-            echo '<h3> Products state: </h3>
+            
+            if(mysqli_num_rows($resultLowInStock) > 0){
+                echo '<h3> Products state: </h3>
                     <div class="row">'; 
-                
-            while($row = mysqli_fetch_assoc($resultLowInStock)){
-                echo '<div class="col-2 py-3">
-                        <div class="card border-danger actionrequired" style="box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);">
-                            <img class="card-img-top p-2" src="https://picsum.photos/id/8/300/300" alt="Card image cap">
-                            <div class="card-body p-2">
-                                <h5 class="card-title mb-0">'. $row['product_name'] .'</h5>
-                                <p class="card-text fs-6"><em> #'. $row['product_id'] .'</em></p>
-                             </div>
-                            <div class="card-footer text-center text-light border-danger bg-danger">Low in stock
+                while($row = mysqli_fetch_assoc($resultLowInStock)){
+                    echo '<div class="col-2 py-3">
+                            <div class="card border-danger actionrequired" style="box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);">
+                                <img class="card-img-top p-2" src="https://picsum.photos/id/8/300/300" alt="Card image cap">
+                                <div class="card-body p-2">
+                                    <h5 class="card-title mb-0">'. $row['product_name'] .'</h5>
+                                    <p class="card-text fs-6"><em> #'. $row['product_id'] .'</em></p>
+                                </div>
+                                <div class="card-footer text-center text-light border-danger bg-danger">Low in stock
+                                </div>
                             </div>
-                        </div>
-                    </div>';
-            } 
-            echo '</div';
+                        </div>';
+                } 
+                echo '</div';
+            }
         }
 
         ?>
@@ -706,7 +659,7 @@ if($_SESSION['type'] != 'manager' or is_null($_SESSION['type'])){
     </div>
 
 
-    <script src="manager_dashboard.js"></script>
+    
     
 
 </body>
