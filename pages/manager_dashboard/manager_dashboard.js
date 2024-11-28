@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 11: "November",
                 12: "December"
 
-            }
+            };
             const months = [];
             const totalSold = [];
             const currentmonth = 11; //we are currently in november
@@ -210,10 +210,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     months.push(month_names[i]);
                     totalSold.push(0);
                 }
-            }
+            };
 
 
             const xValues = months; const yValues = totalSold;
+            const minY = Math.min(...totalSold) - 5;
+            const maxY = Math.max(...totalSold) + 5;
 
 
             new Chart("graph", {
@@ -225,10 +227,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }]
                 }, options: {
                     legend: { display: false }, scales: {
-                        yAxes: [{
-                            ticks:
-                                { min: 6, max: 50 }
-                        }],
+                        yAxes: [{ ticks: { min: Math.max(minY, 0), max: maxY } }],
                     }
                 }
             });
