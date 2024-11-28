@@ -214,8 +214,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             const xValues = months; const yValues = totalSold;
-            const minY = Math.min(...totalSold) - 5;
-            const maxY = Math.max(...totalSold) + 5;
+            const minY = Math.min(...totalSold) - 10;
+            const maxY = Math.max(...totalSold) + 10;
 
 
             new Chart("graph", {
