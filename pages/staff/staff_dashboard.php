@@ -263,7 +263,7 @@ if (isset($_POST['submit'])) {
                     <div class="row d-flex justify-content-center">
                         <div class="col-6">
                             <div class="card">
-                                <img class="card-img-top" src="https://picsum.photos/300/200" alt="annual leave">
+                                <img class="card-img-top" src="https://picsum.photos/id/199/300/200" alt="annual leave">
                                 <div class="card-body">
                                     <h5 class="card-title">Annual Leave</h5>
                                     <a href="" class="btn btn-primary">Request</a>
@@ -272,7 +272,7 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="col-6">
                             <div class="card">
-                                <img class="card-img-top" src="https://picsum.photos/300/200" alt="unpaid leave">
+                                <img class="card-img-top" src="https://picsum.photos/id/103/300/200" alt="unpaid leave">
                                 <div class="card-body">
                                     <h5 class="card-title">Unpaid Leave</h5>
                                     <a href="" class="btn btn-primary">Request</a>
@@ -283,7 +283,7 @@ if (isset($_POST['submit'])) {
                     <div class="row d-flex justify-content-center">
                         <div class="col-6">
                             <div class="card">
-                                <img class="card-img-top" src="https://picsum.photos/300/200" alt="sickness">
+                                <img class="card-img-top" src="https://picsum.photos/id/326/300/200" alt="sickness">
                                 <div class="card-body">
                                     <h5 class="card-title">Sickness</h5>
                                     <a href="" class="btn btn-primary">Request</a>
@@ -292,7 +292,7 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="col-6">
                             <div class="card">
-                                <img class="card-img-top" src="https://picsum.photos/300/200" alt="other">
+                                <img class="card-img-top" src="https://picsum.photos/id/184/300/200" alt="other">
                                 <div class="card-body">
                                     <h5 class="card-title">Other</h5>
                                     <a href="" class="btn btn-primary">Request</a>
