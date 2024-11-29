@@ -315,9 +315,6 @@ if($_SESSION['type'] != 'assistant' and $_SESSION['type'] != 'admin'){
                             <li class="nav-item">
                                 <a class="nav-link active" id="DailyShiftTab">Daily Shift</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="StaffOnLeaveTab">Staff on Leave</a>
-                            </li>
                         </ul>
                     </div>
                     <div class="card-body d-flex flex-column">
