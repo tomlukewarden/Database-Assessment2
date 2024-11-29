@@ -195,13 +195,9 @@ if (isset($_POST['checkout'])){
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo "<div class='col-md-4'>";
                                 echo "<div class='card mb-4'>";
-                                echo "    <img class='card-img-top' src='https://picsum.photos/id/1/200/180' alt='Card image cap'>";
+                                echo "    <img class='card-img-top' src='" . $row['image'] . "' alt='Card image cap'>";
                                 echo "    <div class='card-body'>";
                                 echo "        <h5 class='card-title text-capitalize'><strong>" . $row['product_name'] . "</strong></h5>";
-                                echo "          <p class='card-text'>Product 1 description. Lorem ipsum dolor sit amet consectetur";
-                                echo "                adipisicing elit. Veritatis at quia adipisci officiis pariatur tempora explicabo";
-                                echo "                quod ex sint voluptate consequuntur non eveniet totam necessitatibus modi eum";
-                                echo "                deserunt, error dolore.</p>";
                                 echo "          <h4> £" . $row['price'] . "</h4>";
 
                                 // code to store session variables when adding to basket.
