@@ -256,7 +256,7 @@ if($_SESSION['type'] != 'assistant' and $_SESSION['type'] != 'admin'){
             <div class="col-md-8 ms-3 justify-content-evenly">
                 <div class="card p-4 shadow-sm">
                     <h4 class="mb-4">Weekly Target</h4>
-                    <div class="row">
+                    <div class="row justify-content-evenly">
                         <div class="col-md-4">
                             <h2>£8000</h2>
                             <p class="text-muted">Target</p>
