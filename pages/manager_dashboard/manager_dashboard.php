@@ -611,7 +611,7 @@ if($_SESSION['type'] != 'manager'){
         <div class="row">
             <div class="col">
                 
-                <a href="manager_view_users.php" class="text-decoration-none">
+                <a href="/espresso-express/Database-Assessment2/pages/assistant-manager-view/Assistant-managers-dashboard/users_AS_view.php" class="text-decoration-none">
                     <div class="card SeeAllButton" 
                         style="height: 100px; box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2); cursor: pointer;">
                         <div class="card-body d-flex flex-column justify-content-center align-items-center"
