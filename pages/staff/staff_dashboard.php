@@ -300,10 +300,14 @@ if (isset($_POST['go_on_leave'])) {
                                     <h5 class="card-title">Annual Leave</h5>
                                     <form method="post" action="">
                                     <?php
-                                    if($_SESSION["is_on_leave"] == 0){
-                                        echo"<button id='changebutton' class='btn btn-primary' type='go_on_leave' value='go_on_leave' name='go_on_leave'>Go On Leave</button>";
-                                    } elseif($_SESSION["onshift"] == 1){
-                                        echo"<button id='changebutton' class='btn btn-success' type='go_on_leave' value='go_on_leave' name='go_on_leave'>Return From Leave</button>";
+                                    if($_SESSION["on_shift"] == 0)
+                                        if($_SESSION["is_on_leave"] == 0){
+                                            echo"<button id='changebutton' class='btn btn-primary' type='go_on_leave' value='go_on_leave' name='go_on_leave'>Go On Leave</button>";
+                                        } elseif($_SESSION["onshift"] == 1){
+                                            echo"<button id='changebutton' class='btn btn-success' type='go_on_leave' value='go_on_leave' name='go_on_leave'>Return From Leave</button>";
+                                        }
+                                    elseif($_SESSION["on_shift"] == 1){
+                                        echo"<button id='changebutton' class='btn btn-secondary' type='button' value='button' name='button'>Clock Out to go on Leave</button>";
                                     }
                                      ?>
                                     </form>
