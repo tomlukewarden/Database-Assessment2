@@ -302,12 +302,12 @@ if (isset($_POST['go_on_leave'])) {
                                     <?php
                                     if($_SESSION["onshift"] == 0)
                                         if($_SESSION["is_on_leave"] == 0){
-                                            echo"<button id='changebutton' class='btn btn-primary' type='go_on_leave' value='go_on_leave' name='go_on_leave'>Go On Leave</button>";
+                                            echo"<button class='btn btn-primary' type='go_on_leave' value='go_on_leave' name='go_on_leave'>Go On Leave</button>";
                                         } elseif($_SESSION["onshift"] == 1){
-                                            echo"<button id='changebutton' class='btn btn-success' type='go_on_leave' value='go_on_leave' name='go_on_leave'>Return From Leave</button>";
+                                            echo"<button class='btn btn-success' type='go_on_leave' value='go_on_leave' name='go_on_leave'>Return From Leave</button>";
                                         }
                                     elseif($_SESSION["onshift"] == 1){
-                                        echo"<button id='changebutton' class='btn btn-secondary' type='button' value='button' name='button'>Clock Out to go on Leave</button>";
+                                        echo"<button class='btn btn-secondary' type='button' value='button' name='button'>Clock Out to go on Leave</button>";
                                     }
                                      ?>
                                     </form>
