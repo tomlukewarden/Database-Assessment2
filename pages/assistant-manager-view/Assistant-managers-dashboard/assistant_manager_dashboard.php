@@ -250,58 +250,7 @@ if($_SESSION['type'] != 'assistant' and $_SESSION['type'] != 'admin'){
         <!-- Assistant Manager List and Weekly Target Section -->
         <div class="row mt-3 d-flex align-items-start">
             <!-- Assistant Manager List -->
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm">
-                    <div class="card-header">
-                        <h5>All Assistant Manager</h5>
-                    </div>
-                    <div class="list-group list-group-flush">
-                        <div class="list-group-item d-flex align-items-center">
-                            <img src="https://media.tenor.com/LE7DIybEseAAAAAi/bunny.gif" 
-                                class="rounded-circle me-3 profile-pic" 
-                                alt="Assistant Manager 1">                       
-                            <div>
-                                <strong>
-                                    <a href="http://127.0.0.1:5501/pages/assistant-manager-view/Assistant-managers-dashboard/Aberdeen.html" class="text-decoration-none text-dark">Aberdeen Assistant Manager</a>
-                                </strong>
-                            </div>
-                        </div>
-
-                        <div class="list-group-item d-flex align-items-center">
-                            <img src="https://lh3.googleusercontent.com/proxy/JDS28PW_z_X4g65Bk4eufgE8fpB9HEvLGWwSZK0gPq8gS8DseRVV14kakXMngBaw6Yzz-GzhdEvD6_BJko8bTES76tX5uCzHJjQGRkxk" 
-                                class="rounded-circle me-3 profile-pic" 
-                                alt="Assistant Manager 2"> 
-                            <div>
-                                <strong>
-                                    <a href="http://127.0.0.1:5501/pages/assistant-manager-view/Assistant-managers-dashboard/Dundee.html" class="text-decoration-none text-dark">Dundee Assistant Manager</a>
-                                </strong>
-                            </div>
-                        </div>
-
-                        <div class="list-group-item d-flex align-items-center">
-                            <img src="https://i.pinimg.com/originals/fb/b2/8c/fbb28cf9534ecf1cf4576cdfeef3fef4.gif" 
-                                class="rounded-circle me-3 profile-pic" 
-                                alt="Assistant Manager 3"> 
-                            <div>
-                                <strong>
-                                    <a href="http://127.0.0.1:5501/pages/assistant-manager-view/Assistant-managers-dashboard/Edinburgh.html" class="text-decoration-none text-dark">Edinburgh Assistant Manager</a>
-                                </strong>
-                            </div>
-                        </div>
-
-                        <div class="list-group-item d-flex align-items-center">
-                            <img src="https://cdn3.emoji.gg/emojis/8678-bun-sleep.gif" 
-                                class="rounded-circle me-3 profile-pic" 
-                                alt="Assistant Manager 4"> 
-                            <div>
-                                <strong>
-                                    <a href="http://127.0.0.1:5501/pages/assistant-manager-view/Assistant-managers-dashboard/Glasgow.html" class="text-decoration-none text-dark">Glasgow Assistant Manager</a>
-                                </strong>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>    
+            
 
             <!-- Weekly Target Section -->
             <div class="col-md-8 ms-3;">
@@ -309,9 +258,9 @@ if($_SESSION['type'] != 'assistant' and $_SESSION['type'] != 'admin'){
                     <h4 class="mb-4">Weekly Target</h4>
                     <div class="row">
                         <div class="col-md-4">
-                            <h2>$8000</h2>
+                            <h2>£8000</h2>
                             <p class="text-muted">Target</p>
-                            <h3>$6350</h3>
+                            <h3>£6350</h3>
                             <p class="text-muted">Current Weekly Sales</p>
                         </div>
                         <div class="col-md-8">
