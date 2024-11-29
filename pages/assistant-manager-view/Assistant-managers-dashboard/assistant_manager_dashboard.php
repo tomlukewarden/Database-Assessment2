@@ -306,117 +306,49 @@ if($_SESSION['type'] != 'assistant' and $_SESSION['type'] != 'admin'){
     </main>
 
     <!-- Forms Section -->
-    <div class="container mt-5 mb-5">
-    <div class="card p-4 shadow-sm">
-        <!-- Tabs -->
-        <ul class="nav nav-pills mb-3" id="statusTabs">
-          <li class="nav-item">
-            <a class="nav-link active-tab" href="#" onclick="switchTab(event, 'orderStatus')">Order Status</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" onclick="switchTab(event, 'staffStatus')">Staff Status</a>
-          </li>
-        </ul>
-    
-        <!-- Order Status Table -->
-        <div id="orderStatus" class="table-container">
-          <table class="table table-bordered text-center">
-            <thead>
-              <tr>
-                <th>Invoice</th>
-                <th>Customers</th>
-                <th>From</th>
-                <th>Item</th>
-                <th>Price</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody id="orderTableBody">
-              <tr>
-                <td>#25</td>
-                <td>Kamillah</td>
-                <td>Glasgow</td>
-                <td>coffee tin</td>
-                <td>£3</td>
-                <td><span class="status status-success">Success</span></td>
-              </tr>
-              <tr>
-                <td>#24</td>
-                <td>Ezri</td>
-                <td>Glasgow</td>
-                <td>americano blend</td>
-                <td>£5</td>
-                <td><span class="status status-open">Open</span></td>
-              </tr>
-              <tr>
-                <td>#23</td>
-                <td>Dallon</td>
-                <td>Glasgow</td>
-                <td>coffee tin</td>
-                <td>£3</td>
-                <td><span class="status status-return">Return</span></td>
-              </tr>
-              <tr>
-                <td>#22</td>
-                <td>Dita</td>
-                <td>Glasgow</td>
-                <td>green</td>
-                <td>£3</td>
-                <td><span class="status status-success">Success</span></td>
-              </tr>
-              <tr>
-                <td>#21</td>
-                <td>Vivi</td>
-                <td>Aberdeen</td>
-                <td>americano blend</td>
-                <td>£5</td>
-                <td><span class="status status-process">Process</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-    
-        <!-- Staff Status Table -->
-        <div id="staffStatus" class="table-container" style="display: none;">
-          <table class="table table-bordered text-center">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Staff Role</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody id="staffTableBody">
-              <tr>
-                <td>Liam Caldwell</td>
-                <td>Barista</td>
-                <td><span class="status status-open">Clock in</span></td>
-              </tr>
-              <tr>
-                <td>Isobel Bennet</td>
-                <td>Barista</td>
-                <td><span class="status status-open">Late</span></td>
+    <div class="container-fluid px-4">
+        <div class="row">
+            <div class="col py-3">
+                <div class="card text-center" style="box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="DailyShiftTab">Daily Shift</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="StaffOnLeaveTab">Staff on Leave</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title m-3" id="CardTitle"> Staff on Shift </h5>
+                        <div id="CardContent">
+                            <?php
+                            $sqlClockedIn = "SELECT first_name, last_name, position FROM staff WHERE clock = 1";  
+                            $resultClockedIn = mysqli_query($conn, $sqlClockedIn); 
+                            
+                            if($resultClockedIn) {
+                                if(mysqli_num_rows($resultClockedIn) > 0){
+                                    echo '<table class="table text-start">';
+                                    echo "<thead><tr><th scope='col'> </th><th scope='col'>Staff Name</th><th scope='col'>Staff Role </th><th scope='col'> Attendance </th></tr></thead>";
+                                    echo "<tbody>";
+                                    while($row = mysqli_fetch_assoc($resultClockedIn)){
+                                        echo "<tr><th scope='row'> </th><td>" . $row['first_name'] . ' ' . $row['last_name'] . "</td><td>" . $row['position'] . "</td><td style='color: rgb(82, 145, 0);'>Clocked In</td></tr>";
 
-              </tr>
-              <tr>
-                <td>Ian Crow</td>
-                <td>Barista</td>
-                <td><span class="status status-open">take leave</span></td>
-              </tr>
-              <tr>
-                <td>Sam Samuel</td>
-                <td>Barista</td>
-                <td><span class="status status-open">Clock in</span></td>
-              </tr>
-              <tr>
-                <td>Mags Stewart</td>
-                <td>Barista</td>
-                <td><span class="status status-open">Clock out</span></td>
-              </tr>
-            </tbody>
-          </table>
+                                    }  
+                                    echo "</tbody></table>";
+
+                                } else {
+                                echo '<p class="text-center m-4 text-secondary font-italic ">'."No staff on shift at the moment...". '</p>';
+                                }
+                            }
+
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     
       <script>
