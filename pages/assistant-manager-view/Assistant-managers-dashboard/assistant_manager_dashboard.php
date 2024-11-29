@@ -303,7 +303,7 @@ if($_SESSION['type'] != 'assistant' and $_SESSION['type'] != 'admin'){
             </script>
         </div>
 
-    </main>
+    
 
     <!-- Forms Section -->
     <div class="container-fluid px-4">
@@ -347,7 +347,9 @@ if($_SESSION['type'] != 'assistant' and $_SESSION['type'] != 'admin'){
             </div>
         </div>
     </div>
-    
+
+
+    </main>
       <script>
         // Switch between Order and Staff Status
         function switchTab(event, tabId) {
