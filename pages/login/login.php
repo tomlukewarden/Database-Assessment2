@@ -5,8 +5,8 @@ include '../../config/db.php';
 // comment to test commit.
 session_start();
 
-$_SESSION["username"] = ""
-$_SESSION["password"] = ""
+$_SESSION["username"] = "";
+$_SESSION["password"] = "";
 
 if (isset($_POST['submit'])) {  
 
