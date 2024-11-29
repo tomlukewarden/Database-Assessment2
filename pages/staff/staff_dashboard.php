@@ -43,6 +43,18 @@ if (isset($_POST['submit'])) {
     }
 }
 
+if (isset($_POST['go_on_leave'])) {
+    if ($_SESSION["is_on_leave"] == 0) {  
+        $query = "UPDATE staff SET on_leave = 1 WHERE staff_id = " . $_SESSION['username'];
+        mysqli_query($conn, $query);
+        $_SESSION["is_on_leave"] = 1;
+    } elseif ($_SESSION["is_on_leave"] == 1) {
+        $query = "UPDATE staff SET on_leave = 0 WHERE staff_id = " . $_SESSION['username'];
+        mysqli_query($conn, $query);
+        $_SESSION["is_on_leave"] = 0;
+    }
+}
+
 
 
 
@@ -181,10 +193,14 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="col-3">
                         <?php
-                            if($_SESSION["onshift"] == 0){
-                                echo"<h3 id='change' class='text-danger'>NO</h3>";
-                            } elseif($_SESSION["onshift"] == 1){
-                                echo"<h3 id='change' class='text-success'>YES</h3>";
+                            if($_SESSION['is_on_leave'] == 0){
+                                if($_SESSION["onshift"] == 0){
+                                    echo"<h3 id='change' class='text-danger'>NO</h3>";
+                                } elseif($_SESSION["onshift"] == 1){
+                                    echo"<h3 id='change' class='text-success'>YES</h3>";
+                                }
+                            }elseif($_SESSION['is_on_leave'] == 1){
+                                echo"<h3 id='change' class='text-secondary'>ON LEAVE</h3>";
                             }
                         ?>
                     </div>
@@ -282,7 +298,15 @@ if (isset($_POST['submit'])) {
                                 <img class="card-img-top" src="https://picsum.photos/id/199/300/200" alt="annual leave">
                                 <div class="card-body">
                                     <h5 class="card-title">Annual Leave</h5>
-                                    <a href="" class="btn btn-primary">Request</a>
+                                    <form method="post" action="">
+                                    <?php
+                                    if($_SESSION["is_on_leave"] == 0){
+                                        echo"<button id='changebutton' class='btn btn-primary' type='go_on_leave' value='go_on_leave' name='go_on_leave'>Go On Leave</button>";
+                                    } elseif($_SESSION["onshift"] == 1){
+                                        echo"<button id='changebutton' class='btn btn-success' type='go_on_leave' value='go_on_leave' name='go_on_leave'>Return From Leave</button>";
+                                    }
+                                     ?>
+                                    </form>
                                 </div>
                             </div>
                         </div>
