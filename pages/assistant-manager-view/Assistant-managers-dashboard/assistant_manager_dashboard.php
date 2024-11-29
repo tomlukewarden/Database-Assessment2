@@ -10,7 +10,7 @@ if (isset($_POST['logout'])) {
 }
 
 // Limits access unless an assistant manager is logged in.
-if($_SESSION['type'] != 'assistant' or $_SESSION['type'] != 'admin'){
+if($_SESSION['type'] != 'assistant' and $_SESSION['type'] != 'admin'){
   header('Location: ../../welcome_page.php');
 }
 ?>
