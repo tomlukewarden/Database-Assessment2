@@ -25,9 +25,9 @@ while($row = mysqli_fetch_array($result)){
     }
 
     if($row['on_leave'] == 0){
-        $_SESSION['requested_leave'] = 0
+        $_SESSION['is_on_leave'] = 0
     } else{
-        
+        $_SESSION['is_on_leave'] = 1
     }
 }
 
@@ -161,10 +161,14 @@ if (isset($_POST['submit'])) {
                     <div class="col">
                         <form method="post" action="">
                             <?php
-                                if($_SESSION["onshift"] == 0){
-                                    echo"<button id='changebutton' class='bg-success' type='submit' value='submit' name='submit'>Clock In</button>";
-                                } elseif($_SESSION["onshift"] == 1){
-                                    echo"<button id='changebutton' class='bg-danger' type='submit' value='submit' name='submit'>Clock Out</button>";
+                                if($_SESSION['is_on_leave'] == 0){
+                                    if($_SESSION["onshift"] == 0){
+                                        echo"<button id='changebutton' class='bg-success' type='submit' value='submit' name='submit'>Clock In</button>";
+                                    } elseif($_SESSION["onshift"] == 1){
+                                        echo"<button id='changebutton' class='bg-danger' type='submit' value='submit' name='submit'>Clock Out</button>";
+                                    }
+                                }elseif($_SESSION['is_on_leave'] == 1){
+                                    echo"<button id='changebutton' class='secondary' type='button' value='button' name='button'>On Leave</button>";
                                 }
                             ?>
                         </form>
