@@ -253,7 +253,7 @@ if($_SESSION['type'] != 'assistant' and $_SESSION['type'] != 'admin'){
             
 
             <!-- Weekly Target Section -->
-            <div class="col-md-8 ms-3;">
+            <div class="col-md-8 ms-3 justify-content-evenly">
                 <div class="card p-4 shadow-sm">
                     <h4 class="mb-4">Weekly Target</h4>
                     <div class="row">
