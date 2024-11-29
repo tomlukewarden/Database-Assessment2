@@ -578,7 +578,7 @@ if($_SESSION['type'] != 'manager'){
                                 <a class="nav-link active" id="DailyShiftTab">Daily Shift</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="StaffOnLeaveTab">Staff on Leave</a>
+                                <a class="nav-link" id="StaffOnLeaveTab">Staff Requested Holidays</a>
                             </li>
                         </ul>
                     </div>
