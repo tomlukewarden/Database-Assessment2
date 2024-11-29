@@ -3,6 +3,11 @@
 include '../../config/db.php'; 
 session_start();
 
+if (isset($_POST['logout'])) {
+    session_destroy();
+    header('Location: /espresso-express/Database-Assessment2/pages/login/login.php');
+  }
+
 // Limits access unless a manager is logged in.
 if($_SESSION['type'] != 'manager'){
     header('Location: ../../welcome_page.php');
