@@ -170,7 +170,13 @@ if (isset($_POST['submit'])) {
                         <h3>Currently Clocked In:</h3>
                     </div>
                     <div class="col-3">
-                        <h3 id="change" class="text-danger">NO</h3>
+                        <?php
+                            if($_SESSION["onshift"] == 0){
+                                echo"<h3 id='change' class='text-danger'>NO</h3>"
+                            } elseif($_SESSION["onshift"] == 1){
+                                echo"<h3 id='change' class='text-success'>YES</h3>";
+                            }
+                        ?>
                     </div>
                 </div>
                 <div class="row">
