@@ -14,7 +14,7 @@ if($_SESSION['type'] == 'loyal' or is_null($_SESSION['type'])){
 
 
 
-$sql = "SELECT clock FROM staff WHERE staff_id = " . $_SESSION['username'];
+$sql = "SELECT clock, on_leave FROM staff WHERE staff_id = " . $_SESSION['username'];
 $result = mysqli_query($conn, $sql);
 
 while($row = mysqli_fetch_array($result)){
@@ -22,6 +22,12 @@ while($row = mysqli_fetch_array($result)){
         $_SESSION["onshift"] = 0;
     } else{
         $_SESSION["onshift"] = 1;
+    }
+
+    if($row['on_leave'] == 0){
+        $_SESSION['requested_leave'] = 0
+    } else{
+        
     }
 }
 
