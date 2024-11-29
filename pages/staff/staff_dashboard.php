@@ -172,7 +172,7 @@ if (isset($_POST['submit'])) {
                     <div class="col-3">
                         <?php
                             if($_SESSION["onshift"] == 0){
-                                echo"<h3 id='change' class='text-danger'>NO</h3>"
+                                echo"<h3 id='change' class='text-danger'>NO</h3>";
                             } elseif($_SESSION["onshift"] == 1){
                                 echo"<h3 id='change' class='text-success'>YES</h3>";
                             }
