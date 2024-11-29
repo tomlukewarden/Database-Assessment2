@@ -25,9 +25,9 @@ while($row = mysqli_fetch_array($result)){
     }
 
     if($row['on_leave'] == 0){
-        $_SESSION['is_on_leave'] = 0
+        $_SESSION['is_on_leave'] = 0;
     } else{
-        $_SESSION['is_on_leave'] = 1
+        $_SESSION['is_on_leave'] = 1;
     }
 }
 
