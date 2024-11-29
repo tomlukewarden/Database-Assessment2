@@ -317,7 +317,17 @@ if (isset($_POST['go_on_leave'])) {
                                 <img class="card-img-top" src="https://picsum.photos/id/103/300/200" alt="unpaid leave">
                                 <div class="card-body">
                                     <h5 class="card-title">Unpaid Leave</h5>
-                                    <a href="" class="btn btn-primary">Request</a>
+                                    <form method="post" action="">
+                                    <?php
+                                    if($_SESSION["onshift"] == 0 and $_SESSION['is_on_leave'] == 0){
+                                        echo"<button class='btn btn-primary' type='go_on_leave' value='go_on_leave' name='go_on_leave'>Go On Leave</button>"; 
+                                    }elseif($_SESSION["onshift"] == 0 and $_SESSION['is_on_leave'] == 1){
+                                        echo"<button class='btn btn-success' type='go_on_leave' value='go_on_leave' name='go_on_leave'>Return From Leave</button>";
+                                    }elseif($_SESSION["onshift"] == 1 and $_SESSION['is_on_leave'] == 1 or $_SESSION['is_on_leave'] == 0){
+                                        echo"<button class='btn btn-secondary' type='button' value='button' name='button'>Clock Out to go on Leave</button>";
+                                    } 
+                                     ?>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -328,7 +338,17 @@ if (isset($_POST['go_on_leave'])) {
                                 <img class="card-img-top" src="https://picsum.photos/id/326/300/200" alt="sickness">
                                 <div class="card-body">
                                     <h5 class="card-title">Sickness</h5>
-                                    <a href="" class="btn btn-primary">Request</a>
+                                    <form method="post" action="">
+                                    <?php
+                                    if($_SESSION["onshift"] == 0 and $_SESSION['is_on_leave'] == 0){
+                                        echo"<button class='btn btn-primary' type='go_on_leave' value='go_on_leave' name='go_on_leave'>Go On Leave</button>"; 
+                                    }elseif($_SESSION["onshift"] == 0 and $_SESSION['is_on_leave'] == 1){
+                                        echo"<button class='btn btn-success' type='go_on_leave' value='go_on_leave' name='go_on_leave'>Return From Leave</button>";
+                                    }elseif($_SESSION["onshift"] == 1 and $_SESSION['is_on_leave'] == 1 or $_SESSION['is_on_leave'] == 0){
+                                        echo"<button class='btn btn-secondary' type='button' value='button' name='button'>Clock Out to go on Leave</button>";
+                                    } 
+                                     ?>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -337,7 +357,17 @@ if (isset($_POST['go_on_leave'])) {
                                 <img class="card-img-top" src="https://picsum.photos/id/184/300/200" alt="other">
                                 <div class="card-body">
                                     <h5 class="card-title">Other</h5>
-                                    <a href="" class="btn btn-primary">Request</a>
+                                    <form method="post" action="">
+                                    <?php
+                                    if($_SESSION["onshift"] == 0 and $_SESSION['is_on_leave'] == 0){
+                                        echo"<button class='btn btn-primary' type='go_on_leave' value='go_on_leave' name='go_on_leave'>Go On Leave</button>"; 
+                                    }elseif($_SESSION["onshift"] == 0 and $_SESSION['is_on_leave'] == 1){
+                                        echo"<button class='btn btn-success' type='go_on_leave' value='go_on_leave' name='go_on_leave'>Return From Leave</button>";
+                                    }elseif($_SESSION["onshift"] == 1 and $_SESSION['is_on_leave'] == 1 or $_SESSION['is_on_leave'] == 0){
+                                        echo"<button class='btn btn-secondary' type='button' value='button' name='button'>Clock Out to go on Leave</button>";
+                                    } 
+                                     ?>
+                                    </form>
                                 </div>
                             </div>
                         </div>
