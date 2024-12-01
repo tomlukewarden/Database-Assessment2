@@ -15,8 +15,8 @@ $sql = "SELECT
         YEAR(transaction_date) AS year,
         MONTH(transaction_date) AS month,
         SUM(p.price) AS total_sales
-    FROM transactions t 
-    JOIN product p ON p.product_id = t.product_id
+    FROM Transactions t 
+    JOIN Product p ON p.product_id = t.product_id
     WHERE YEAR(transaction_date) = 2024 #put in the current year
     GROUP BY year, month
     ORDER BY month ASC";
