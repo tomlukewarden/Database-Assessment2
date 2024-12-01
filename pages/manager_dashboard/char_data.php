@@ -26,7 +26,11 @@ $data = [
 
 ];
 
-header('Content-Type: application/json'); 
-echo json_encode($data);
+header('Content-Type: application/json');
+if (empty($data)) {
+    echo json_encode(['message' => 'No Product data found']);
+} else {
+    echo json_encode($data);
+}
 ?>
 

@@ -235,7 +235,7 @@ if($_SESSION['type'] != 'manager'){
         <div class="row">
             <div class="col-md-5 py-3">
                 <div class="card" style="height: 450px; box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
-                    <div class="card-body d-flex flex-column justify-content-center align-items-center"
+                    <div class="card-body d-flex flex-column justify-content-center align-items-center" id="ChartCard"
                         style="height: 100%;">
                         <h1 class="text-center">Product Sales</h1>
                         <canvas class="mb-5" id="myChart" style="width: 100%; max-width:700px;"></canvas>
@@ -244,7 +244,7 @@ if($_SESSION['type'] != 'manager'){
             </div>
             <div class="col-md-7 py-3">
                 <div class="card" style="height: 450px; box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
-                    <div class="card-body d-flex flex-column justify-content-center align-items-center"
+                    <div class="card-body d-flex flex-column justify-content-center align-items-center" id="GraphCard"
                         style="height: 100%;">
                         <p class="text-center">2024 Monthly Analytics</p>
                         <canvas id="graph" style="width: 100%; max-width:700px;"></canvas>

@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 if (data.message) {
-                    content.innerHTML = `<p class="text-center m-4 text-secondary font-italic "> No staff on shift at the moment...</p>`
+                    content.innerHTML = `<p class="text-center m-4 text-secondary font-italic "> No staff on shift at the moment...</p>`;
                 } else {
                     // Create a new table
                     const table = document.createElement("table");
@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 title.innerHTML = `<h5> Staff on Leave </h5>`
 
                 if (data.message) {
-                    content.innerHTML = `<p class="text-center m-4 text-secondary font-italic "> No staff on leave at the moment...</p>`
+                    content.innerHTML = `<p class="text-center m-4 text-secondary font-italic "> No staff on leave at the moment...</p>`;
                 } else {
                     // Create a new table
                     const table = document.createElement("table");
@@ -161,18 +161,25 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch(urlchardata)
         .then(response => response.json())
         .then(function (data) {
-            const products = data.product_name;
-            const totalSold = data.price;
-            const barColors = ['#1A237E', "#D1C4E9", "#B39DDB", "#87CEEB", "#6200EA"];
-            new Chart("myChart", {
-                type: "doughnut", data: {
-                    datasets: [{
-                        data: totalSold,
-                        backgroundColor: barColors,
-                    }],
-                    labels: products,
-                }
-            });
+            const content = document.getElementById("ChartCard");
+
+            if (data.message) {
+                content.innerHTML = `<p class="text-center m-4 text-secondary font-italic "> No product sales analytics found...</p>`;
+            } else {
+                const products = data.product_name;
+                const totalSold = data.price;
+                const barColors = ['#1A237E', "#D1C4E9", "#B39DDB", "#87CEEB", "#6200EA"];
+                new Chart("myChart", {
+                    type: "doughnut", data: {
+                        datasets: [{
+                            data: totalSold,
+                            backgroundColor: barColors,
+                        }],
+                        labels: products,
+                    }
+                });
+
+            }
         })
         .catch(error => console.error('Error fetching JSON:', error));
 
@@ -182,55 +189,60 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch(urlgraphdata)
         .then(response => response.json())
         .then(function (data) {
-            const month_names = {
-                1: "January",
-                2: "February",
-                3: "March",
-                4: "April",
-                5: "May",
-                6: "June",
-                7: "July",
-                8: "August",
-                9: "September",
-                10: "October",
-                11: "November",
-                12: "December"
+            const content = document.getElementById("GraphCard");
+            if (data.message) {
+                content.innerHTML = `<p class="text-center m-4 text-secondary font-italic "> No monthly analytics found...</p>`;
+            } else {
+                const month_names = {
+                    1: "January",
+                    2: "February",
+                    3: "March",
+                    4: "April",
+                    5: "May",
+                    6: "June",
+                    7: "July",
+                    8: "August",
+                    9: "September",
+                    10: "October",
+                    11: "November",
+                    12: "December"
 
-            };
-            const months = [];
-            const totalSold = [];
-            const currentmonth = 11; //we are currently in november
+                };
+                const months = [];
+                const totalSold = [];
+                const currentmonth = 11; //we are currently in november
 
-            for (let i = 1; i < currentmonth; i++) { //only display the months until the current month
-                const found = data.find(item => item.month == i);
-                if (found) {
-                    months.push(month_names[i]);
-                    totalSold.push(found.total);
-                } else {
-                    months.push(month_names[i]);
-                    totalSold.push(0);
-                }
-            };
-
-
-            const xValues = months; const yValues = totalSold;
-            const minY = Math.min(...totalSold) - 10;
-            const maxY = Math.max(...totalSold) + 10;
-
-
-            new Chart("graph", {
-                type: "line", data: {
-                    labels: xValues, datasets: [{
-                        fill: false,
-                        lineTension: 0, backgroundColor: "rgba(0,0,255,1.0)", borderColor: "rgba(0,0,255,0.1)"
-                        , data: yValues
-                    }]
-                }, options: {
-                    legend: { display: false }, scales: {
-                        yAxes: [{ ticks: { min: Math.max(minY, 0), max: maxY } }],
+                for (let i = 1; i < currentmonth; i++) { //only display the months until the current month
+                    const found = data.find(item => item.month == i);
+                    if (found) {
+                        months.push(month_names[i]);
+                        totalSold.push(found.total);
+                    } else {
+                        months.push(month_names[i]);
+                        totalSold.push(0);
                     }
                 }
-            });
+
+
+                const xValues = months; const yValues = totalSold;
+                const minY = Math.min(...totalSold) - 10;
+                const maxY = Math.max(...totalSold) + 10;
+
+
+                new Chart("graph", {
+                    type: "line", data: {
+                        labels: xValues, datasets: [{
+                            fill: false,
+                            lineTension: 0, backgroundColor: "rgba(0,0,255,1.0)", borderColor: "rgba(0,0,255,0.1)"
+                            , data: yValues
+                        }]
+                    }, options: {
+                        legend: { display: false }, scales: {
+                            yAxes: [{ ticks: { min: Math.max(minY, 0), max: maxY } }],
+                        }
+                    }
+                });
+            }
 
         })
         .catch(error => console.error('Error fetching JSON:', error));
