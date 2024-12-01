@@ -10,7 +10,7 @@ if($_SESSION['type'] != 'manager'){
 $productNames = [];
 $productTotalSalesPrice = [];
 
-$sql = "SELECT p.product_name, p.price, COUNT(p.product_id) AS quantity FROM transactions t JOIN product p ON p.product_id = t.product_id GROUP BY p.product_id";
+$sql = "SELECT p.product_name, p.price, COUNT(p.product_id) AS quantity FROM Transactions t JOIN Product p ON p.product_id = t.product_id GROUP BY p.product_id";
 $result = mysqli_query($conn, $sql); 
 
 if($result) {

@@ -9,7 +9,7 @@ if($_SESSION['type'] != 'manager'){
 
 $staff = [];
 
-$sqlClockedIn = "SELECT staff_id, first_name, last_name, position FROM staff WHERE clock = 1";  
+$sqlClockedIn = "SELECT staff_id, first_name, last_name, position FROM Staff WHERE clock = 1";  
 $resultClockedIn = mysqli_query($conn, $sqlClockedIn);
 
 if ($resultClockedIn) {

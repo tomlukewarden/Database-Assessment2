@@ -134,7 +134,7 @@ if($_SESSION['type'] != 'manager'){
                 <?php
                     // displays the name of the user logged in
 
-                    $sql = "SELECT first_name, last_name FROM staff WHERE staff_id= " . $_SESSION['username'];  
+                    $sql = "SELECT first_name, last_name FROM Staff WHERE staff_id= " . $_SESSION['username'];  
                     $result = mysqli_query($conn, $sql); 
                     if($result){
                         while ($row = mysqli_fetch_assoc($result)) {
@@ -158,7 +158,7 @@ if($_SESSION['type'] != 'manager'){
                         <h2> Sales </h2>
 
                         <?php
-                            $sql = "SELECT COUNT(*) AS total_sales FROM transactions";  
+                            $sql = "SELECT COUNT(*) AS total_sales FROM Transactions";  
                             $result = mysqli_query($conn, $sql); 
                             if($result) {
                                 $row = mysqli_fetch_assoc($result);
@@ -176,7 +176,7 @@ if($_SESSION['type'] != 'manager'){
                         <h2> Revenue</h2>
 
                         <?php
-                            $sql = "SELECT SUM(p.price) AS total_revenue FROM transactions t JOIN product p ON t.product_id = p.product_id;";  
+                            $sql = "SELECT SUM(p.price) AS total_revenue FROM Transactions t JOIN Product p ON t.product_id = p.product_id;";  
                             $result = mysqli_query($conn, $sql); 
                             if($result) {
                                 while ($row = mysqli_fetch_assoc($result)) {
@@ -194,10 +194,10 @@ if($_SESSION['type'] != 'manager'){
                         style="height:120px; background-color: rgb(136, 88, 175); box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
                         <h2> Attendance </h2>
                         <?php
-                            $sqlClockedIn = "SELECT COUNT(*) AS clocked_in_staff FROM staff WHERE clock = 1 ";  
+                            $sqlClockedIn = "SELECT COUNT(*) AS clocked_in_staff FROM Staff WHERE clock = 1 ";  
                             $resultClockedIn = mysqli_query($conn, $sqlClockedIn); 
 
-                            $sqlTotalStaff = "SELECT COUNT(*) AS total_staff FROM staff";  
+                            $sqlTotalStaff = "SELECT COUNT(*) AS total_staff FROM Staff";  
                             $resultTotalStaff = mysqli_query($conn, $sqlTotalStaff); 
                             
                             if($resultClockedIn && $resultTotalStaff) {
@@ -216,7 +216,7 @@ if($_SESSION['type'] != 'manager'){
                         style="height:120px; background-color: rgb(136, 88, 175); box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);">
                         <h2> Total Customers </h2>
                         <?php
-                            $sql = "SELECT COUNT(*) AS total_customers FROM customer";  
+                            $sql = "SELECT COUNT(*) AS total_customers FROM Customer";  
                             $result = mysqli_query($conn, $sql); 
                             if($result) {
                                 $row = mysqli_fetch_assoc($result);
@@ -266,11 +266,11 @@ if($_SESSION['type'] != 'manager'){
                             <p class="mb-1"> Glasgow Shop </p>
                             <?php
                             $sql = "SELECT COUNT(*) AS total_online_orders 
-                                    FROM transactions t 
-                                    JOIN store s ON t.store_id = s.store_id 
+                                    FROM Transactions t 
+                                    JOIN Store s ON t.store_id = s.store_id 
                                     WHERE s.store_id=3";
 
-                            $salessql = "SELECT COUNT(*) AS total_sales FROM transactions";
+                            $salessql = "SELECT COUNT(*) AS total_sales FROM Transactions";
 
                             $result = mysqli_query($conn, $sql); 
                             $result1 = mysqli_query($conn, $salessql);
@@ -302,11 +302,11 @@ if($_SESSION['type'] != 'manager'){
 
                             <?php
                             $sql = "SELECT COUNT(*) AS total_online_orders 
-                                    FROM transactions t 
-                                    JOIN store s ON t.store_id = s.store_id 
+                                    FROM Transactions t 
+                                    JOIN Store s ON t.store_id = s.store_id 
                                     WHERE s.store_id=1";
 
-                            $salessql = "SELECT COUNT(*) AS total_sales FROM transactions";
+                            $salessql = "SELECT COUNT(*) AS total_sales FROM Transactions";
 
                             $result = mysqli_query($conn, $sql); 
                             $result1 = mysqli_query($conn, $salessql);
@@ -339,11 +339,11 @@ if($_SESSION['type'] != 'manager'){
                             <p class="mb-1"> Edinburgh Shop </p>
                             <?php
                             $sql = "SELECT COUNT(*) AS total_online_orders 
-                                    FROM transactions t 
-                                    JOIN store s ON t.store_id = s.store_id 
+                                    FROM Transactions t 
+                                    JOIN Store s ON t.store_id = s.store_id 
                                     WHERE s.store_id=2";
 
-                            $salessql = "SELECT COUNT(*) AS total_sales FROM transactions";
+                            $salessql = "SELECT COUNT(*) AS total_sales FROM Transactions";
 
                             $result = mysqli_query($conn, $sql); 
                             $result1 = mysqli_query($conn, $salessql);
@@ -376,11 +376,11 @@ if($_SESSION['type'] != 'manager'){
                             <p class="mb-1"> Aberdeen Shop</p>
                             <?php
                             $sql = "SELECT COUNT(*) AS total_online_orders 
-                                    FROM transactions t 
-                                    JOIN store s ON t.store_id = s.store_id 
+                                    FROM Transactions t 
+                                    JOIN Store s ON t.store_id = s.store_id 
                                     WHERE s.store_id=4";
 
-                            $salessql = "SELECT COUNT(*) AS total_sales FROM transactions";
+                            $salessql = "SELECT COUNT(*) AS total_sales FROM Transactions";
 
                             $result = mysqli_query($conn, $sql); 
                             $result1 = mysqli_query($conn, $salessql);
@@ -413,11 +413,11 @@ if($_SESSION['type'] != 'manager'){
 
                             <?php
                             $sql = "SELECT COUNT(*) AS total_online_orders 
-                                    FROM transactions t 
-                                    JOIN store s ON t.store_id = s.store_id 
+                                    FROM Transactions t 
+                                    JOIN Store s ON t.store_id = s.store_id 
                                     WHERE s.is_online = 1";
 
-                            $salessql = "SELECT COUNT(*) AS total_sales FROM transactions";
+                            $salessql = "SELECT COUNT(*) AS total_sales FROM Transactions";
 
                             $result = mysqli_query($conn, $sql); 
                             $result1 = mysqli_query($conn, $salessql);
@@ -485,7 +485,7 @@ if($_SESSION['type'] != 'manager'){
 
                                     //customers that are online
 
-                                    $sql = "SELECT COUNT(*) AS total_online_customers FROM customer WHERE is_online = 1;";  
+                                    $sql = "SELECT COUNT(*) AS total_online_customers FROM Customer WHERE is_online = 1;";  
                                     $result = mysqli_query($conn, $sql); 
                                     if($result) {
                                         $row = mysqli_fetch_assoc($result);
@@ -507,7 +507,7 @@ if($_SESSION['type'] != 'manager'){
                                 <p class="text-center"> Online orders </p>
                                 <!--calculates nr of online orders -->
                                 <?php
-                                    $sql = "SELECT COUNT(product_id) AS total_online_orders FROM transactions t JOIN store s ON t.store_id = s.store_id WHERE s.is_online = 1;";  
+                                    $sql = "SELECT COUNT(product_id) AS total_online_orders FROM Transactions t JOIN Store s ON t.store_id = s.store_id WHERE s.is_online = 1;";  
                                     $result = mysqli_query($conn, $sql); 
                                     if($result) {
                                         while ($row = mysqli_fetch_assoc($result)) {
@@ -528,7 +528,7 @@ if($_SESSION['type'] != 'manager'){
                                 <p class="text-center"> In shop customers </p>
                                 <!--calculates nr of in shop customers -->
                                 <?php
-                                    $sql = "SELECT COUNT(product_id) AS total_in_shop_sales FROM transactions t JOIN store s ON t.store_id = s.store_id WHERE s.is_online = 0";  
+                                    $sql = "SELECT COUNT(product_id) AS total_in_shop_sales FROM Transactions t JOIN Store s ON t.store_id = s.store_id WHERE s.is_online = 0";  
                                     $result = mysqli_query($conn, $sql); 
                                     if($result) {
                                         while ($row = mysqli_fetch_assoc($result)) {
@@ -547,7 +547,7 @@ if($_SESSION['type'] != 'manager'){
                                 <p class="text-center"> Loyalty memberships </p>
                                 <!--calculates how many loyal customers -->
                                 <?php
-                                    $sql = "SELECT COUNT(loyalty_id) AS total_loyalty_memberships FROM loyalty";  
+                                    $sql = "SELECT COUNT(loyalty_id) AS total_loyalty_memberships FROM Loyalty";  
                                     $result = mysqli_query($conn, $sql); 
                                     if($result) {
                                         while ($row = mysqli_fetch_assoc($result)) {
@@ -586,7 +586,7 @@ if($_SESSION['type'] != 'manager'){
                         <h5 class="card-title m-3" id="CardTitle"> Staff on Shift </h5>
                         <div id="CardContent">
                             <?php
-                            $sqlClockedIn = "SELECT first_name, last_name, position FROM staff WHERE clock = 1";  
+                            $sqlClockedIn = "SELECT first_name, last_name, position FROM Staff WHERE clock = 1";  
                             $resultClockedIn = mysqli_query($conn, $sqlClockedIn); 
                             
                             if($resultClockedIn) {
@@ -653,7 +653,7 @@ if($_SESSION['type'] != 'manager'){
                         <h3 class="text-start m-3"> Best selling products</h3>
                         <?php
 
-                        $sql = "SELECT p.product_name, COUNT(p.product_id) AS quantity FROM transactions t JOIN product p ON p.product_id = t.product_id GROUP BY p.product_id ORDER BY quantity DESC LIMIT 4";
+                        $sql = "SELECT p.product_name, COUNT(p.product_id) AS quantity FROM Transactions t JOIN Product p ON p.product_id = t.product_id GROUP BY p.product_id ORDER BY quantity DESC LIMIT 4";
                         $result = mysqli_query($conn, $sql); 
                         if($result) {
                             if(mysqli_num_rows($result) > 0){
@@ -680,7 +680,7 @@ if($_SESSION['type'] != 'manager'){
 
     <div class="container-fluid px-4 mb-5">
         <?php
-        $sqlLowInStock = "SELECT product_id, product_name, stock FROM product WHERE stock <= 5";  
+        $sqlLowInStock = "SELECT product_id, product_name, stock FROM Product WHERE stock <= 5";  
         $resultLowInStock = mysqli_query($conn, $sqlLowInStock); 
         
         if($resultLowInStock) {
