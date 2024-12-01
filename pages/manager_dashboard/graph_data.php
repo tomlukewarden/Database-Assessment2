@@ -28,14 +28,14 @@ if($result) {
         $transactions[] = [
             "year" => $row['year'],
             "month" => $row['month'],
-            "total" => $row['total_sales']
+            "total" => $row['total_sales'],
         ];
     }
 }
 
 header('Content-Type: application/json');
 if (empty($transactions)) {
-    echo json_encode(['message' => 'No staff data found']);
+    echo json_encode(['message' => 'No transaction data found']);
 } else {
     echo json_encode($transactions);
 }
